@@ -4,11 +4,11 @@ My programming project will be focused on implementing the ray-tracing algorithm
 
 ##Research
 ###Light
-The light sources emit energy particles which are called photons, they consist on a magnetic and electric fields oscillating one perpendicular to each other. When they hit a surface various things could happen depending on its material. There are different properties on materials, they bounce light in many different ways. When light hits the surface a part of it gets absorbed by the material (it doesn't disappear, it simply gets transformed into heat or other energy manifestations). This energy that gets absorbed is referred as *Transmittance*, and it will depend on the quality of the material, darker colours for instance absorb more light, that's why it's not cool wearing black cloths in a sunny day in summer :no_good:. The initial light energy minus the transmittance is what is left and keeps traveling into another direction, defined by the reflection law.
+The light sources emit energy particles which are called photons, they consist on a magnetic and electric fields oscillating one perpendicularly to each other. When they hit a surface various things could happen depending on its material. There are different properties on materials, they bounce light in many different ways. When light hits the surface a part of it gets absorbed by the material (it doesn't disappear, it simply gets transformed into heat or other energy forms). This energy that gets absorbed is referred as *Transmittance*, and it will depend on the quality of the material, darker colours for instance absorb more light, that's why it's not cool wearing black cloths in a sunny day in summer :no_good:. The initial light energy minus the transmittance is what is left it gets scattered into another direction, defined by the reflection law.
 
 ![Reflection](https://github.com/NCCA/docwhite-CA1/blob/master/InitialDesign/reflection.png)
 
-Refraction is another important phenomenon to consider. Some materials allow light pass through them, light is deviated by a certain angle which varies depending on the properties of the material. The light ray is also deviated when it exits the object. Every time the medium changes, the ray varies its direction.
+Refraction is another important phenomenon to consider. Some materials allow light pass through them due to their electronic configuration (dielectric materials), light is deviated by a certain angle which varies depending on the properties of the material. The light ray is also deviated when it exits the object. Every time the medium changes, the ray varies its direction.
 
 
 ###Raytrace Algorithm
@@ -21,6 +21,8 @@ It has a special characteristic and this is that it is known to be a backward tr
 In order to calculate this amount of light precisely there is an specific formula: the **Rendering Equation**, which I will explain in the following image:
 
 ![Rendering Equation](https://github.com/NCCA/docwhite-CA1/blob/master/InitialDesign/rendering_equation.png)
+
+It's important to know that if the surface is reflective we would need to repeat the process firing a ray from the hit point towards the reflected direction. A recursive call would be needed, thus we would need to set a maximum depth for avoiding infinite loops.
 
 In the next section I will talk about how I think I would implement this method and which steps should the user follow.
 
@@ -36,11 +38,24 @@ How will data flow through my program? Let me enumerate the fundamental steps:
 
 2. Once parsing and initialising have been successful we give way to the user to tweak some parameters. These can be object attributes, or camera settings. As we mentioned earlier we allow the user to add more elements into the scene. No rendering will be done until user configures rendering parameters and hits render.
 
-3. Now the **Render Loop is Initialised** [to be continued...]
+3. Now the **RENDER LOOP** starts. A *Renderer* object is created. The members of this class' object are a sampler, a camera, a surface integrator and a film. And its methods will be the incident light calculator on a certain pixel in the image (Li method), the amount of absorbed light (Transmitance) and a last one to send it to a film object.
+
+   * The Sampler will generate some random numbers that will be used for tracing a ray that will pierce the current pixel on a random point along its area.
+
+   * The Camera will be used with the sampler to know where to fire the ray from.
+
+   * The SurfaceIntegrator will have an intersection object (or maybe I will use a data structure instead). We will call the Scene method "Intersect" and we will pass the ray we got which origin is given by the camera position and which direction given by the sampler and will check it it collides with any object. In case it does we will be able to access the Intersection object which will contain the collision point.
+
+   * Still in the SurfaceIntegrator object we will iterate through all the lights and calculate the incoming radiance on this point from each light. We will do so by throwing shadow rays. The Li function in SurfaceIntegrator will give us the final radiance on the fired point. After this is done, the value is returned to the renderer and kept in an array of sample. The process is repeated in the current pixel for whatever amount of samples the user has specified. After the array of samples has been filled out we call a method in the Pixel class to average the samples.
+
+   * The Film object holds all the pixels and reference to the image we will need to write to. It receives the final radiance for each pixel (not sampled yet!) and stores it into the samples array we mentioned before, which is located in the Pixel objects. Once the radiance is averaged it is stored into the colour member of the pixel and will be written later to the final image.
+
+4. Finally we can use a stream operator to drop all the pixel values into an image. I learnt how to construct bitmaps in the past, I learned how to write the header files for them and so, but I would prefer to use an industry standard format, such as *.exr* and be able to understand the way we can fill them with information and even learn how to create different passes in the same file. So I will read about the OpenEXR project in the future.
 
 ###Extra Features
 These are bonus I would try to implement if I have enough time.
 * Depth Of Field Blur
+* Global Illumination
 * Exporting Z-Depth
 
 ###Dependencies
