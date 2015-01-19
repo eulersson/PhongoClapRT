@@ -55,7 +55,7 @@ How will data flow through my program? Let me enumerate the fundamental steps:
 ###UI and Interaction
 The main design idea for the UI is quite simple. I would like to use a 4 viewport window which the user will be able to maximize as Maya does, and a bar on the right hand side for changing parameters for the objects, cameras, and finally render settings.
 
-![GUI](https://github.com/NCCA/docwhite-CA1/blob/master/InitialDesign/ui.png)
+![GUI](https://github.com/NCCA/docwhite-CA1/blob/master/InitialDesign/UI.png)
 
 ###Dependencies
 Other packages and libraries I will use for my project:
