@@ -26,8 +26,14 @@ In the next section I will talk about how I think I would implement this method 
 
 ##Class Design
 ###Sketch
+I tried to write down all the classes I might need. This is a very rough approximation. I am sure I will need some more, but I still don't know which kind of them yet. I will be finding them out on the go.
+
 ![Class Diagram Sketch](https://github.com/NCCA/docwhite-CA1/blob/master/InitialDesign/class_diagram_sketch.png)
-I tried to write down all the classes I might need. This is a very rough approximation. I 
+
+How will data flow through my program? Let me enumerate the fundamental steps:
+1. **PARSING** and **GUI Initialisation**: In the main body a Scene object will be instantiated and will be initialized with information about the input geometry file specified by the user. I still don't know which method would be the most suitable, I thought *.obj* files could be a good choice because they are widely accepted by 3D packages, but I will have to take a look at how they are written and how to break down the objects they include. The geometry will be stored under *Shape* objects which will be all gathered together under the *all_primitives* attribute container in the *Scene* object. Same with the lights, all the lights will be cached into the *Scene* light container. If the user doesn't load a file we could implement an interface to add and translate objects and light from scratch, but very simple primitives. After this we will initialise every single Graphics User Interface module, including all the viewports.
+2. Once parsing and initialising have been successful we give way to the user to tweak some parameters. These can be object attributes, or camera settings. As we mentioned earlier we allow the user to add more elements into the scene. No rendering will be done until user configures rendering parameters and hits render.
+3. Now the **Render Loop is Initialised** [to be continued...]
 
 ###Extra Features
 These are bonus I would try to implement if I have enough time.
@@ -43,3 +49,6 @@ Other packages and libraries I will use for my project:
 
 
 ##UI and Interaction
+
+##Bibliography
+Pharr, M. and Humphreys, G., 2010. *Physically Based Rendering*. Burlington: Morgan Kaufmann Publishers
