@@ -6,22 +6,22 @@ My programming project will be focused on implementing the ray-tracing algorithm
 ###Light
 The light sources emit energy particles which are called photons, they consist on a magnetic and electric fields oscillating one perpendicularly to each other. When they hit a surface various things could happen depending on its material. There are different properties on materials, they bounce light in many different ways. When light hits the surface a part of it gets absorbed by the material (it doesn't disappear, it simply gets transformed into heat or other energy forms). This energy that gets absorbed is referred as *Transmittance*, and it will depend on the quality of the material, darker colours for instance absorb more light, that's why it's not cool wearing black cloths in a sunny day in summer :no_good:. The initial light energy minus the transmittance is what is left it gets scattered into another direction, defined by the reflection law.
 
-![Reflection](reflection.png)
+![Reflection](img/reflection.png)
 
 Refraction is another important phenomenon to consider. Some materials allow light pass through them due to their electronic configuration (dielectric materials), light is deviated by a certain angle which varies depending on the properties of the material. The light ray is also deviated when it exits the object. Every time the medium changes, the ray varies its direction.
 
-![Refraction](refraction.png)
+![Refraction](img/refraction.png)
 
 ###Raytrace Algorithm
 The way light is calculated on computers differ a little bit from the natural phenomenon for efficiency reasons. The raytrace algorithm is one of the most popular methods for simulating the light behaviour on computer graphics. 
 
-![Raytracing](raytracing.png)
+![Raytracing](img/raytracing.png)
 
 It has a special characteristic and this is that it is known to be a backward tracing process. We don't calculate all the directions in which light travels and emits the bounced colours of materials... Instead, we just focus on one point of view, our eye point of view. Then we project some rays alongside some samples on a specific pixel and calculate if there is any intersection. If the ray intersects with an object then, from this intersected point we throw some secondary rays called *Shadow Rays* which are directed towards all the different lights in the scene. If the shadow ray does not collide with any other object it means that there are no obstacles between the light and the collision point on surface, so we will calculate the light contribution to the point according to the light properties (such as angle, decay, attenuation) and the material qualities (such as BRDF) and the orientation of the face in relation to the eye (cosine term, Fresnel effect). In case the shadow ray hit geometry in this iteration the radiance contribution would be 0, because light is blocked by an object.
 
 In order to calculate this amount of light precisely there is an specific formula: the **Rendering Equation**, which I will explain in the following image:
 
-![Rendering Equation](rendering_equation.png)
+![Rendering Equation](img/rendering_equation.png)
 
 It's important to know that if the surface is reflective we would need to repeat the process firing a ray from the hit point towards the reflected direction. A recursive call would be needed, thus we would need to set a maximum depth for avoiding infinite loops.
 
@@ -31,7 +31,7 @@ In the next section I will talk about how I think I would implement this method 
 ###Sketch
 I tried to write down all the classes I might need. This is a very rough approximation. I am sure I will need some more, but I still don't know which kind of them yet. I will be finding them out on the go.
 
-![Class Diagram Sketch](class_diagram_sketch.png)
+![Class Diagram Sketch](img/class_diagram_sketch.png)
 
 How will data flow through my program? Let me enumerate the fundamental steps:
 
@@ -55,7 +55,7 @@ How will data flow through my program? Let me enumerate the fundamental steps:
 ###UI and Interaction
 The main design idea for the UI is quite simple. I would like to use a 4 viewport window which the user will be able to maximize as Maya does, and a bar on the right hand side for changing parameters for the objects, cameras, and finally render settings.
 
-![GUI](UI.png)
+![GUI](img/UI.png)
 
 ###Dependencies
 Other packages and libraries I will use for my project:
