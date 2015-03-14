@@ -20,7 +20,8 @@ DESTDIR = ./
 
 OTHER_FILES += shaders/*.glsl \
                ../InitialDesign/* \
-               README.md
+               README.md \
+               .gitignore
 
 CONFIG += console
 
