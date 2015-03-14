@@ -19,6 +19,7 @@ INCLUDEPATH += $$(HOME)/SDL2.0/include/SDL2/
 DESTDIR = ./
 
 OTHER_FILES += shaders/*.glsl \
+               ../InitialDesign/* \
                README.md
 
 CONFIG += console
