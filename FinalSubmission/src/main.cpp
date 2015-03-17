@@ -7,8 +7,12 @@
 
 int main(int argc, char *argv[])
 {
-  geo::Sphere s1;
-  s1.setRadius(3.0);
-  std::cout << s1.getRadius() << std::endl;
+  Ray r1(ngl::Vec3(0,0,0),ngl::Vec3(0,0,1));
+  geo::Sphere s1(ngl::Vec3(0,0,10),1);
+
+  std::cout << s1.getIntersection(r1) << std::endl;
+
+
+
   return 0;
 }
