@@ -3,17 +3,17 @@
 
 Scene::~Scene()
 {
-  // Iterate over vectors and delete all the dynamically allocated objects
+
 }
 
-Scene::addObject(const Shape *_object)
+void Scene::addObject(Shape &_object)
 {
-  m_objects.push_back(object);
+  m_objects.push_back(_object);
 }
 
-Scene::addLight(const Light *_light)
+void Scene::addLight(Light &_light)
 {
-  m_objects.push_back(light);
+  m_lights.push_back(_light);
 }
 
 /*

@@ -5,8 +5,8 @@
 class Streamer
 {
 public:
-  Streamer();
-  ~Streamer();
+  Streamer() {}
+  ~Streamer() {}
 };
 
 #endif // STREAMER_H

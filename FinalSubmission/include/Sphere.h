@@ -19,7 +19,7 @@ namespace geo
 /// @author Ramon Blanquer
 /// @todo Implement colour on the sphere
 //----------------------------------------------------------------------------------------------------------------------
-class Sphere
+class Sphere : public Shape
 {
 public:
 
