@@ -7,14 +7,9 @@
 /// @file Sphere.cpp
 /// @brief implementation files for Sphere class
 //----------------------------------------------------------------------------------------------------------------------
-
 namespace geo
 {
-  /*Sphere::Sphere()
-  {
-      m_center = ngl::Vec3(0.0,0.0,0.0);
-      m_radius = 1.0;
-  }*/
+  Sphere::Sphere() : m_center(ngl::Vec3(1,1,1)), m_radius(2.0) {}
 
   Sphere::~Sphere() {}
 

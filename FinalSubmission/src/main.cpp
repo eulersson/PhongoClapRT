@@ -1,16 +1,15 @@
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
 
 #include "Sphere.h"
-
-// testing github on another computer
+#include "Ray.h"
+#include "Vec.h"
 
 int main(int argc, char *argv[])
 {
-  Ray r1(ngl::Vec3(0,0,0),ngl::Vec3(0,0,1));
-  geo::Sphere s1(ngl::Vec3(0,0,10),1);
+  int width =
 
-  std::cout << s1.getIntersection(r1) << std::endl;
 
 
 

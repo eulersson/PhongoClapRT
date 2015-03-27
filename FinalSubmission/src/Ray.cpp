@@ -4,7 +4,8 @@
 /// @file Ray.cpp
 /// @brief implementation files for Ray class
 //----------------------------------------------------------------------------------------------------------------------
-
+namespace geo
+{
 Ray::Ray(ngl::Vec3 _origin, ngl::Vec3 _direction)
 {
   m_origin = _origin;
@@ -39,3 +40,4 @@ void Ray::setDirection(ngl::Vec3 _direction)
 ngl::Vec3 Ray::getOrigin() {return m_origin;}
 
 ngl::Vec3 Ray::getDirection() {return m_direction;}
+}

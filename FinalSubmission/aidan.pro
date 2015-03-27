@@ -8,7 +8,8 @@ MOC_DIR = moc
 
 SOURCES += $$PWD/src/*.cpp
 
-HEADERS += $$PWD/include/*h
+HEADERS += $$PWD/include/*h \
+    src/Streamer.h
 
 # Include form here
 

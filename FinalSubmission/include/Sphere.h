@@ -26,7 +26,7 @@ public:
   //------------------------------------------------------------------------------------------------------------------
   /// @brief Sphere ctor, by default it will instanciate a 1 unit radius sphere in the origin (0,0,0).
   // -----------------------------------------------------------------------------------------------------------------
-  //Sphere();
+  Sphere();
   //------------------------------------------------------------------------------------------------------------------
   /// @brief Sphere ctor using a radius and a center.
   /// @param[in] _center The position in where the sphere is positioned.

@@ -12,6 +12,8 @@
 /// proceeding indefinitely towards an explicit direction. Always going in one direction only along the line.
 /// @author Ramon Blanquer
 //----------------------------------------------------------------------------------------------------------------------
+namespace geo
+{
 class Ray
 {
 public:
@@ -69,7 +71,7 @@ private:
   ngl::Vec3 m_direction;
 
 };
-
+}
 
 
 
