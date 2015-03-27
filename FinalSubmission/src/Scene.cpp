@@ -6,14 +6,19 @@ Scene::~Scene()
 
 }
 
-void Scene::addObject(Shape &_object)
+void Scene::addObject(geo::Shape *_object)
 {
   m_objects.push_back(_object);
 }
 
-void Scene::addLight(Light &_light)
+void Scene::addLight(Light *_light)
 {
   m_lights.push_back(_light);
+}
+
+float Scene::getInfo()
+{
+  return m_objects.at(0)->getRadius();
 }
 
 /*

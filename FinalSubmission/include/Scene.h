@@ -15,13 +15,14 @@ public:
   Scene() : m_fileName(std::string("Hello")) {}
   Scene(Streamer _s, std::string _n) : m_streamer(_s), m_fileName(_n) {}
   ~Scene();
-  void addObject(Shape &_object);
-  void addLight(Light  &_light);
+  void addObject(geo::Shape *_object);
+  void addLight(Light  *_light);
+  float getInfo();
 private:
   Streamer m_streamer;
   std::string m_fileName;
-  std::vector<Shape> m_objects;
-  std::vector<Light> m_lights;
+  std::vector<geo::Shape*> m_objects;
+  std::vector<Light*> m_lights;
 
 };
 

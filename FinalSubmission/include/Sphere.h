@@ -55,7 +55,7 @@ public:
   /// @brief Returns radius of a sphere.
   /// @returns The radius of a sphere.
   //------------------------------------------------------------------------------------------------------------------
-  float getRadius() const;
+  virtual float getRadius() const;
   //------------------------------------------------------------------------------------------------------------------
   /// @brief Returns center of a sphere.
   /// @returns The center of a sphere.
@@ -69,14 +69,14 @@ public:
   /// @param[in] _ray
   /// @returns The distance from the origin of the ray where it intersects the sphere.
   //------------------------------------------------------------------------------------------------------------------
-  float getIntersection(Ray& _ray);
+  virtual float getIntersection(geo::Ray& _ray);
   //------------------------------------------------------------------------------------------------------------------
   /// @brief Calculates what the normal is at a given point of a sphere. It doesn't check whether it is on the surface
   /// or not because that point will be passed through an intersection which we are sure about.
   /// @param[in] _p The position in the surface of the spehere where we calculate the normal.
   /// @return The normal of the sphere at a given point.
   //------------------------------------------------------------------------------------------------------------------
-  ngl::Vec3 getNormalAt(ngl::Vec3 _p);
+  virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p);
 
 private:
   //------------------------------------------------------------------------------------------------------------------
