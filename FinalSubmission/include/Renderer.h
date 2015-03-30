@@ -13,7 +13,7 @@ class Renderer
     ~Renderer();
     void render();
     int winningObjectIndex(std::vector<double>);
-    /*ngl::Colour getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, int iowo);*/
+    ngl::Colour getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, int iowo);
   private:
     Film *m_film;
     Scene *m_scene;

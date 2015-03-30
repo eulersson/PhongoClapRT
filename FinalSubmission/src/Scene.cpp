@@ -16,10 +16,7 @@ void Scene::addLight(Light *_light)
   m_lights.push_back(_light);
 }
 
-float Scene::getInfo()
-{
-  return m_objects.at(0)->getRadius();
-}
+
 
 /*
 class Scene

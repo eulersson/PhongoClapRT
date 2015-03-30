@@ -52,14 +52,19 @@ int Renderer::winningObjectIndex(std::vector<double> _interxs)
 
 }
 
-/*ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, int iowo)
+ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, int iowo)
 {
-  // define colour of winning object
+  ngl::Colour winning_object_colour = m_scene->m_objects.at(iowo)->getColour();
+  ngl::Vec3   winning_object_normal = m_scene->m_objects.at(iowo)->getNormalAt(_interx_pos);
 
-  // define normal of winning object
+  _interx_dir.normalize();
+
+  ngl::Colour final_col = winning_object_colour * winning_object_normal.dot(_interx_dir);
+
+  return final_col;
 
 
-}*/
+}
 
 void Renderer::render()
 {
@@ -92,18 +97,20 @@ void Renderer::render()
       else
       {
         // get colour of intersection
-        /*ngl::Vec3 _interx_pos = cam_ray.getOrigin() + cam_ray.getDirection() * intersections.at(index_of_winning_object);
+        ngl::Vec3 _interx_pos = cam_ray.getOrigin() + cam_ray.getDirection() * intersections.at(index_of_winning_object);
         ngl::Vec3 _interx_dir_ = cam_ray.getDirection();
-        ngl::Colour intersection_colour = getColourAt(_interx_pos, _interx_dir_, index_of_winning_object);*/
+        ngl::Colour intersection_colour = getColourAt(_interx_pos, _interx_dir_, index_of_winning_object);
 
 
 
         // write it into the pixel in the film
-        m_film->writePixel(ngl::Colour(1,0,0,1));
+        m_film->writePixel(intersection_colour);
       }
     }
   }
 
   // output image
   m_film->writeFile();
+
+  system("display your_image.ppm");
 }

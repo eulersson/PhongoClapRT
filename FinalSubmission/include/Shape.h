@@ -9,10 +9,10 @@ namespace geo {
 class Shape
 {
 public:
+  ngl::Colour getColour() {return m_colour;}
 
   // virtual functions
   virtual float getIntersection(geo::Ray& _ray) = 0;
-  virtual float getRadius() const = 0;
   virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p) = 0;
 protected:
   char m_type;
