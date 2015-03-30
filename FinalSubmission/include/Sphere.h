@@ -31,8 +31,9 @@ public:
   /// @brief Sphere ctor using a radius and a center.
   /// @param[in] _center The position in where the sphere is positioned.
   /// @param[in] _radius The radius in scene units of the sphere object.
+  /// @param[in] _colour The colour of the Sphere
   //------------------------------------------------------------------------------------------------------------------
-   Sphere(ngl::Vec3 _center, float _radius);
+   Sphere(ngl::Vec3 _center, float _radius, ngl::Colour _colour);
   //------------------------------------------------------------------------------------------------------------------
   /// @brief Destructor so that all memory is freed.
   //------------------------------------------------------------------------------------------------------------------

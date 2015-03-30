@@ -18,6 +18,10 @@ public:
   void addObject(geo::Shape *_object);
   void addLight(Light  *_light);
   float getInfo();
+
+  // give access to Renderer class to the private interface
+  friend class Renderer;
+
 private:
   Streamer m_streamer;
   std::string m_fileName;

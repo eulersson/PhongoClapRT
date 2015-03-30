@@ -3,6 +3,7 @@
 
 #include "Ray.h"
 #include <ngl/Vec3.h>
+#include <ngl/Colour.h>
 
 namespace geo {
 class Shape
@@ -14,7 +15,8 @@ public:
   virtual float getRadius() const = 0;
   virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p) = 0;
 protected:
-  char type;
+  char m_type;
+  ngl::Colour m_colour;
 };
 }
 #endif

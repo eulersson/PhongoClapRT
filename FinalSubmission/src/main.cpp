@@ -12,30 +12,29 @@
 int main(int argc, char *argv[])
 {
   // initialise scene
-  Scene scene;
+  Scene myScene;
 
   // create some geometry and push it into the scene
-  geo::Shape* sphere = new geo::Sphere(ngl::Vec3(3,3,3),float(3.44));
+  geo::Shape* sphere1 = new geo::Sphere(ngl::Vec3(300,300,300),float(3), ngl::Colour(1,1,1,1));
+  geo::Shape* sphere2 = new geo::Sphere(ngl::Vec3(0,0,3),      float(0.8), ngl::Colour(1,1,1,1));
 
-  scene.addObject(sphere);
+
+  myScene.addObject(sphere1);
+  myScene.addObject(sphere2);
 
   // initialise film
-  Film myFilm(100,100);
+  Film myFilm(400,400);
 
-  // initialise renderer
-  Renderer renderer(myFilm);
+  // initialise camera
+  Camera myCamera;
 
-  std::cout << scene.getInfo() << std::endl;
+  // initialise renderer and bind film and camera to it
+  Renderer renderer(myScene, myFilm, myCamera);
 
-  // associate film with the renderer
+  // start the rendering process
+  renderer.render();
 
-
-
-// TESTING AREA
-
-
-
-
+  // display the image
 
 
   return 0;

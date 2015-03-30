@@ -9,14 +9,22 @@
 //----------------------------------------------------------------------------------------------------------------------
 namespace geo
 {
-  Sphere::Sphere() : m_center(ngl::Vec3(1,1,1)), m_radius(2.0) {}
+  Sphere::Sphere()
+  {
+    m_center = ngl::Vec3(1,1,1);
+    m_radius = 2.0f;
+    m_type = 's';
+    m_colour = ngl::Colour(1,1,1,1);
+  }
 
   Sphere::~Sphere() {}
 
-  Sphere::Sphere(ngl::Vec3 _center, float _radius)
+  Sphere::Sphere(ngl::Vec3 _center, float _radius, ngl::Colour _colour)
   {
       m_center = _center;
       m_radius = _radius;
+      m_colour = _colour;
+      m_type = 's';
   }
 
   // setters
@@ -35,8 +43,12 @@ namespace geo
     diff = ray.getOrigin() - this->getCenter();
 
     float a = 1;
-    float b = 2 * ray.getDirection().dot(diff);
-    float c = diff.dot(diff) - pow(this->getRadius(),2);
+    float b = 2 * diff.dot(ray.getDirection());
+    float c =   pow(ray.getOrigin().m_x - this->getCenter().m_x,2)
+              + pow(ray.getOrigin().m_y - this->getCenter().m_y,2)
+              + pow(ray.getOrigin().m_z - this->getCenter().m_z,2)
+              - (this->getRadius()*this->getRadius());
+    //float c = diff.dot(diff) - pow(this->getRadius(),2);
 
     float discriminant = b * b - 4 * c;
 
