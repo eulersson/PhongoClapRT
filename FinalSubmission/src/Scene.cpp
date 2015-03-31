@@ -13,7 +13,7 @@ void Scene::addObject(geo::Shape *_object)
 
 void Scene::addLight(Light *_light)
 {
-  m_lights.push_back(_light);
+  m_lights.push_back(dynamic_cast<Light*>(_light));
 }
 
 

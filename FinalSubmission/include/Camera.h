@@ -7,8 +7,8 @@
 class Camera
 {
 public:
-  Camera() : m_pos(ngl::Vec3(0,0,0)), m_dir(ngl::Vec3(0,0,1)), m_up(ngl::Vec3(0,1,0)), m_right(ngl::Vec3(1,0,0)) {}
-  Camera(ngl::Vec3 _pos, ngl::Vec3 _dir, ngl::Vec3 _right, ngl::Vec3 _up);
+  Camera() : m_pos(ngl::Vec3(0,0,0)), m_dir(ngl::Vec3(0,0,1)), m_down(ngl::Vec3(0,1,0)), m_right(ngl::Vec3(1,0,0)) {}
+  Camera(ngl::Vec3 _pos, ngl::Vec3 _dir, ngl::Vec3 _right, ngl::Vec3 _down);
   ~Camera() {}
   void transform(ngl::Mat4 _trasform);
   ngl::Vec3 getPosition() {return m_pos;}
@@ -20,7 +20,7 @@ public:
 private:
   ngl::Vec3 m_pos;
   ngl::Vec3 m_dir;
-  ngl::Vec3 m_up;
+  ngl::Vec3 m_down;
   ngl::Vec3 m_right;
 
 };

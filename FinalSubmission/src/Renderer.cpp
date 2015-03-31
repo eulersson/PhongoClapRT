@@ -56,11 +56,49 @@ ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, 
 {
   ngl::Colour winning_object_colour = m_scene->m_objects.at(iowo)->getColour();
   ngl::Vec3   winning_object_normal = m_scene->m_objects.at(iowo)->getNormalAt(_interx_pos);
+  bool shadowed = false;
+
+  for(unsigned int i = 0; i < m_scene->m_lights.size(); i++)
+  {
+    ngl::Vec3 light_direction = m_scene->m_lights.at(i)->getPosition() - _interx_pos;
+    float light_distance = light_direction.length();
+    light_direction.normalize();
+
+    geo::Ray shadow_ray(_interx_pos, light_direction);
+
+    std::vector<double> shadow_isect;
+    for (unsigned int j = 0; j < m_scene->m_objects.size(); j++)
+    {
+      if((int)j != iowo)
+      {
+        shadow_isect.push_back(m_scene->m_objects.at(j)->getIntersection(shadow_ray));
+      }
+    }
+
+    for(unsigned int k = 0; k < shadow_isect.size(); k++)
+    {
+      if(shadow_isect.at(k) > 0.01)
+      {
+        if(shadow_isect.at(k) <= light_distance)
+        {
+          shadowed = true;
+        }
+      }
+    }
+  }
 
   _interx_dir.normalize();
 
-  ngl::Colour final_col = winning_object_colour * winning_object_normal.dot(_interx_dir);
+  ngl::Colour final_col;
 
+  if (shadowed == true)
+  {
+    final_col = ngl::Colour(0,0,0,1);
+  }
+  else
+  {
+    final_col = winning_object_colour * winning_object_normal.dot(_interx_dir);
+  }
   return final_col;
 
 
@@ -74,10 +112,11 @@ void Renderer::render()
     {
       std::vector<double> intersections;
 
-      float x_amount = (x+0.5)/(float)m_film->m_width;
-      float y_amount = ((m_film->m_height - y) + 0.5)/(float)m_film->getHeight();
 
-      ngl::Vec3 cam_ray_dir = m_camera->m_dir + (m_camera->m_right * (x_amount - 0.5) + (m_camera->m_up * (y_amount - 0.5)));
+      float x_amount = (x+0.5)/(float)m_film->m_width;
+      float y_amount = ((y) + 0.5)/(float)m_film->getHeight();
+
+      ngl::Vec3 cam_ray_dir = m_camera->m_dir + (m_camera->m_right * (x_amount - 0.5) + (m_camera->m_down * (y_amount - 0.5)));
       cam_ray_dir.normalize();
 
       geo::Ray cam_ray(m_camera->m_pos, cam_ray_dir);

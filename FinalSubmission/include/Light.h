@@ -3,36 +3,32 @@
 
 #include <ngl/Vec3.h>
 
-
+/* BASE LIGHT */
 class Light
 {
 public:
-  Light(ngl::Vec3 _pos, float _intensity)
-  {
-    m_pos = _pos;
-    m_intensity = _intensity;
-  }
+  Light(ngl::Vec3 _pos, float _intensity);
   ~Light() {}
+  ngl::Vec3 getPosition() {return m_pos;}
 protected:
   ngl::Vec3 m_pos;
   float m_intensity;
 };
 
+/* POINT LIGHT */
 class PointLight : public Light
 {
 public:
-  PointLight(ngl::Vec3 _pos, float _intensity) : Light(_pos, _intensity) {}
+  PointLight(ngl::Vec3 _pos, float _intensity);
+  ~PointLight() {}
 };
 
+/* SPOTLIGHT */
 class SpotLight : public Light
 {
 public:
-  SpotLight(ngl::Vec3 _pos, float _intensity, float _angle, ngl::Vec3 _dir) : Light(_pos, _intensity)
-  {
-    m_angle = _angle;
-    m_dir = _dir;
-
-  }
+  SpotLight(ngl::Vec3 _pos, float _intensity, float _angle, ngl::Vec3 _dir);
+  ~SpotLight() {}
 private:
   float m_angle;
   ngl::Vec3 m_dir;
