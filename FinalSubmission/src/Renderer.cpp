@@ -97,7 +97,7 @@ ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, 
   }
   else
   {
-    final_col = winning_object_colour * winning_object_normal.dot(_interx_dir);
+    final_col = winning_object_colour * -(winning_object_normal.dot(_interx_dir));
   }
   return final_col;
 
