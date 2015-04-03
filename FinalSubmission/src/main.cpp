@@ -19,10 +19,10 @@ int main(int argc, char *argv[])
   myScene.addLight(light1);
 
   //create some geometry and push it into the scene
-  geo::Shape* plane1 = new geo::Plane(-1,ngl::Vec3(0,1,0),ngl::Colour(1,0,0,1));
+  geo::Shape* plane1 = new geo::Plane(-1,ngl::Vec3(0,1,0),ngl::Colour(0,1,0,1), ngl::Colour(0,0,1,1));
   myScene.addObject(plane1);
 
-  geo::Shape* sphere1 = new geo::Sphere(ngl::Vec3(0,0,2),float(0.5f), ngl::Colour(0,0,1,1));
+  geo::Shape* sphere1 = new geo::Sphere(ngl::Vec3(0,0,2),float(0.5f), ngl::Colour(1,0,1,1));
   myScene.addObject(sphere1);
 
   geo::Shape* sphere2 = new geo::Sphere(ngl::Vec3(0,1,2),float(0.3f), ngl::Colour(0,1,0,1));

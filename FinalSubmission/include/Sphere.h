@@ -9,6 +9,7 @@
 #include <ngl/Colour.h>
 #include "Shape.h"
 #include "Ray.h"
+#include "Material.h"
 
 namespace geo
 {
@@ -26,16 +27,26 @@ public:
   //------------------------------------------------------------------------------------------------------------------
   /// @brief Sphere ctor, by default it will instanciate a 1 unit radius sphere in the origin (0,0,0).
   // -----------------------------------------------------------------------------------------------------------------
-  Sphere() : m_center(ngl::Vec3(1,1,1)),
-             m_radius(2.0f) {m_type = 's'; m_colour = ngl::Colour(1,1,0,1);}
+  Sphere() : m_center(ngl::Vec3(1,1,1)), m_radius(2.0f)
+  {
+    m_type = 's';
+    m_colour = ngl::Colour(1,1,0,1);
+    Material mat(ngl::Colour(1,1,0,0));
+    m_material = mat;
+  }
   //------------------------------------------------------------------------------------------------------------------
   /// @brief Sphere ctor using a radius and a center.
   /// @param[in] _center The position in where the sphere is positioned.
   /// @param[in] _radius The radius in scene units of the sphere object.
   /// @param[in] _colour The colour of the Sphere
   //------------------------------------------------------------------------------------------------------------------
-   Sphere(ngl::Vec3 _center, float _radius, ngl::Colour _colour) : m_center(_center),
-                                                                   m_radius(_radius) {m_type = 's'; m_colour = _colour;}
+   Sphere(ngl::Vec3 _center, float _radius, ngl::Colour _colour) : m_center(_center), m_radius(_radius)
+   {
+     m_type = 's';
+     m_colour = _colour;
+     Material mat(_colour);
+     m_material = mat;
+   }
   //------------------------------------------------------------------------------------------------------------------
   /// @brief Destructor so that all memory is freed.
   //------------------------------------------------------------------------------------------------------------------
@@ -80,6 +91,7 @@ public:
   /// @return The normal of the sphere at a given point.
   //------------------------------------------------------------------------------------------------------------------
   virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p);
+  virtual ngl::Colour getColour(ngl::Vec3 &_isect) {return m_material.m_colour1;}
 
 private:
   //------------------------------------------------------------------------------------------------------------------

@@ -54,7 +54,7 @@ int Renderer::winningObjectIndex(std::vector<double> _interxs)
 
 ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, int iowo)
 {
-  ngl::Colour winning_object_colour = m_scene->m_objects.at(iowo)->getColour();
+  ngl::Colour winning_object_colour = m_scene->m_objects.at(iowo)->getColour(_interx_pos);
   ngl::Vec3   winning_object_normal = m_scene->m_objects.at(iowo)->getNormalAt(_interx_pos);
   bool shadowed = false;
 
@@ -130,7 +130,7 @@ void Renderer::render()
       }
       else
       {
-        // get colour of intersection
+        // get colour of intersection and throw reflection rays if object is reflective
         ngl::Vec3 _interx_pos = cam_ray.getOrigin() + cam_ray.getDirection() * intersections.at(index_of_winning_object);
         ngl::Vec3 _interx_dir_ = cam_ray.getDirection();
         ngl::Colour intersection_colour = getColourAt(_interx_pos, _interx_dir_, index_of_winning_object);
