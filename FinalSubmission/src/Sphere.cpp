@@ -49,6 +49,7 @@ namespace geo
       {
         // second root is the smallest positive root
         float root_2 = ((sqrt(discriminant)-b)/2) - 0.000001;
+        return root_2;
       }
     }
     else

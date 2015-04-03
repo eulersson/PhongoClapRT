@@ -2,6 +2,7 @@
 #define _SHAPE_H_
 
 #include "Ray.h"
+#include "Material.h"
 #include <ngl/Vec3.h>
 #include <ngl/Colour.h>
 
@@ -17,6 +18,7 @@ public:
 protected:
   char m_type;
   ngl::Colour m_colour;
+  //Material m_material;
 };
 }
 #endif

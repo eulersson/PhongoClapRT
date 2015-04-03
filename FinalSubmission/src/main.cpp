@@ -15,15 +15,18 @@ int main(int argc, char *argv[])
   // initialise scene
   Scene myScene;
 
-  PointLight* light1 = new PointLight(ngl::Vec3(0,5,-3),1);
+  PointLight* light1 = new PointLight(ngl::Vec3(0,3,2),1);
   myScene.addLight(light1);
 
   //create some geometry and push it into the scene
-  geo::Shape* plane1 = new geo::Plane(-2,ngl::Vec3(0,1,0),ngl::Colour(1,0,0,1));
+  geo::Shape* plane1 = new geo::Plane(-1,ngl::Vec3(0,1,0),ngl::Colour(1,0,0,1));
   myScene.addObject(plane1);
 
-  geo::Shape* sphere1 = new geo::Sphere(ngl::Vec3(0,0,2),float(0.5f), ngl::Colour(1,1,0,1));
+  geo::Shape* sphere1 = new geo::Sphere(ngl::Vec3(0,0,2),float(0.5f), ngl::Colour(0,0,1,1));
   myScene.addObject(sphere1);
+
+  geo::Shape* sphere2 = new geo::Sphere(ngl::Vec3(0,1,2),float(0.3f), ngl::Colour(0,1,0,1));
+  myScene.addObject(sphere2);
 
   //geo::Shape* sphere2 = new geo::Sphere(ngl::Vec3(1.75f,-0.25f,0.0f),float(0.15f), ngl::Colour(0,1,0,1));
   //myScene.addObject(sphere2);

@@ -64,25 +64,19 @@ ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, 
     float light_distance = light_direction.length();
     light_direction.normalize();
 
-    geo::Ray shadow_ray(_interx_pos, light_direction);
-
-    std::vector<double> shadow_isect;
-    for (unsigned int j = 0; j < m_scene->m_objects.size(); j++)
+    if(winning_object_normal.dot(light_direction) > 0)
     {
-      if((int)j != iowo)
+      geo::Ray shadow_ray(_interx_pos, light_direction);
+
+      std::vector<double> shadow_isect;
+      for (unsigned int j = 0; j < m_scene->m_objects.size(); j++)
       {
-        shadow_isect.push_back(m_scene->m_objects.at(j)->getIntersection(shadow_ray));
+          shadow_isect.push_back(m_scene->m_objects.at(j)->getIntersection(shadow_ray));
       }
-    }
 
-    for(unsigned int k = 0; k < shadow_isect.size(); k++)
-    {
-      if(shadow_isect.at(k) > 0.01)
+      for(unsigned int k = 0; k < shadow_isect.size(); k++)
       {
-        if(shadow_isect.at(k) <= light_distance)
-        {
-          shadowed = true;
-        }
+        if(shadow_isect.at(k) > 0.01 && shadow_isect.at(k) <= light_distance) shadowed = true;
       }
     }
   }
@@ -93,7 +87,8 @@ ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, 
 
   if (shadowed == true)
   {
-    final_col = ngl::Colour(0,0,0,1);
+    final_col = winning_object_colour * -(winning_object_normal.dot(_interx_dir));
+    final_col *= 0.5;
   }
   else
   {
