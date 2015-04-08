@@ -15,7 +15,6 @@ HEADERS += $$PWD/include/*h \
 
 INCLUDEPATH += ./include
 INCLUDEPATH += $$(HOME)/NGL/include/
-INCLUDEPATH += $$(HOME)/SDL2.0/include/SDL2/
 
 DESTDIR = ./
 
@@ -45,14 +44,8 @@ CONFIG += console
 # supress some warnings from boost
 QMAKE_CXXFLAGS_WARN_ON += "-Wno-unused-parameter"
 
-QMAKE_CXXFLAGS += $$system($$(HOME)/SDL2.0/bin/sdl2-config  --cflags)
-message(output from sdl2-config --cflags added to CXXFLAGS= $$QMAKE_CXXFLAGS)
-
 QMAKE_CXXFLAGS += -std=c++0x
 
 LIBS += -L/usr/local/lib
 LIBS +=  -L/$(HOME)/NGL/lib -l NGL
-LIBS += $$system($$(HOME)/SDL2.0/bin/sdl2-config  --libs)
-message(output from sdl2-config --libs added to LIB=$$LIBS)
-
 
