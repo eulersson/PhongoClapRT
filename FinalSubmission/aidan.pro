@@ -20,7 +20,8 @@ DESTDIR = ./
 OTHER_FILES += shaders/*.glsl \
                ../InitialDesign/* \
                README.md \
-               .gitignore
+               .gitignore \
+               ../example.cpp
 
 CONFIG += console
 
@@ -47,4 +48,7 @@ QMAKE_CXXFLAGS += -std=c++0x
 
 LIBS += -L/usr/local/lib
 LIBS +=  -L/$(HOME)/NGL/lib -l NGL
+
+DISTFILES += \
+    src/TO_DO_LIST.txt
 

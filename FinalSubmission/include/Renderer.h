@@ -15,7 +15,8 @@ class Renderer
     void render();
     int winningObjectIndex(std::vector<double>);
     ngl::Colour getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, int iowo);
-    void recursive_trace(ngl::Vec3 _from, ngl::Vec3 _direction, unsigned int depth);
+    bool raycast(ngl::Vec3 _from);
+    ngl::Colour trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth);
   private:
     Film *m_film;
     Scene *m_scene;

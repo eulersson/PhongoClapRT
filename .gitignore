@@ -44,3 +44,4 @@ Makefile
 *.tgz
 *.zip
 *.tar.gz
+example.cpp

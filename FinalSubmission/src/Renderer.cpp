@@ -2,7 +2,11 @@
 #include <vector>
 #include "Renderer.h"
 #include "Ray.h"
+#include "Material.h"
 #include <ngl/Vec3.h>
+#include <ngl/Types.h>
+
+#define MAX_DEPTH 2
 
 Renderer::Renderer(Scene &_scene, Film &_film, Camera &_camera)
 {
@@ -99,52 +103,161 @@ ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, 
 
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * RAYCASTLGORITHM * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+bool Renderer::raycast(ngl::Vec3 _from)
+{
+  for(unsigned int i = 0; i < m_scene->m_lights.size(); i++)
+  {
+    // create vector that will store intersection values for parameter t in the primary ray
+    std::vector<double> intersections;
+
+    ngl::Vec3 dir = m_scene->m_lights.at(i)->getPosition() - _from;
+    dir.normalize();
+    geo::Ray fire_ray(_from, dir);
+
+    // iterate over objects in the scene and find intersections
+    for(unsigned int i = 0; i < m_scene->m_objects.size(); i++)
+    {
+      intersections.push_back( m_scene->m_objects.at(i)->getIntersection(fire_ray));
+    }
+
+    // find closest object
+    int index_of_winning_object = winningObjectIndex(intersections);
+
+    // if no intersections are found RETURN black =
+    if(index_of_winning_object == -1) {return true;}
+    else {return false;}
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * TRACE ALGORITHM * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
+{
+  // create vector that will store intersection values for parameter t in the primary ray
+  std::vector<double> intersections;
+  geo::Ray cam_ray(_from,_direction);
+
+  // iterate over objects in the scene and find intersections
+  for(unsigned int i = 0; i < m_scene->m_objects.size(); i++)
+  {
+    intersections.push_back( m_scene->m_objects.at(i)->getIntersection(cam_ray));
+  }
+
+  // find closest object
+  int index_of_winning_object = winningObjectIndex(intersections);
+
+  // if no intersections are found RETURN black =
+  if(index_of_winning_object == -1) {return ngl::Colour(0,0,0,1);}
+
+  // calculate pHit (position of the new intersection) and nHit (normal at hit point)
+  ngl::Vec3 pHit = _from + intersections.at(index_of_winning_object) * _direction;
+  ngl::Vec3 nHit = m_scene->m_objects.at(index_of_winning_object)->getNormalAt(pHit);
+
+  // calculate if we are inside or outside
+  bool inside = false;
+  if(_direction.dot(nHit) > 0)
+  {
+    nHit = -nHit;
+    inside = true;
+  }
+
+ // calculate if point is obscured or shadowed
+ bool isObscured = raycast(_from);
+ if (isObscured) {return ngl::Colour(0,0,0,1);}
+
+                          // // // // // // // // //
+                          //  calculate radiance  //
+                          // // // // // // // // //
+
+
+  // is the object reflective or refractive???
+  if ((m_scene->m_objects.at(index_of_winning_object)->getMaterial().isReflective() ||
+      m_scene->m_objects.at(index_of_winning_object)->getMaterial().isRefractive()) &&
+      depth < MAX_DEPTH)
+  {
+    ngl::Colour crfr, crfl;
+    // check whether it is REFLECTIVE
+    if (m_scene->m_objects.at(index_of_winning_object)->getMaterial().isReflective())
+    {
+      // calculate reflection dir
+      float bias = 0.01;
+      ngl::Vec3 refl_dir = _direction - nHit * 2 * _direction.dot(nHit);
+      refl_dir.normalize();
+
+      // fire ray along reflection direction from hit point
+      crfl = trace(pHit + bias*nHit, refl_dir, depth+1);
+    }
+
+    // check whether it is REFRACTIVE
+    if (m_scene->m_objects.at(index_of_winning_object)->getMaterial().isRefractive())
+    {
+      // calculate refrection dir (transmission ray)
+      float ior = 1.1;
+      float eta = inside;
+      float bias = 0.01;
+      float cosi = -nHit.dot(_direction);
+
+      if (eta == true) // we are inside
+      {
+        eta = ior;
+      }
+      else // we are outside
+      {
+        eta = 1 / ior;
+      }
+
+      float k = 1 - eta * eta * (1 - cosi * cosi);
+      ngl::Vec3 refr_dir = _direction * eta + nHit * (eta * cosi - sqrt(k));
+      refr_dir.normalize();
+      crfr = trace(pHit - nHit * bias, refr_dir, depth+1);
+    }
+    // Do Phong calculations stuff. By now I keep it VERY VERY simple
+    ngl::Colour s01 = crfl * 0.4;
+    ngl::Colour s02 = crfr * 0.3;
+    ngl::Colour s03 = s01 + s02;
+    ngl::Colour surfaceColor = s03 * m_scene->m_objects.at(index_of_winning_object)->getColour();
+    return surfaceColor;
+  }
+
+  // if it is not REFLECTIVE nor REFRACTIVE
+  else
+  {
+    ngl::Colour surfaceColor = m_scene->m_objects.at(index_of_winning_object)->getColour();
+    return surfaceColor;
+  }
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 void Renderer::render()
 {
   for(int y = 0; y < m_film->m_height; y++)
   {
     for(int x = 0; x < m_film->m_width; x++)
     {
-      std::vector<double> intersections;
-
-
+      // calculate the primary ray
       float x_amount = (x+0.5)/(float)m_film->m_width;
       float y_amount = ((y) + 0.5)/(float)m_film->getHeight();
-
       ngl::Vec3 cam_ray_dir = m_camera->m_dir + (m_camera->m_right * (x_amount - 0.5) + (m_camera->m_down * (y_amount - 0.5)));
       cam_ray_dir.normalize();
-
       geo::Ray cam_ray(m_camera->m_pos, cam_ray_dir);
 
-      for(unsigned int i = 0; i < m_scene->m_objects.size(); i++)
-      {
-        intersections.push_back( m_scene->m_objects.at(i)->getIntersection(cam_ray));
-      }
+      // fire the ray and store its colour into a variable
+      ngl::Colour col = trace(m_camera->m_pos, cam_ray_dir, 0);
 
-      int index_of_winning_object = winningObjectIndex(intersections);
+      // write pixel into the Film object associated to the Render object
+      m_film->writePixel(col);
 
-      if(index_of_winning_object == -1)
-      {
-        // write black pixel
-        m_film->writePixel(ngl::Colour(0,0,0,1));
-      }
-      else
-      {
-        // get colour of intersection and throw reflection rays if object is reflective
-        ngl::Vec3 _interx_pos = cam_ray.getOrigin() + cam_ray.getDirection() * intersections.at(index_of_winning_object);
-        ngl::Vec3 _interx_dir_ = cam_ray.getDirection();
-        ngl::Colour intersection_colour = getColourAt(_interx_pos, _interx_dir_, index_of_winning_object);
-
-
-
-        // write it into the pixel in the film
-        m_film->writePixel(intersection_colour);
-      }
+      // write the file into disk afterwards and display it
+      m_film->writeFile();
+      system("display your_image.ppm");
     }
   }
-
-  // output image
-  m_film->writeFile();
-
-  system("display your_image.ppm");
 }

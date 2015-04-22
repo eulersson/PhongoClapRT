@@ -28,6 +28,11 @@ public:
 
   virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p) {return m_n;}
 
+  virtual ngl::Colour getColour()
+  {
+      return m_material.objColour();
+  }
+
   virtual ngl::Colour getColour(ngl::Vec3 &_isect)
   {
     if (m_material.m_isChecker)

@@ -9,14 +9,30 @@
 class Material
 {
 public:
-  Material() {}
+  bool reflective;
+  bool refractive;
 
-  Material(ngl::Colour _c) : m_colour1(_c), m_isChecker(false) {}
+  Material()
+  {
+    reflective = false;
+    refractive = false;
+  }
+
+  Material(ngl::Colour _c) : m_colour1(_c), m_isChecker(false)
+  {
+    reflective = false;
+    refractive = false;
+  }
 
   Material(ngl::Colour _c1, ngl::Colour _c2 ) : m_colour1(_c1), m_colour2(_c2)
   {
     m_isChecker = true;
+    reflective = false;
+    refractive = false;
   }
+
+  bool isReflective() {return reflective;}
+  bool isRefractive() {return refractive;}
 
   ngl::Colour objColour() {return m_colour1;}
 
@@ -45,6 +61,5 @@ public:
   bool m_isChecker;
 
 };
-
 
 #endif // Material.h

@@ -91,6 +91,7 @@ public:
   /// @return The normal of the sphere at a given point.
   //------------------------------------------------------------------------------------------------------------------
   virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p);
+  virtual ngl::Colour getColour() {return m_material.m_colour1;}
   virtual ngl::Colour getColour(ngl::Vec3 &_isect) {return m_material.m_colour1;}
 
 private:
