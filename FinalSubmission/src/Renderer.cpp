@@ -169,7 +169,7 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
   }
 
  // calculate if point is obscured or shadowed
- bool isObscured = raycast(_from);
+ bool isObscured = raycast(pHit);
  if (isObscured) {return ngl::Colour(0,0,0,1);}
 
                           // // // // // // // // //
@@ -247,7 +247,6 @@ void Renderer::render()
       float y_amount = ((y) + 0.5)/(float)m_film->getHeight();
       ngl::Vec3 cam_ray_dir = m_camera->m_dir + (m_camera->m_right * (x_amount - 0.5) + (m_camera->m_down * (y_amount - 0.5)));
       cam_ray_dir.normalize();
-      geo::Ray cam_ray(m_camera->m_pos, cam_ray_dir);
 
       // fire the ray and store its colour into a variable
       ngl::Colour col = trace(m_camera->m_pos, cam_ray_dir, 0);
@@ -256,8 +255,9 @@ void Renderer::render()
       m_film->writePixel(col);
 
       // write the file into disk afterwards and display it
-      m_film->writeFile();
-      system("display your_image.ppm");
+
     }
   }
+  m_film->writeFile();
+  system("display your_image.ppm");
 }

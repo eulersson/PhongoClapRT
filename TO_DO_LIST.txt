@@ -1,0 +1,6 @@
+- Get recursion working well
+- Get proper Phong model behaviour
+- Make Renderer a Singleton Class
+- Simple Parser (EXTRA POINTS FOR FREE!)
+    * Boost Tokenizer
+- Get Some Sleep

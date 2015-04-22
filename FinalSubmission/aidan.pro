@@ -21,7 +21,8 @@ OTHER_FILES += shaders/*.glsl \
                ../InitialDesign/* \
                README.md \
                .gitignore \
-               ../example.cpp
+               ../example.cpp \
+               ../TO_DO_LIST.txt \
 
 CONFIG += console
 
