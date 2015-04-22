@@ -127,8 +127,8 @@ bool Renderer::raycast(ngl::Vec3 _from)
     int index_of_winning_object = winningObjectIndex(intersections);
 
     // if no intersections are found RETURN black =
-    if(index_of_winning_object == -1) {return true;}
-    else {return false;}
+    if(index_of_winning_object == -1) {return false;}
+    else {return true;}
   }
 }
 
@@ -168,9 +168,9 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     inside = true;
   }
 
+ float bias = 0.01;
  // calculate if point is obscured or shadowed
- bool isObscured = raycast(pHit);
- if (isObscured) {return ngl::Colour(0,0,0,1);}
+ bool isObscured = raycast(pHit + nHit * bias);
 
                           // // // // // // // // //
                           //  calculate radiance  //
@@ -222,15 +222,17 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     ngl::Colour s01 = crfl * 0.4;
     ngl::Colour s02 = crfr * 0.3;
     ngl::Colour s03 = s01 + s02;
-    ngl::Colour surfaceColor = s03 * m_scene->m_objects.at(index_of_winning_object)->getColour();
+    ngl::Colour surfaceColor = s03 * m_scene->m_objects.at(index_of_winning_object)->getColour(pHit);
     return surfaceColor;
   }
 
   // if it is not REFLECTIVE nor REFRACTIVE
   else
   {
-    ngl::Colour surfaceColor = m_scene->m_objects.at(index_of_winning_object)->getColour();
-    return surfaceColor;
+    ngl::Colour surfaceColor = m_scene->m_objects.at(index_of_winning_object)->getColour(pHit);
+    float cosineFactor = -nHit.dot(cam_ray.getDirection());
+
+    return isObscured ? surfaceColor * cosineFactor * 0.8f : surfaceColor * cosineFactor;
   }
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
