@@ -23,10 +23,22 @@ int main(int argc, char *argv[])
   myScene.addObject(plane1);
 
   geo::Shape* sphere1 = new geo::Sphere(ngl::Vec3(0,0,2),float(0.5f), ngl::Colour(1,0,1,1));
+  sphere1->hasReflection(0.5f, 0.5f);
   myScene.addObject(sphere1);
 
   geo::Shape* sphere2 = new geo::Sphere(ngl::Vec3(0,1,2),float(0.3f), ngl::Colour(0,1,0,1));
+  sphere2->hasReflection(0.5f, 0.5f);
   myScene.addObject(sphere2);
+
+  geo::Shape* sphere3 = new geo::Sphere(ngl::Vec3(-1,1,2),float(0.3f), ngl::Colour(1,0,0,1));
+  sphere3->hasReflection(1.0f, 0.0f);
+  myScene.addObject(sphere3);
+
+  geo::Shape* sphere4 = new geo::Sphere(ngl::Vec3(1,1,2),float(0.3f), ngl::Colour(0,1,1,1));
+  myScene.addObject(sphere4);
+
+  geo::Shape* sphere5 = new geo::Sphere(ngl::Vec3(1,1,2),float(9.9f), ngl::Colour(0.2,0,0,1));
+  myScene.addObject(sphere5);
 
   //geo::Shape* sphere2 = new geo::Sphere(ngl::Vec3(1.75f,-0.25f,0.0f),float(0.15f), ngl::Colour(0,1,0,1));
   //myScene.addObject(sphere2);

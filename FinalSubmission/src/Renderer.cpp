@@ -23,7 +23,7 @@ Renderer::~Renderer()
 
 }
 
-int Renderer::winningObjectIndex(std::vector<double> _interxs)
+int Renderer::getIndexClosest(std::vector<double> _interxs)
 {
   int index_min_val;
   if(_interxs.size() == 0) {return -1;}
@@ -124,10 +124,10 @@ bool Renderer::raycast(ngl::Vec3 _from)
     }
 
     // find closest object
-    int index_of_winning_object = winningObjectIndex(intersections);
+    int closest_index = getIndexClosest(intersections);
 
     // if no intersections are found RETURN black =
-    if(index_of_winning_object == -1) {return false;}
+    if(closest_index == -1) {return false;}
     else {return true;}
   }
 }
@@ -141,24 +141,26 @@ bool Renderer::raycast(ngl::Vec3 _from)
 ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
 {
   // create vector that will store intersection values for parameter t in the primary ray
+  // a primary ray has a form like R = O + t * D where O is the origin vector, and D direction.
   std::vector<double> intersections;
   geo::Ray cam_ray(_from,_direction);
 
   // iterate over objects in the scene and find intersections
   for(unsigned int i = 0; i < m_scene->m_objects.size(); i++)
   {
+    // each Shape subclass (Sphere, Plane...) has its own method for calculating intersections
     intersections.push_back( m_scene->m_objects.at(i)->getIntersection(cam_ray));
   }
 
   // find closest object
-  int index_of_winning_object = winningObjectIndex(intersections);
+  int closest_index = getIndexClosest(intersections);
 
   // if no intersections are found RETURN black =
-  if(index_of_winning_object == -1) {return ngl::Colour(0,0,0,1);}
+  if(closest_index == -1) {return ngl::Colour(0,0,0,1);}
 
   // calculate pHit (position of the new intersection) and nHit (normal at hit point)
-  ngl::Vec3 pHit = _from + intersections.at(index_of_winning_object) * _direction;
-  ngl::Vec3 nHit = m_scene->m_objects.at(index_of_winning_object)->getNormalAt(pHit);
+  ngl::Vec3 pHit = _from + intersections.at(closest_index) * _direction;
+  ngl::Vec3 nHit = m_scene->m_objects.at(closest_index)->getNormalAt(pHit);
 
   // calculate if we are inside or outside
   bool inside = false;
@@ -178,13 +180,13 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
 
 
   // is the object reflective or refractive???
-  if ((m_scene->m_objects.at(index_of_winning_object)->getMaterial().isReflective() ||
-      m_scene->m_objects.at(index_of_winning_object)->getMaterial().isRefractive()) &&
+  if ((m_scene->m_objects.at(closest_index)->getMaterial().isReflective() ||
+      m_scene->m_objects.at(closest_index)->getMaterial().isRefractive()) &&
       depth < MAX_DEPTH)
   {
     ngl::Colour crfr, crfl;
     // check whether it is REFLECTIVE
-    if (m_scene->m_objects.at(index_of_winning_object)->getMaterial().isReflective())
+    if (m_scene->m_objects.at(closest_index)->getMaterial().isReflective())
     {
       // calculate reflection dir
       float bias = 0.01;
@@ -196,7 +198,7 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     }
 
     // check whether it is REFRACTIVE
-    if (m_scene->m_objects.at(index_of_winning_object)->getMaterial().isRefractive())
+    if (m_scene->m_objects.at(closest_index)->getMaterial().isRefractive())
     {
       // calculate refrection dir (transmission ray)
       float ior = 1.1;
@@ -219,20 +221,23 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
       crfr = trace(pHit - nHit * bias, refr_dir, depth+1);
     }
     // Do Phong calculations stuff. By now I keep it VERY VERY simple
-    ngl::Colour s01 = crfl * 0.4;
-    ngl::Colour s02 = crfr * 0.3;
+    ngl::Colour s01 = crfl * m_scene->m_objects.at(closest_index)->getMaterial().getReflIntensity();
+    ngl::Colour s02 = crfr * 0;
     ngl::Colour s03 = s01 + s02;
-    ngl::Colour surfaceColor = s03 * m_scene->m_objects.at(index_of_winning_object)->getColour(pHit);
-    return surfaceColor;
+    float cosineFactor = -nHit.dot(cam_ray.getDirection());
+    ngl::Colour diffuseColor = m_scene->m_objects.at(closest_index)->getColour(pHit) * cosineFactor * m_scene->m_objects.at(closest_index)->getMaterial().getDiffuseIntensity();
+
+    ngl::Colour surfaceColor = diffuseColor + s03;
+    return isObscured ? surfaceColor * 1.0f : surfaceColor;
   }
 
   // if it is not REFLECTIVE nor REFRACTIVE
   else
   {
-    ngl::Colour surfaceColor = m_scene->m_objects.at(index_of_winning_object)->getColour(pHit);
+    ngl::Colour surfaceColor = m_scene->m_objects.at(closest_index)->getColour(pHit);
     float cosineFactor = -nHit.dot(cam_ray.getDirection());
 
-    return isObscured ? surfaceColor * cosineFactor * 0.8f : surfaceColor * cosineFactor;
+    return isObscured ? surfaceColor * cosineFactor * 1.0f : surfaceColor * cosineFactor;
   }
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

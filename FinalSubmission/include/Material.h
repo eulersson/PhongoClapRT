@@ -11,7 +11,8 @@ class Material
 public:
   bool m_isReflective;
   bool m_isRefractive;
-  float m_refl_ratio;
+  float m_diffuse_intensity;
+  float m_refl_intensity;
   float m_ior;
   float m_transparency;
 
@@ -37,22 +38,25 @@ public:
   bool isReflective() {return m_isReflective;}
   bool isRefractive() {return m_isRefractive;}
 
-  void setReflection(float refl_ratio)
+  void setReflection(float _refl_intensity, float _diffuse_intensity)
   {
     m_isReflective = true;
-    m_refl_ratio = refl_ratio;
+    m_refl_intensity = _refl_intensity;
+    m_diffuse_intensity = _diffuse_intensity;
   }
 
-  void setRefraction(float _ior, float _transparency)
+  void setRefraction(float _ior, float _transparency, float _diffuse_intensity)
   {
     m_isRefractive = true;
     m_ior = _ior;
     m_transparency = _transparency;
+    m_diffuse_intensity = _diffuse_intensity;
   }
 
-  float getReflRatio() {return m_refl_ratio;}
+  float getReflIntensity() {return m_refl_intensity;}
   float getIOR() {return m_ior;}
   float getTransparency() {return m_transparency;}
+  float getDiffuseIntensity() {return m_diffuse_intensity;}
 
   ngl::Colour objColour() {return m_colour1;}
 
