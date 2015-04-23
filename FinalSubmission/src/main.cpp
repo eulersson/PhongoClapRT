@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
   // initialise scene
   Scene myScene;
 
-  PointLight* light1 = new PointLight(ngl::Vec3(0,3,2),1);
+  PointLight* light1 = new PointLight(ngl::Vec3(-2,2,2),1);
   myScene.addLight(light1);
 
   //create some geometry and push it into the scene

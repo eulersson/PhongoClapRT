@@ -9,30 +9,50 @@
 class Material
 {
 public:
-  bool reflective;
-  bool refractive;
+  bool m_isReflective;
+  bool m_isRefractive;
+  float m_refl_ratio;
+  float m_ior;
+  float m_transparency;
 
   Material()
   {
-    reflective = false;
-    refractive = false;
+    m_isReflective = false;
+    m_isRefractive = false;
   }
 
   Material(ngl::Colour _c) : m_colour1(_c), m_isChecker(false)
   {
-    reflective = false;
-    refractive = false;
+    m_isReflective = false;
+    m_isRefractive = false;
   }
 
   Material(ngl::Colour _c1, ngl::Colour _c2 ) : m_colour1(_c1), m_colour2(_c2)
   {
     m_isChecker = true;
-    reflective = false;
-    refractive = false;
+    m_isReflective = false;
+    m_isRefractive = false;
   }
 
-  bool isReflective() {return reflective;}
-  bool isRefractive() {return refractive;}
+  bool isReflective() {return m_isReflective;}
+  bool isRefractive() {return m_isRefractive;}
+
+  void setReflection(float refl_ratio)
+  {
+    m_isReflective = true;
+    m_refl_ratio = refl_ratio;
+  }
+
+  void setRefraction(float _ior, float _transparency)
+  {
+    m_isRefractive = true;
+    m_ior = _ior;
+    m_transparency = _transparency;
+  }
+
+  float getReflRatio() {return m_refl_ratio;}
+  float getIOR() {return m_ior;}
+  float getTransparency() {return m_transparency;}
 
   ngl::Colour objColour() {return m_colour1;}
 
@@ -56,6 +76,7 @@ public:
       return m_colour1;
     }
   }
+
   ngl::Colour m_colour1;
   ngl::Colour m_colour2;
   bool m_isChecker;

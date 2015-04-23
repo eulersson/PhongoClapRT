@@ -16,6 +16,15 @@ public:
   // virtual functions
   virtual float getIntersection(geo::Ray& _ray) = 0;
   virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p) = 0;
+  void hasRefraction(float _ior, float _transparency)
+  {
+    m_material.setRefraction(_ior,_transparency);
+
+  }
+  void hasReflection(float _refl_ratio)
+  {
+    m_material.setReflection(_refl_ratio);
+  }
   Material getMaterial() {return m_material;}
 protected:
   char m_type;
