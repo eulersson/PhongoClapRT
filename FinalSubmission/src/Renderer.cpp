@@ -1,12 +1,13 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 #include "Renderer.h"
 #include "Ray.h"
 #include "Material.h"
 #include <ngl/Vec3.h>
 #include <ngl/Types.h>
 
-#define MAX_DEPTH 2
+#define MAX_DEPTH 4
 
 Renderer::Renderer(Scene &_scene, Film &_film, Camera &_camera)
 {
@@ -201,7 +202,7 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     if (m_scene->m_objects.at(closest_index)->getMaterial().isRefractive())
     {
       // calculate refrection dir (transmission ray)
-      float ior = 1.1;
+      float ior = m_scene->m_objects.at(closest_index)->getMaterial().getIOR();
       float eta = inside;
       float bias = 0.01;
       float cosi = -nHit.dot(_direction);
@@ -222,13 +223,13 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     }
     // Do Phong calculations stuff. By now I keep it VERY VERY simple
     ngl::Colour s01 = crfl * m_scene->m_objects.at(closest_index)->getMaterial().getReflIntensity();
-    ngl::Colour s02 = crfr * 0;
+    ngl::Colour s02 = crfr * m_scene->m_objects.at(closest_index)->getMaterial().getTransparency();
     ngl::Colour s03 = s01 + s02;
     float cosineFactor = -nHit.dot(cam_ray.getDirection());
     ngl::Colour diffuseColor = m_scene->m_objects.at(closest_index)->getColour(pHit) * cosineFactor * m_scene->m_objects.at(closest_index)->getMaterial().getDiffuseIntensity();
 
     ngl::Colour surfaceColor = diffuseColor + s03;
-    return isObscured ? surfaceColor * 1.0f : surfaceColor;
+    return isObscured ? surfaceColor * 0.8f : surfaceColor;
   }
 
   // if it is not REFLECTIVE nor REFRACTIVE
@@ -237,7 +238,7 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     ngl::Colour surfaceColor = m_scene->m_objects.at(closest_index)->getColour(pHit);
     float cosineFactor = -nHit.dot(cam_ray.getDirection());
 
-    return isObscured ? surfaceColor * cosineFactor * 1.0f : surfaceColor * cosineFactor;
+    return isObscured ? surfaceColor * cosineFactor * 0.8f : surfaceColor * cosineFactor;
   }
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
