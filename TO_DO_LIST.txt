@@ -1,5 +1,5 @@
-- Get recursion working well
-- Some cheap anti-aliasing
+X Get recursion working well
+~ Some cheap anti-aliasing
 - Get proper Phong model behaviour
 - Make Renderer a Singleton Class
 - Simple Parser (EXTRA POINTS FOR FREE!)

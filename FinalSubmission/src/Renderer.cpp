@@ -8,6 +8,7 @@
 #include <ngl/Types.h>
 
 #define MAX_DEPTH 4
+#define ANTI_ALIASING 2
 
 Renderer::Renderer(Scene &_scene, Film &_film, Camera &_camera)
 {
@@ -246,21 +247,42 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
 
 void Renderer::render()
 {
+  std::vector<ngl::Colour> colourStack;
   for(int y = 0; y < m_film->m_height; y++)
   {
     for(int x = 0; x < m_film->m_width; x++)
     {
-      // calculate the primary ray
-      float x_amount = (x+0.5)/(float)m_film->m_width;
-      float y_amount = ((y) + 0.5)/(float)m_film->getHeight();
-      ngl::Vec3 cam_ray_dir = m_camera->m_dir + (m_camera->m_right * (x_amount - 0.5) + (m_camera->m_down * (y_amount - 0.5)));
-      cam_ray_dir.normalize();
+      for(int aay = 0; aay < ANTI_ALIASING; aay++)
+      {
+        for(int aax = 0; aax < ANTI_ALIASING; aax++)
+        {
+          // calculate the primary ray
+          float x_amount = ( (float)x + ((float)aax / (float)ANTI_ALIASING) + 0.5f * ((float)aax / (float)ANTI_ALIASING) ) / (float)m_film->m_width;
+          float y_amount = ( (float)y + ((float)aay / (float)ANTI_ALIASING) + 0.5f * ((float)aay / (float)ANTI_ALIASING) ) / (float)m_film->m_width;
+          /*float x_amount = (x+0.5)/(float)m_film->m_width;
+          float y_amount = ((y) + 0.5)/(float)m_film->getHeight();*/
+          ngl::Vec3 cam_ray_dir = m_camera->m_dir + (m_camera->m_right * (x_amount - 0.5) + (m_camera->m_down * (y_amount - 0.5)));
+          cam_ray_dir.normalize();
 
-      // fire the ray and store its colour into a variable
-      ngl::Colour col = trace(m_camera->m_pos, cam_ray_dir, 0);
+          // fire the ray and store its colour into a variable
+          ngl::Colour col = trace(m_camera->m_pos, cam_ray_dir, 0);
+
+          colourStack.push_back(col);
+        }
+      }
+      // AVERAGE COLOURS
+      float cRed    = (colourStack.at(0).m_r + colourStack.at(1).m_r + colourStack.at(2).m_r + colourStack.at(3).m_r) / 4.0f;
+      float cGreen  = (colourStack.at(0).m_g + colourStack.at(1).m_g + colourStack.at(2).m_g + colourStack.at(3).m_g) / 4.0f;
+      float cBlue   = (colourStack.at(0).m_b + colourStack.at(1).m_b + colourStack.at(2).m_b + colourStack.at(3).m_b) / 4.0f;
+      ngl::Colour averagedColour(cRed, cGreen, cBlue, 1);
+
+
+      // FLUSH VECTOR
+      colourStack.clear();
+
 
       // write pixel into the Film object associated to the Render object
-      m_film->writePixel(col);
+      m_film->writePixel(averagedColour);
 
       // write the file into disk afterwards and display it
 
