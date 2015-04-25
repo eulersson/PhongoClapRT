@@ -221,7 +221,7 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
       refr_dir.normalize();
       crfr = trace(pHit - nHit * bias, refr_dir, depth+1);
     }
-    // Do Phong calculations stuff. By now I keep it VERY VERY simple
+
     ngl::Colour s01 = crfl * m_scene->m_objects.at(closest_index)->getMaterial().getReflIntensity();
     ngl::Colour s02 = crfr * m_scene->m_objects.at(closest_index)->getMaterial().getTransparency();
     ngl::Colour s03 = s01 + s02;
@@ -230,6 +230,11 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
 
     ngl::Colour surfaceColor = diffuseColor + s03;
     return isObscured ? surfaceColor * 0.8f : surfaceColor;
+
+    // Do PHONG MODEL calculations stuff. By now I keep it VERY VERY simple
+
+
+
   }
 
   // if it is not REFLECTIVE nor REFRACTIVE
@@ -238,7 +243,41 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     ngl::Colour surfaceColor = m_scene->m_objects.at(closest_index)->getColour(pHit);
     float cosineFactor = -nHit.dot(cam_ray.getDirection());
 
-    return isObscured ? surfaceColor * cosineFactor * 0.8f : surfaceColor * cosineFactor;
+    ngl::Colour Ka(0.5,0.5,0,1);
+    ngl::Colour Kd = surfaceColor;// * cosineFactor;
+    ngl::Colour Ks(1,1,1,1);
+
+    ngl::Colour ambient_contrib = Ka * 0.2;
+    ngl::Colour diffuse_contrib(0,0,0,1);
+    ngl::Colour specular_contrib(0,0,0,1);
+
+    for(int m = 0; m < m_scene->m_lights.size(); m++)
+    {
+      ngl::Vec3 L = m_scene->m_lights.at(m)->getPosition() - pHit;
+      L.normalize();
+      ngl::Vec3 N = nHit;
+      ngl::Vec3 R = 2 * (L.dot(N) * N) - L;
+
+      R.normalize();
+
+      if(L.dot(N) > 0)
+      {
+        diffuse_contrib  += (Kd * L.dot(N) * m_scene->m_lights.at(m)->getDiffuseContribution());
+      }
+      if(R.dot(-_direction) > 0)
+      specular_contrib += (Ks * pow(R.dot(-_direction),10) * m_scene->m_lights.at(m)->getSpecularContribution());
+    }
+
+    ngl::Colour outRadiance;
+    outRadiance.m_r = 0*ambient_contrib.m_r + 1*diffuse_contrib.m_r + 1*specular_contrib.m_r;
+    outRadiance.m_g = 0*ambient_contrib.m_g + 1*diffuse_contrib.m_g + 1*specular_contrib.m_g;
+    outRadiance.m_b = 0*ambient_contrib.m_b + 1*diffuse_contrib.m_b + 1*specular_contrib.m_b;
+    outRadiance *= cosineFactor;
+    outRadiance.m_a = 1;
+
+    outRadiance.clamp(0,1);
+
+    return isObscured ? outRadiance * 0.3f : outRadiance;
   }
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -313,5 +352,5 @@ void Renderer::render()
     }
   }
   m_film->writeFile();
-  //system("display aa_00.ppm");
+  system("display image.ppm");
 }

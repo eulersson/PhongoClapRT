@@ -17,8 +17,11 @@ int main(int argc, char *argv[])
   // initialise scene
   Scene myScene;
 
-  PointLight* light1 = new PointLight(ngl::Vec3(0,1.5,2),1);
+  PointLight* light1 = new PointLight(ngl::Vec3(0,5,2),1,1);
   myScene.addLight(light1);
+
+  PointLight* light2 = new PointLight(ngl::Vec3(1,0,2),1,1);
+  myScene.addLight(light2);
 
   //create some geometry and push it into the scene
 
@@ -41,11 +44,11 @@ int main(int argc, char *argv[])
   //geo::Shape* plane6 = new geo::Plane(-2.0f,ngl::Vec3(0,0,1),ngl::Colour(0.5f,0,0,1));
   //myScene.addObject(plane6);
 
-  geo::Shape* sphere1 = new geo::Sphere(ngl::Vec3(0,0,2),float(0.5f), ngl::Colour(1,0,1,1));
-  sphere1->hasRefraction(1.2, 0.9f, 0.1f);
+  geo::Shape* sphere1 = new geo::Sphere(ngl::Vec3(0,0,2),float(0.9f), ngl::Colour(1,0,1,1));
+  //sphere1->hasRefraction(1.2, 0.9f, 0.1f);
   myScene.addObject(sphere1);
 
-  geo::Shape* sphere2 = new geo::Sphere(ngl::Vec3(0,1,2),float(0.3f), ngl::Colour(0,1,0,1));
+  /*geo::Shape* sphere2 = new geo::Sphere(ngl::Vec3(0,1,2),float(0.3f), ngl::Colour(0,1,0,1));
   sphere2->hasReflection(0.5f, 0.5f);
   myScene.addObject(sphere2);
 
@@ -54,7 +57,7 @@ int main(int argc, char *argv[])
   myScene.addObject(sphere3);
 
   geo::Shape* sphere4 = new geo::Sphere(ngl::Vec3(1,1,2),float(0.3f), ngl::Colour(0,1,0,1));
-  myScene.addObject(sphere4);
+  myScene.addObject(sphere4);*/
 
   //geo::Shape* sphere2 = new geo::Sphere(ngl::Vec3(1.75f,-0.25f,0.0f),float(0.15f), ngl::Colour(0,1,0,1));
   //myScene.addObject(sphere2);
@@ -83,7 +86,7 @@ int main(int argc, char *argv[])
 
 
   // initialise renderer and bind film and camera to it
-  Renderer renderer(myScene, myFilm, myCamera, 4, 16);
+  Renderer renderer(myScene, myFilm, myCamera, 4, 4);
 
   // start the rendering process
   renderer.render();
