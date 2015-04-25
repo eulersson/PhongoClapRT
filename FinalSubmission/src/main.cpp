@@ -17,11 +17,21 @@ int main(int argc, char *argv[])
   // initialise scene
   Scene myScene;
 
-  PointLight* light1 = new PointLight(ngl::Vec3(0,5,2),1,1);
+  ngl::Colour white(1,1,1,1);
+  ngl::Colour black(0,0,0,1);
+  ngl::Colour red(1,0,0,1);
+  ngl::Colour green(0,1,0,1);
+  ngl::Colour blue(0,0,1,1);
+  ngl::Colour light_blue(0.347,0.89,0.78,1);
+
+  PointLight* light1 = new PointLight(ngl::Vec3(1,5,2),light_blue,light_blue,1,1,1);
   myScene.addLight(light1);
 
-  PointLight* light2 = new PointLight(ngl::Vec3(1,0,2),1,1);
+  PointLight* light2 = new PointLight(ngl::Vec3(-1,0.4,0),white,white,0.5,0.5,1);
   myScene.addLight(light2);
+
+  PointLight* light3 = new PointLight(ngl::Vec3(-1.5,1,10),red,red,1,1,1);
+  myScene.addLight(light3);
 
   //create some geometry and push it into the scene
 
@@ -45,6 +55,7 @@ int main(int argc, char *argv[])
   //myScene.addObject(plane6);
 
   geo::Shape* sphere1 = new geo::Sphere(ngl::Vec3(0,0,2),float(0.9f), ngl::Colour(1,0,1,1));
+  sphere1->getMaterial().setHighlightSize(20);
   //sphere1->hasRefraction(1.2, 0.9f, 0.1f);
   myScene.addObject(sphere1);
 
@@ -64,7 +75,7 @@ int main(int argc, char *argv[])
 
 
   // initialise film
-  Film myFilm(500,500);
+  Film myFilm(1000,1000);
 
   ngl::Vec3 O (0,0,0);
   ngl::Vec3 X (1,0,0);
@@ -86,7 +97,7 @@ int main(int argc, char *argv[])
 
 
   // initialise renderer and bind film and camera to it
-  Renderer renderer(myScene, myFilm, myCamera, 4, 4);
+  Renderer renderer(myScene, myFilm, myCamera, 4, 8);
 
   // start the rendering process
   renderer.render();

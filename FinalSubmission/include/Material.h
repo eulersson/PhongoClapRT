@@ -15,6 +15,7 @@ public:
   float m_refl_intensity;
   float m_ior;
   float m_transparency;
+  float m_spec_highlight_size;
 
   Material()
   {
@@ -37,6 +38,11 @@ public:
 
   bool isReflective() {return m_isReflective;}
   bool isRefractive() {return m_isRefractive;}
+
+  void setHighlightSize(float _highlight_size)
+  {
+    m_spec_highlight_size = _highlight_size;
+  }
 
   void setReflection(float _refl_intensity, float _diffuse_intensity)
   {

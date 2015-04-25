@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 #include "Renderer.h"
 #include "Ray.h"
 #include "Material.h"
@@ -65,7 +66,7 @@ ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, 
 
   for(unsigned int i = 0; i < m_scene->m_lights.size(); i++)
   {
-    ngl::Vec3 light_direction = m_scene->m_lights.at(i)->getPosition() - _interx_pos;
+    ngl::Vec3 light_direction = m_scene->m_lights.at(i)->m_pos - _interx_pos;
     float light_distance = light_direction.length();
     light_direction.normalize();
 
@@ -107,14 +108,14 @@ ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * RAYCASTLGORITHM * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-bool Renderer::raycast(ngl::Vec3 _from)
+bool Renderer::raycast(ngl::Vec3 _from, int _avoid)
 {
   for(unsigned int i = 0; i < m_scene->m_lights.size(); i++)
   {
     // create vector that will store intersection values for parameter t in the primary ray
     std::vector<double> intersections;
 
-    ngl::Vec3 dir = m_scene->m_lights.at(i)->getPosition() - _from;
+    ngl::Vec3 dir = m_scene->m_lights.at(i)->m_pos - _from;
     dir.normalize();
     geo::Ray fire_ray(_from, dir);
 
@@ -128,7 +129,7 @@ bool Renderer::raycast(ngl::Vec3 _from)
     int closest_index = getIndexClosest(intersections);
 
     // if no intersections are found RETURN black =
-    if(closest_index == -1) {return false;}
+    if(closest_index == -1 || closest_index == _avoid) {return false;}
     else {return true;}
   }
 }
@@ -173,7 +174,7 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
 
  float bias = 0.01;
  // calculate if point is obscured or shadowed
- bool isObscured = raycast(pHit + nHit * bias);
+ bool isObscured = raycast(pHit + nHit * bias, closest_index);
 
                           // // // // // // // // //
                           //  calculate radiance  //
@@ -229,7 +230,7 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     ngl::Colour diffuseColor = m_scene->m_objects.at(closest_index)->getColour(pHit) * cosineFactor * m_scene->m_objects.at(closest_index)->getMaterial().getDiffuseIntensity();
 
     ngl::Colour surfaceColor = diffuseColor + s03;
-    return isObscured ? surfaceColor * 0.8f : surfaceColor;
+    return isObscured ? surfaceColor * 1.0f : surfaceColor;
 
     // Do PHONG MODEL calculations stuff. By now I keep it VERY VERY simple
 
@@ -241,43 +242,54 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
   else
   {
     ngl::Colour surfaceColor = m_scene->m_objects.at(closest_index)->getColour(pHit);
-    float cosineFactor = -nHit.dot(cam_ray.getDirection());
+    float cosineFactor = std::max(-nHit.dot(cam_ray.getDirection()),(float)0);
+    float attenuation;
 
-    ngl::Colour Ka(0.5,0.5,0,1);
-    ngl::Colour Kd = surfaceColor;// * cosineFactor;
-    ngl::Colour Ks(1,1,1,1);
+    ngl::Colour Ka(1,0,0.4,1);
+    ngl::Colour Kd;
+    ngl::Colour Ks;
 
-    ngl::Colour ambient_contrib = Ka * 0.2;
+    float ambient_intensity = 0.05;
+
+    ngl::Colour ambient_contrib = Ka * surfaceColor * ambient_intensity;
     ngl::Colour diffuse_contrib(0,0,0,1);
     ngl::Colour specular_contrib(0,0,0,1);
 
-    for(int m = 0; m < m_scene->m_lights.size(); m++)
+    for(unsigned int m = 0; m < m_scene->m_lights.size(); m++)
     {
-      ngl::Vec3 L = m_scene->m_lights.at(m)->getPosition() - pHit;
+      ngl::Vec3 v_distance = m_scene->m_lights.at(m)->m_pos - pHit;
+      float distance = v_distance.length();
+      float radius = 8;
+      attenuation = 1 - pow(distance/radius,2);
+
+      Kd = m_scene->m_lights.at(m)->m_diff_col;
+      Ks = m_scene->m_lights.at(m)->m_spec_col;
+
+      ngl::Vec3 L = m_scene->m_lights.at(m)->m_pos - pHit;
       L.normalize();
       ngl::Vec3 N = nHit;
       ngl::Vec3 R = 2 * (L.dot(N) * N) - L;
-
       R.normalize();
 
-      if(L.dot(N) > 0)
-      {
-        diffuse_contrib  += (Kd * L.dot(N) * m_scene->m_lights.at(m)->getDiffuseContribution());
-      }
-      if(R.dot(-_direction) > 0)
-      specular_contrib += (Ks * pow(R.dot(-_direction),10) * m_scene->m_lights.at(m)->getSpecularContribution());
+      float spec_highlight_size = 12;
+
+
+      diffuse_contrib  += (surfaceColor * (Kd * std::max(L.dot(N),(float)0) * m_scene->m_lights.at(m)->m_diff_int))*attenuation;
+      specular_contrib += ((Ks * pow(std::max(R.dot(-_direction),(float)0),spec_highlight_size) * m_scene->m_lights.at(m)->m_spec_int))*attenuation;
+
     }
 
-    ngl::Colour outRadiance;
-    outRadiance.m_r = 0*ambient_contrib.m_r + 1*diffuse_contrib.m_r + 1*specular_contrib.m_r;
-    outRadiance.m_g = 0*ambient_contrib.m_g + 1*diffuse_contrib.m_g + 1*specular_contrib.m_g;
-    outRadiance.m_b = 0*ambient_contrib.m_b + 1*diffuse_contrib.m_b + 1*specular_contrib.m_b;
-    outRadiance *= cosineFactor;
-    outRadiance.m_a = 1;
+    diffuse_contrib.clamp(0,1);
+    specular_contrib.clamp(0,1);
+
+    ngl::Colour outRadiance = diffuse_contrib + specular_contrib + ambient_contrib;
+    //outRadiance *= cosineFactor+0.1;
 
     outRadiance.clamp(0,1);
 
-    return isObscured ? outRadiance * 0.3f : outRadiance;
+
+
+    return isObscured ? outRadiance * 0.4f : outRadiance;
   }
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
