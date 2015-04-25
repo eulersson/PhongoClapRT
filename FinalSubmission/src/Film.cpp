@@ -31,7 +31,7 @@ void Film::writePixel(ngl::Colour _colour)
 
 void Film::writeFile()
 {
-  file.open("your_image.ppm", std::ios::out | std::ios::binary);
+  file.open("aa_16.ppm", std::ios::out | std::ios::binary);
   file << "P6\n" << m_width << " " << m_height << "\n255\n";
 
   for(unsigned int i = 0; i < m_pixels.size(); ++i)

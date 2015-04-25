@@ -1,7 +1,5 @@
 X Get recursion working well
-~ Some cheap anti-aliasing
-- Get proper Phong model behaviour
+X Some cheap anti-aliasing
+- Simple Parser: Boost Tokenizer
 - Make Renderer a Singleton Class
-- Simple Parser (EXTRA POINTS FOR FREE!)
-    * Boost Tokenizer
-- Get Some Sleep
+- Get proper Phong model behaviour

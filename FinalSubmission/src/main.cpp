@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
+#include <string>
 #include <ngl/Vec3.h>
 
 #include "Scene.h"
@@ -9,6 +10,7 @@
 #include "Sphere.h"
 #include "Plane.h"
 #include "Renderer.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -78,8 +80,10 @@ int main(int argc, char *argv[])
   // initialise camera
   Camera myCamera(campos,camdir,camright,camdown);
 
+
+
   // initialise renderer and bind film and camera to it
-  Renderer renderer(myScene, myFilm, myCamera);
+  Renderer renderer(myScene, myFilm, myCamera, 4, 16);
 
   // start the rendering process
   renderer.render();

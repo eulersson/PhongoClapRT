@@ -10,13 +10,13 @@
 class Renderer
 {
   public:
-    Renderer(Scene &_scence, Film &_film, Camera &_camera);
+    Renderer(Scene &_scence, Film &_film, Camera &_camera, int _max_depth, int _anti_aliasing);
     ~Renderer();
     void render();
     int getIndexClosest(std::vector<double>);
     ngl::Colour getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, int iowo);
     bool raycast(ngl::Vec3 _from);
-    ngl::Colour trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth);
+    ngl::Colour trace(ngl::Vec3 _from, ngl::Vec3 _direction, int _depth);
   private:
     Film *m_film;
     Scene *m_scene;
@@ -25,6 +25,8 @@ class Renderer
     std::vector<ngl::Colour> m_colour_stack;
     int m_width;
     int m_height;
+    int m_anti_aliasing;
+    int m_max_depth;
 };
 
 #endif // Renderer.h
