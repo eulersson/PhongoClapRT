@@ -31,7 +31,7 @@ public:
   {
     m_type = 's';
     m_colour = ngl::Colour(1,1,0,1);
-    Material mat(ngl::Colour(1,1,0,0));
+    Material* mat = new Material(ngl::Colour(1,1,0,0));
     m_material = mat;
   }
   //------------------------------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ public:
    {
      m_type = 's';
      m_colour = _colour;
-     Material mat(_colour);
+     Material* mat = new Material(_colour);
      m_material = mat;
    }
   //------------------------------------------------------------------------------------------------------------------
@@ -91,8 +91,8 @@ public:
   /// @return The normal of the sphere at a given point.
   //------------------------------------------------------------------------------------------------------------------
   virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p);
-  virtual ngl::Colour getColour() {return m_material.m_colour1;}
-  virtual ngl::Colour getColour(ngl::Vec3 &_isect) {return m_material.m_colour1;}
+  virtual ngl::Colour getColour() {return m_material->m_colour1;}
+  virtual ngl::Colour getColour(ngl::Vec3 &_isect) {return m_material->m_colour1;}
 
 private:
   //------------------------------------------------------------------------------------------------------------------

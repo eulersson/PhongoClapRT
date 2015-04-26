@@ -182,13 +182,14 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
 
 
   // is the object reflective or refractive???
-  if ((m_scene->m_objects.at(closest_index)->getMaterial().isReflective() ||
-      m_scene->m_objects.at(closest_index)->getMaterial().isRefractive()) &&
+  if ((m_scene->m_objects.at(closest_index)->getMaterial()->isReflective() ||
+      m_scene->m_objects.at(closest_index)->getMaterial()->isRefractive()) &&
       depth < m_max_depth)
   {
-    ngl::Colour crfr, crfl;
+    ngl::Colour crfr(0,0,0,1);
+    ngl::Colour crfl(0,0,0,1);
     // check whether it is REFLECTIVE
-    if (m_scene->m_objects.at(closest_index)->getMaterial().isReflective())
+    if (m_scene->m_objects.at(closest_index)->getMaterial()->isReflective())
     {
       // calculate reflection dir
       float bias = 0.01;
@@ -200,10 +201,10 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     }
 
     // check whether it is REFRACTIVE
-    if (m_scene->m_objects.at(closest_index)->getMaterial().isRefractive())
+    if (m_scene->m_objects.at(closest_index)->getMaterial()->isRefractive())
     {
       // calculate refrection dir (transmission ray)
-      float ior = m_scene->m_objects.at(closest_index)->getMaterial().getIOR();
+      float ior = m_scene->m_objects.at(closest_index)->getMaterial()->getIOR();
       float eta = inside;
       float bias = 0.01;
       float cosi = -nHit.dot(_direction);
@@ -223,11 +224,11 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
       crfr = trace(pHit - nHit * bias, refr_dir, depth+1);
     }
 
-    ngl::Colour s01 = crfl * m_scene->m_objects.at(closest_index)->getMaterial().getReflIntensity();
-    ngl::Colour s02 = crfr * m_scene->m_objects.at(closest_index)->getMaterial().getTransparency();
+    ngl::Colour s01 = crfl * m_scene->m_objects.at(closest_index)->getMaterial()->getReflIntensity();
+    ngl::Colour s02 = crfr * m_scene->m_objects.at(closest_index)->getMaterial()->getTransparency();
     ngl::Colour s03 = s01 + s02;
     float cosineFactor = -nHit.dot(cam_ray.getDirection());
-    ngl::Colour diffuseColor = m_scene->m_objects.at(closest_index)->getColour(pHit) * cosineFactor * m_scene->m_objects.at(closest_index)->getMaterial().getDiffuseIntensity();
+    ngl::Colour diffuseColor = m_scene->m_objects.at(closest_index)->getColour(pHit) * cosineFactor * m_scene->m_objects.at(closest_index)->getMaterial()->getDiffuseIntensity();
 
     ngl::Colour surfaceColor = diffuseColor + s03;
     return isObscured ? surfaceColor * 1.0f : surfaceColor;
@@ -271,11 +272,11 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
       ngl::Vec3 R = 2 * (L.dot(N) * N) - L;
       R.normalize();
 
-      float spec_highlight_size = 12;
+      float spec_hardness = m_scene->m_objects.at(closest_index)->getMaterial()->m_spec_hardness;
 
 
-      diffuse_contrib  += (surfaceColor * (Kd * std::max(L.dot(N),(float)0) * m_scene->m_lights.at(m)->m_diff_int))*attenuation;
-      specular_contrib += ((Ks * pow(std::max(R.dot(-_direction),(float)0),spec_highlight_size) * m_scene->m_lights.at(m)->m_spec_int))*attenuation;
+      diffuse_contrib  += (surfaceColor * (Kd * pow(std::max(L.dot(N),(float)0),2) * m_scene->m_lights.at(m)->m_diff_int))*attenuation;
+      specular_contrib += ((Ks * pow(std::max(R.dot(-_direction),(float)0),spec_hardness) * m_scene->m_lights.at(m)->m_spec_int))*attenuation;
 
     }
 

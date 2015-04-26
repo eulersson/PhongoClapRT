@@ -12,7 +12,7 @@ Plane::Plane(float _distance, ngl::Vec3 _n, ngl::Colour _c)
   m_distance = _distance;
   m_colour = _c;
 
-  Material mat(_c);
+  Material* mat = new Material(_c);
   m_material = mat;
 
   if(_n.length() > 1.01 || _n.length() < 0.99)
@@ -31,7 +31,7 @@ Plane::Plane(float _distance, ngl::Vec3 _n, ngl::Colour _c1, ngl::Colour _c2)
   m_distance = _distance;
   m_colour = _c1;
 
-  Material mat(_c1, _c2);
+  Material* mat = new Material(_c1, _c2);
   m_material = mat;
 
   if(_n.length() > 1.01 || _n.length() < 0.99)

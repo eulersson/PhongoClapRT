@@ -16,7 +16,7 @@ public:
   {
     m_colour = ngl::Colour(1,0,0);
     m_type='p';
-    Material mat(ngl::Colour(1,1,1,1), ngl::Colour(0,0,0,1));
+    Material* mat = new Material(ngl::Colour(1,1,1,1), ngl::Colour(0,0,0,1));
     m_material = mat;
   }
 
@@ -30,18 +30,18 @@ public:
 
   virtual ngl::Colour getColour()
   {
-      return m_material.objColour();
+      return m_material->objColour();
   }
 
   virtual ngl::Colour getColour(ngl::Vec3 &_isect)
   {
-    if (m_material.m_isChecker)
+    if (m_material->m_isChecker)
     {
-      return m_material.objColour(_isect);
+      return m_material->objColour(_isect);
     }
     else
     {
-      return m_material.objColour();
+      return m_material->objColour();
     }
   }
 
