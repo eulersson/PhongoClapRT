@@ -1,3 +1,16 @@
+#TO DO
+X Get recursion working well
+X Some anti-aliasing
+X Get proper Phong model behaviour
+X Light Fallof
+- Assert that user does not enter anti-alising that is less than 1
+- Fake specular highlights on reflective and refractive materials creating diameter around light
+- Solve problem with ambient lights
+- Ambient Occlusion
+- Simple Parser: Boost Tokenizer
+- (after deadline) Implement OpenSubDiv
+- (after deadline) Implement OpenEXR
+
 #Usage
 
 Yet to be written. Docs.
