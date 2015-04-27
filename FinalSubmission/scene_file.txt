@@ -4,35 +4,23 @@ DEPTH "4" ANTI-ALIASING "2"
 
 Lights
 {
-    +light1 [ 1 5 2] [ 0.347 0.89 0.78] [ 0.347 0.89 0.78] 1 1 1
-    +light2 [ 1 0.4 0 ] [ 1 1 1 ] [ 1 1 1 ] 0.5 0.5 1
-    +light3 [ -1.5 1 10 ] [ 1 0 0 ] [ 1 0 0 ] 1, 1, 1
+    +light1 [ 1 5 2 ] [ 0.347 0.89 0.78 ] [ 0.347 0.89 0.78 ] 1 1 1
+    +light2 [ -1 0.4 0 ] [ 1 1 1 ] [ 1 1 1 ] 0.5 0.5 1
+    +light3 [ -1.5 1 10 ] [ 1 0 0 ] [ 1 0 0 ] 1 1 1
 +}
 
 Objects
 {
-    Plane "plane1" -1, [0, 1, 0], [0, 0, 0], checker([0, 0, 0], [1, 1, 1]);
-    @specularHardness plane1 4;
-    PUSH plane1;
+    $Plane plane1 -1 [ 0 1 0 ] @checker [ 0 0 0 ] [ 1 1 1 ] @specularHardness 4
 
-    Sphere "sphere1" [0, 0, 2], 0.8, [1, 0, 1];
-    @specularHardness sphere1 5;
-    PUSH sphere1;
+    $Sphere sphere1 [ 0 0 2 ] 0.8 [ 1 0 1 ] @specularHardness 5
 
-    Sphere "sphere2" [-1, 1.2, 2], 0.6, [0.1, 0.4, 0.95];
-    @reflective sphere2 70;
-    PUSH sphere2;
+    $Sphere sphere2 [ -1 1.2 2 ] 0.6 [ 0.1 0.4 0.95 ] @reflective 70;
 
-    Sphere "sphere3" [0.9, 0.15, 2.4], 0.3, [0, 1, 0];
-    @specularHardness sphere3 100
-    PUSH sphere3;
+    $Sphere sphere3 [ 0.9 0.15 2.4 ] 0.3 [ 0 1 0 ] @specularHardness 100
 
-    Sphere "sphere4" [-0.9, 0.15, 0.8], 0.3, [1, 0, 0];
-    @refractive sphere4 1.2, 100
-    PUSH sphere4;
+    $Sphere sphere4 [ -0.9 0.15 0.8 ] 0.3 [ 1 0 0 ] @refractive 1.2 100
 
-    Sphere "sphere5" [0.5, 0.15, 0.2], 0.2, [0, 0.8, 1];
-    @specularHardness sphere5 40;
-    PUSH sphere5;
-}
+    $Sphere sphere5 [ 0.5 0.15 0.2 ] 0.2 [ 0 0.8 1 ] @specularHardness 40;
+$}
 
