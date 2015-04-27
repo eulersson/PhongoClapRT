@@ -6,9 +6,11 @@ QT += gui opengl core
 
 MOC_DIR = moc
 
-SOURCES += $$PWD/src/*.cpp
+SOURCES += $$PWD/src/*.cpp \
+    src/Parser.cpp
 
-HEADERS += $$PWD/include/*h
+HEADERS += $$PWD/include/*h \
+    src/Parser.h
 
 # Include form here
 
@@ -50,5 +52,6 @@ LIBS += -L/usr/local/lib
 LIBS +=  -L/$(HOME)/NGL/lib -l NGL
 
 DISTFILES += \
-    src/TO_DO_LIST.txt
+    src/TO_DO_LIST.txt \
+    scene_file.txt
 

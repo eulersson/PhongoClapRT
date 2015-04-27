@@ -3,13 +3,17 @@ X Get recursion working well
 X Some anti-aliasing
 X Get proper Phong model behaviour
 X Light Fallof
-- Assert that user does not enter anti-alising that is less than 1
+X Assert that user does not enter anti-alising that is less than 1
 - Fake specular highlights on reflective and refractive materials creating diameter around light
 - Solve problem with ambient lights
 - Ambient Occlusion
-- Simple Parser: Boost Tokenizer
+~ Simple Parser: Boost Tokenizer
+- Write Docs
+
 - (after deadline) Implement OpenSubDiv
 - (after deadline) Implement OpenEXR
+- (after deadline) Stochastic Sampling to break aliasing
+- (after deadline) Improve AA on refractions and reflections
 
 #Usage
 
