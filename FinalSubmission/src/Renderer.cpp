@@ -106,22 +106,37 @@ ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 bool Renderer::raycast(ngl::Vec3 _from, int _avoid)
 {
+  bool shadowed = false;
   for(unsigned int i = 0; i < m_scene->m_lights.size(); i++)
   {
+    // create vector that will store intersection values for parameter t in the primary ray
+    std::vector<double> intersections;
+
     ngl::Vec3 dir = m_scene->m_lights.at(i)->m_pos - _from;
+    float distance = dir.length();
     dir.normalize();
-    float light_distance = dir.length();
     geo::Ray fire_ray(_from, dir);
 
     // iterate over objects in the scene and find intersections
-    for (unsigned int j = 0; j < m_scene->m_objects.size(); j++)
+    for(unsigned int j = 0; j < m_scene->m_objects.size(); j++)
     {
-        float intersection = m_scene->m_objects.at(j)->getIntersection(fire_ray);
-        if (intersection > 0.01 && intersection <= light_distance) return true;
+      intersections.push_back( m_scene->m_objects.at(j)->getIntersection(fire_ray));
     }
-    return false;
+
+    for(unsigned int k = 0; k < intersections.size(); k++)
+    {
+      if(intersections.at(k) < 0.1) continue;
+      if(intersections.at(k) < -1) continue;
+      int closest_index = getIndexClosest(intersections);
+      if (closest_index == -1 || closest_index == _avoid) continue;
+      if(intersections.at(k) > distance) continue;
+      shadowed = true;
+    }
 
   }
+
+    return shadowed;
+
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -286,7 +301,7 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     ngl::Colour outRadiance = diffuseColor + s03 + specular_contrib;
     outRadiance.clamp(0,1);
 
-    return isObscured ? outRadiance * 0.4f : outRadiance;
+    return isObscured ? outRadiance * 0.7f : outRadiance;
 
   }
 
@@ -341,7 +356,7 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
 
 
 
-    return isObscured ? outRadiance * 0.4f : outRadiance;
+    return isObscured ? outRadiance * 0.7f : outRadiance;
   }
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

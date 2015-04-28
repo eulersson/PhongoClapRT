@@ -6,13 +6,15 @@ X Light Fallof
 X Assert that user does not enter anti-alising that is less than 1
 X Fake specular highlights on reflective and refractive materials creating diameter around light
 X Simple Parser: Boost Tokenizer
-- Fix shadows --> they should accept a multiplying float instead of a boolean on/off, I can
+X Fix shadows --> they should accept a multiplying float instead of a boolean on/off, I can
   work them out by analysing angle between normal and incoming light and then raise the cosine
   to get smooth shadows.
 - Solve problem with ambient lights
 - Write Docs and tidy up code
 
 - (after deadline) Ambient Occlusion
+- (after deadline) Fresnel
+- (after deadline) BRDF
 - (after deadline) Depth of Field
 - (after deadline) Implement OpenSubDiv
 - (after deadline) Implement OpenEXR
@@ -39,4 +41,64 @@ http://www.gameprogrammer.net/delphi3dArchive/phongfordummies.htm
 http://theboostcpplibraries.com/boost.tokenizer
 http://www.boost.org/doc/libs/1_58_0/libs/tokenizer/
 
+
+backup__________________________________________
+
+NAME "example" DIMENSIONS ["500" "500"]
+CAMERA ["0", "1", "-2"] ["0", "0", "6"]
+DEPTH "4" ANTI-ALIASING "2"
+
+Lights
+{
+    +light1 [ 1 5 2 ] [ 0.347 0.89 0.78 ] [ 0.347 0.89 0.78 ] 1 1 1
+    +light2 [ -1 0.4 0 ] [ 1 1 1 ] [ 1 1 1 ] 0.5 0.5 1
+    +light3 [ -1.5 1 10 ] [ 1 0 0 ] [ 1 0 0 ] 1 1 1
+    +light4 [ 0.1 1.4 1 ] [ 1 1 1 ] [ 1 1 1 ] 0.2 0.2 1
++}
+
+Objects
+{
+    $Plane plane1 -1 [ 0 1 0 ] @checker [ 0 0 0 ] [ 1 1 1 ] @specularHardness 4
+
+    $Plane plane2 -5 [ 0 1 -1 ] [ 1 1 0 ] /
+
+    $Sphere sphere1 [ 0 0 2 ] 0.8 [ 1 0 1 ] @specularHardness 5
+
+    $Sphere sphere2 [ -1 1.2 2 ] 0.6 [ 0.1 0.4 0.95 ] @reflective 70;
+
+    $Sphere sphere3 [ 0.9 0.15 2.4 ] 0.3 [ 0 1 0 ] @specularHardness 100
+
+    $Sphere sphere4 [ -0.9 0.15 0.8 ] 0.3 [ 1 0 0 ] @refractive 1.2 100
+
+    $Sphere sphere5 [ 0.5 0.15 0.2 ] 0.2 [ 0 0.8 1 ] @specularHardness 40;
+$}
+
+bakup2_______________________________________
+NAME "example" DIMENSIONS ["500" "500"]
+CAMERA ["0", "1", "-2"] ["0", "0", "6"]
+DEPTH "4" ANTI-ALIASING "2"
+
+Lights
+{
+    +light1 [ 5 5 4 ] [ 0.347 0.89 0.78 ] [ 0.347 0.89 0.78 ] 2 2 1
+    +light2 [ -5 5 4 ] [ 1 1 1 ] [ 1 1 1 ] 2 2 1
+
++}
+
+Objects
+{
+    $Plane plane1 -1 [ 0 1 0 ] @checker [ 0 0 0 ] [ 1 1 1 ] @specularHardness 4
+
+    $Plane plane2 -5 [ 0 1 -1 ] [ 1 1 0 ] /
+
+    $Sphere sphere1 [ 0 0 2 ] 0.8 [ 1 0 1 ] @specularHardness 5
+
+    $Sphere sphere2 [ -1 1.2 2 ] 0.6 [ 0.1 0.4 0.95 ] @reflective 70;
+
+    $Sphere sphere3 [ 0.9 0.15 2.4 ] 0.3 [ 0 1 0 ] @specularHardness 100
+
+    $Sphere sphere4 [ -0.9 0.15 0.8 ] 0.3 [ 1 0 0 ] @refractive 1.2 100
+
+    $Sphere sphere5 [ 0.5 0.15 0.2 ] 0.2 [ 0 0.8 1 ] @specularHardness 40;
+$}
 
