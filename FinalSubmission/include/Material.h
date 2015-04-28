@@ -15,7 +15,7 @@ public:
   float m_refl_intensity;
   float m_ior;
   float m_transparency;
-  float m_spec_hardness;
+  float m_spec_hardness = 40;
 
   Material()
   {

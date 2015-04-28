@@ -26,6 +26,10 @@ public:
     m_material->setReflection(_refl_intensity, _diffuse_intensity);
   }
   Material* getMaterial() {return m_material;}
+  char getType() {return m_type;}
+
+
+
 protected:
   char m_type;
   ngl::Colour m_colour;

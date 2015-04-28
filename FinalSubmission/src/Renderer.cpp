@@ -74,15 +74,11 @@ ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, 
     {
       geo::Ray shadow_ray(_interx_pos, light_direction);
 
-      std::vector<double> shadow_isect;
       for (unsigned int j = 0; j < m_scene->m_objects.size(); j++)
       {
-          shadow_isect.push_back(m_scene->m_objects.at(j)->getIntersection(shadow_ray));
-      }
+          float intersection = m_scene->m_objects.at(j)->getIntersection(shadow_ray);
 
-      for(unsigned int k = 0; k < shadow_isect.size(); k++)
-      {
-        if(shadow_isect.at(k) > 0.01 && shadow_isect.at(k) <= light_distance) shadowed = true;
+          if (intersection > 0.01 && intersection <= light_distance) shadowed = true;
       }
     }
   }
@@ -112,25 +108,19 @@ bool Renderer::raycast(ngl::Vec3 _from, int _avoid)
 {
   for(unsigned int i = 0; i < m_scene->m_lights.size(); i++)
   {
-    // create vector that will store intersection values for parameter t in the primary ray
-    std::vector<double> intersections;
-
     ngl::Vec3 dir = m_scene->m_lights.at(i)->m_pos - _from;
     dir.normalize();
+    float light_distance = dir.length();
     geo::Ray fire_ray(_from, dir);
 
     // iterate over objects in the scene and find intersections
-    for(unsigned int i = 0; i < m_scene->m_objects.size(); i++)
+    for (unsigned int j = 0; j < m_scene->m_objects.size(); j++)
     {
-      intersections.push_back( m_scene->m_objects.at(i)->getIntersection(fire_ray));
+        float intersection = m_scene->m_objects.at(j)->getIntersection(fire_ray);
+        if (intersection > 0.01 && intersection <= light_distance) return true;
     }
+    return false;
 
-    // find closest object
-    int closest_index = getIndexClosest(intersections);
-
-    // if no intersections are found RETURN black =
-    if(closest_index == -1 || closest_index == _avoid) {return false;}
-    else {return true;}
   }
 }
 
@@ -224,18 +214,79 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
       crfr = trace(pHit - nHit * bias, refr_dir, depth+1);
     }
 
+
+
+
+
+
+
+
+
+    ngl::Colour surfaceColor = m_scene->m_objects.at(closest_index)->getColour(pHit);
+    float cosineFactor = std::max(-nHit.dot(cam_ray.getDirection()),(float)0);
+    float attenuation;
+
+    ngl::Colour Ka(1,0,0.4,1);
+    ngl::Colour Kd;
+    ngl::Colour Ks;
+
+    float ambient_intensity = 0.05;
+
+    ngl::Colour ambient_contrib = Ka * surfaceColor * ambient_intensity;
+    ngl::Colour diffuse_contrib(0,0,0,1);
+    ngl::Colour specular_contrib(0,0,0,1);
+
+    for(unsigned int m = 0; m < m_scene->m_lights.size(); m++)
+    {
+      ngl::Vec3 v_distance = m_scene->m_lights.at(m)->m_pos - pHit;
+      float distance = v_distance.length();
+      float radius = 8;
+      attenuation = 1 - pow(distance/radius,2);
+
+      Kd = m_scene->m_lights.at(m)->m_diff_col;
+      Ks = m_scene->m_lights.at(m)->m_spec_col;
+
+      ngl::Vec3 L = m_scene->m_lights.at(m)->m_pos - pHit;
+      L.normalize();
+      ngl::Vec3 N = nHit;
+      ngl::Vec3 R = 2 * (L.dot(N) * N) - L;
+      R.normalize();
+
+      float spec_hardness = m_scene->m_objects.at(closest_index)->getMaterial()->m_spec_hardness;
+
+
+      diffuse_contrib  += (surfaceColor * (Kd * pow(std::max(L.dot(N),(float)0),2) * m_scene->m_lights.at(m)->m_diff_int))*attenuation;
+      specular_contrib += ((Ks * pow(std::max(R.dot(-_direction),(float)0),900)*400 * m_scene->m_lights.at(m)->m_spec_int))*attenuation;
+
+    }
+
+    specular_contrib.clamp(0,0.8);
+
+
+    //outRadiance *= cosineFactor+0.1;
+
+
+
+
+
+
+
+
+
     ngl::Colour s01 = crfl * m_scene->m_objects.at(closest_index)->getMaterial()->getReflIntensity();
     ngl::Colour s02 = crfr * m_scene->m_objects.at(closest_index)->getMaterial()->getTransparency();
     ngl::Colour s03 = s01 + s02;
-    float cosineFactor = -nHit.dot(cam_ray.getDirection());
+   // float cosineFactor = -nHit.dot(cam_ray.getDirection());
     ngl::Colour diffuseColor = m_scene->m_objects.at(closest_index)->getColour(pHit) * cosineFactor * m_scene->m_objects.at(closest_index)->getMaterial()->getDiffuseIntensity();
 
-    ngl::Colour surfaceColor = diffuseColor + s03;
-    return isObscured ? surfaceColor * 1.0f : surfaceColor;
+    //ngl::Colour surfaceColor = diffuseColor + s03;
+    //return isObscured ? outSpecs * 1.0f : outSpecs;
 
     // Do PHONG MODEL calculations stuff. By now I keep it VERY VERY simple
+    ngl::Colour outRadiance = diffuseColor + s03 + specular_contrib;
+    outRadiance.clamp(0,1);
 
-
+    return isObscured ? outRadiance * 0.4f : outRadiance;
 
   }
 

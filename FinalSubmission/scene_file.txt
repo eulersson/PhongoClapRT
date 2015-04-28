@@ -7,11 +7,14 @@ Lights
     +light1 [ 1 5 2 ] [ 0.347 0.89 0.78 ] [ 0.347 0.89 0.78 ] 1 1 1
     +light2 [ -1 0.4 0 ] [ 1 1 1 ] [ 1 1 1 ] 0.5 0.5 1
     +light3 [ -1.5 1 10 ] [ 1 0 0 ] [ 1 0 0 ] 1 1 1
+    +light4 [ 0.1 1.4 1 ] [ 1 1 1 ] [ 1 1 1 ] 0.2 0.2 1
 +}
 
 Objects
 {
     $Plane plane1 -1 [ 0 1 0 ] @checker [ 0 0 0 ] [ 1 1 1 ] @specularHardness 4
+
+    $Plane plane2 -5 [ 0 1 -1 ] [ 1 1 0 ] /
 
     $Sphere sphere1 [ 0 0 2 ] 0.8 [ 1 0 1 ] @specularHardness 5
 

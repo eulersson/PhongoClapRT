@@ -4,12 +4,16 @@ X Some anti-aliasing
 X Get proper Phong model behaviour
 X Light Fallof
 X Assert that user does not enter anti-alising that is less than 1
-- Fake specular highlights on reflective and refractive materials creating diameter around light
+X Fake specular highlights on reflective and refractive materials creating diameter around light
+X Simple Parser: Boost Tokenizer
+- Fix shadows --> they should accept a multiplying float instead of a boolean on/off, I can
+  work them out by analysing angle between normal and incoming light and then raise the cosine
+  to get smooth shadows.
 - Solve problem with ambient lights
-- Ambient Occlusion
-~ Simple Parser: Boost Tokenizer
-- Write Docs
+- Write Docs and tidy up code
 
+- (after deadline) Ambient Occlusion
+- (after deadline) Depth of Field
 - (after deadline) Implement OpenSubDiv
 - (after deadline) Implement OpenEXR
 - (after deadline) Stochastic Sampling to break aliasing
@@ -32,4 +36,7 @@ http://www.scratchapixel.com/old/lessons/3d-basic-lessons/lesson-1-writing-a-sim
 http://www.scratchapixel.com/old/lessons/3d-basic-lessons/lesson-9-ray-triangle-intersection/ray-triangle-intersection-geometric-solution/
 http://www.cplusplus.com/doc/tutorial/files/
 http://www.gameprogrammer.net/delphi3dArchive/phongfordummies.htm
+http://theboostcpplibraries.com/boost.tokenizer
+http://www.boost.org/doc/libs/1_58_0/libs/tokenizer/
+
 

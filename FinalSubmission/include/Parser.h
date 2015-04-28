@@ -262,9 +262,11 @@ public:
       }
       else
       {
+
         geo::Shape* plane = new geo::Plane(distance,ngl::Vec3(nX,nY,nZ),ngl::Colour(col1_r,col1_g,col1_b,1), ngl::Colour(col2_r,col2_g,col2_b,1));
         _scene_objects.push_back(plane);
         std::cout << "OK! Plane " << plane_name << " has been parsed successfully.\n";
+
       }
 
 
@@ -276,7 +278,8 @@ public:
     {
       float col_r, col_g, col_b;
       it++;
-      tmp = *it; col_r = atof(tmp.c_str()); it++;
+      tmp = *it;
+      col_r = atof(tmp.c_str()); it++;
       tmp = *it; col_g = atof(tmp.c_str()); it++;
       tmp = *it; col_b = atof(tmp.c_str()); it++; it++;
       tmp = *it;
@@ -288,11 +291,15 @@ public:
         geo::Shape* plane = new geo::Plane(distance,ngl::Vec3(nX,nY,nZ),ngl::Colour(col_r,col_g,col_b,1));
         plane->getMaterial()->m_spec_hardness = specularHardness;
         _scene_objects.push_back(plane);
+        std::cout << "OK! Plane " << plane_name << " has been parsed successfully.\n";
+
       }
       else
       {
         geo::Shape* plane = new geo::Plane(distance,ngl::Vec3(nX,nY,nZ),ngl::Colour(col_r,col_g,col_b,1));
         _scene_objects.push_back(plane);
+        std::cout << "OK! Plane " << plane_name << " has been parsed successfully.\n";
+
       }
     }
   }
