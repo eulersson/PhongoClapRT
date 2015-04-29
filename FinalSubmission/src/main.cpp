@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
+#include <time.h>
 #include <assert.h>
 #include <ngl/Vec3.h>
 #include <vector>
@@ -15,7 +16,21 @@
 #include "Renderer.h"
 #include "Parser.h"
 
+void printOutTime(float _seconds)
+{
+  if (_seconds<60.0f)
+  {
+    std::cout << "Render time: "  << (int)_seconds << " seconds\n";
+  }
+  else if (_seconds > 60.0f && _seconds < 3600.0f)
+  {
+    int minutes = (int)_seconds / (int)60;
+    float seconds = (int)_seconds % (int)60;
 
+    std::cout << "Render time: "  << minutes << "min " << seconds << "seconds\n";
+  }
+
+}
 
 int main(int argc, char *argv[])
 {
@@ -52,6 +67,10 @@ int main(int argc, char *argv[])
                       anti_aliasing,
                       scene_lights,
                       scene_objects);
+  clock_t t;
+  t = clock();
+  std::cout << "Rendering...\n";
+
 
   // ASSERTIONS and EXCEPTION HANDLING
   if(anti_aliasing < 1)
@@ -97,10 +116,22 @@ int main(int argc, char *argv[])
   // initialise renderer and bind film and camera to it
   Renderer renderer(myScene, myFilm, myCamera, max_depth, anti_aliasing);
 
+
+
+
+
   // start the rendering process
   renderer.render();
 
+  t = clock() - t;
+  float seconds = (float)t/CLOCKS_PER_SEC;
+  printOutTime(seconds);
+
+
+
+
   // display the image
+  system("display image.ppm");
 
 
   return 0;

@@ -8,6 +8,33 @@
 #include <ngl/Vec3.h>
 #include <ngl/Types.h>
 
+// from https://www.ross.click/2011/02/creating-a-progress-bar-in-c-or-any-other-console-app/
+// Process has done i out of n rounds,
+// and we want a bar of width w and resolution r.
+inline void Renderer::loadBar(int x, int n, int r, int w)
+{
+    // Only update r times.
+    if ( x % (n/r +1) != 0 ) return;
+
+    // Calculuate the ratio of complete-to-incomplete.
+    float ratio = x/(float)n;
+    int   c     = ratio * w;
+
+    // Show the percentage complete.
+    printf("%3d%% [", (int)(ratio*100) );
+
+    // Show the load bar.
+    for (int x=0; x<c; x++)
+       printf("=");
+
+    for (int x=c; x<w; x++)
+       printf(" ");
+
+    // ANSI Control codes to go back to the
+    // previous line and clear it.
+    printf("]\n\033[F\033[J");
+}
+
 Renderer::Renderer(Scene &_scene, Film &_film, Camera &_camera, int _depth, int _anti_aliasing)
 {
   m_scene = &_scene;
@@ -369,6 +396,13 @@ void Renderer::render()
   {
     for(int x = 0; x < m_film->m_width; x++)
     {
+      int current_pixel = y*m_film->m_height + x;
+      int total_number_of_pixels = m_film->m_height * m_film->m_width;
+      int r = 90;
+      int w = 45;
+
+      loadBar(current_pixel, total_number_of_pixels, r, w);
+
       ngl::Colour finalColour;
       if(m_anti_aliasing)
       {
@@ -431,5 +465,5 @@ void Renderer::render()
     }
   }
   m_film->writeFile();
-  system("display image.ppm");
+
 }

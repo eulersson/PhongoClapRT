@@ -7,13 +7,13 @@
 
 #include "Shape.h"
 #include "Light.h"
-#include "Streamer.h"
+
 
 class Scene
 {
 public:
   Scene() : m_fileName(std::string("Hello")) {}
-  Scene(Streamer _s, std::string _n) : m_streamer(_s), m_fileName(_n) {}
+  Scene(std::string _n) : m_fileName(_n) {}
   ~Scene();
   void addObject(geo::Shape *_object);
   void addLight(Light  *_light);
@@ -23,7 +23,6 @@ public:
   friend class Renderer;
 
 private:
-  Streamer m_streamer;
   std::string m_fileName;
   std::vector<geo::Shape*> m_objects;
   std::vector<Light*> m_lights;

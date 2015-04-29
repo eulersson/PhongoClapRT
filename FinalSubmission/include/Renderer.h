@@ -10,6 +10,7 @@
 class Renderer
 {
   public:
+    static inline void loadBar(int x, int n, int r, int w);
     Renderer(Scene &_scence, Film &_film, Camera &_camera, int _max_depth, int _anti_aliasing);
     ~Renderer();
     void render();
