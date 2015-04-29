@@ -6,8 +6,7 @@ QT += gui opengl core
 
 MOC_DIR = moc
 
-SOURCES += $$PWD/src/*.cpp \
-    src/Parser.cpp
+SOURCES += $$PWD/src/*.cpp
 
 HEADERS += $$PWD/include/*h \
     src/Parser.h

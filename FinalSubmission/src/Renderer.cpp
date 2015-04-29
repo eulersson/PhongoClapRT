@@ -448,7 +448,7 @@ void Renderer::render()
       else // there is anti-aliasing
       {
         float x_amount = (x+0.5)/(float)m_film->m_width;
-        float y_amount = ((y) + 0.5)/(float)m_film->getHeight();
+        float y_amount = ((y) + 0.5)/(float)m_film->m_height;
 
         ngl::Vec3 cam_ray_dir = m_camera->m_dir + (m_camera->m_right * (x_amount - 0.5) + (m_camera->m_down * (y_amount - 0.5)));
         cam_ray_dir.normalize();

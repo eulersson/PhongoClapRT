@@ -8,13 +8,14 @@
 #include <vector>
 #include <boost/tokenizer.hpp>
 
+#include "Parser.h"
 #include "Scene.h"
 #include "Film.h"
 #include "Shape.h"
 #include "Sphere.h"
 #include "Plane.h"
 #include "Renderer.h"
-#include "Parser.h"
+
 
 void printOutTime(float _seconds)
 {

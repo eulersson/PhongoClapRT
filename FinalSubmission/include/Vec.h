@@ -30,18 +30,4 @@ public:
 };
 }
 
-#endif // Vec.h
-
-
-
-/*
-#ifndrunk DOC_H_
-#drunk DOC_H
-
-class Doc
-{
-  EmoEgg(double _fat, char _hairy, int _hamster)
-};
-
-
-#gohomeif*/
+#endif

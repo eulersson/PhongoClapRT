@@ -1,26 +1,54 @@
 #ifndef NGLSCENE_H__
 #define NGLSCENE_H__
 
+/// @file Camera.h
+/// @author Ramon Blanquer
+/// @brief Implements camera functionability, no transformations, just explicit definition
+/// @todo Implement transformations.
+
 #include <ngl/Vec3.h>
 #include <ngl/Mat4.h>
 
-class Camera
+//----------------------------------------------------------------------------------------------------------------------
+/// @class Camera
+/// @brief Holds camera functions which will be accessed by the Render class
+/// @author Ramon Blanquer
+//----------------------------------------------------------------------------------------------------------------------
+class Camera    
 {
 public:
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Camera ctor when user doesn't specify the parameters these will be set as default
+  // -------------------------------------------------------------------------------------------------------------------
   Camera() : m_pos(ngl::Vec3(0,0,0)), m_dir(ngl::Vec3(0,0,1)), m_down(ngl::Vec3(0,1,0)), m_right(ngl::Vec3(1,0,0)) {}
-  Camera(ngl::Vec3 _pos, ngl::Vec3 _dir, ngl::Vec3 _right, ngl::Vec3 _down);
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Camera ctor that initialises the private interface with the data provided by the user
+  // -------------------------------------------------------------------------------------------------------------------
+  Camera(ngl::Vec3 _pos, ngl::Vec3 _dir, ngl::Vec3 _right, ngl::Vec3 _down) : m_pos(_pos), m_dir(_dir),  m_down(_down), m_right(_right) {}
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Blank destructor
+  // -------------------------------------------------------------------------------------------------------------------
   ~Camera() {}
-  void transform(ngl::Mat4 _trasform);
-  ngl::Vec3 getPosition() {return m_pos;}
-  ngl::Vec3 getDirection() {return m_dir;}
 
-  // allow access to camera from Renderer
+  // allows to Renderer class access to private interface
   friend class Renderer;
 
 private:
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Camera position vector
+  // -------------------------------------------------------------------------------------------------------------------
   ngl::Vec3 m_pos;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Camera aim vector
+  // -------------------------------------------------------------------------------------------------------------------
   ngl::Vec3 m_dir;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Camera down vector
+  // -------------------------------------------------------------------------------------------------------------------
   ngl::Vec3 m_down;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Camera right vector
+  // -------------------------------------------------------------------------------------------------------------------
   ngl::Vec3 m_right;
 
 };

@@ -1,10 +1,11 @@
 #ifndef _SHAPE_H_
 #define _SHAPE_H_
 
-#include "Ray.h"
-#include "Material.h"
 #include <ngl/Vec3.h>
 #include <ngl/Colour.h>
+#include "Material.h"
+#include "Ray.h"
+
 
 namespace geo {
 class Shape
@@ -36,4 +37,5 @@ protected:
   Material* m_material;
 };
 }
+
 #endif

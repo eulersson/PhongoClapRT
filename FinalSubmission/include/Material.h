@@ -4,91 +4,128 @@
 #include <ngl/Colour.h>
 #include <cmath>
 #include "Ray.h"
-#include "Shape.h"
+
+/// @file Material.h
+/// @author Ramon Blanquer
+/// @brief This will be used to return the colour when queried from the Shape derived classes.
 
 class Material
 {
 public:
-  bool m_isReflective;
-  bool m_isRefractive;
+  /* METHODS */
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Material constructor
+  // -------------------------------------------------------------------------------------------------------------------
+  Material();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Material constructor passing a colour, this will not be a checker material
+  /// @param[in] Colour of the object
+  // -------------------------------------------------------------------------------------------------------------------
+  Material(ngl::Colour _c);
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Material constructor passing two colours will enable the checker shading
+  /// @param[in] _c Colours to be applied to checkerboard
+  // -------------------------------------------------------------------------------------------------------------------
+  Material(ngl::Colour _c1, ngl::Colour _c2 );
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Returns whether the material is reflective or not
+  // -------------------------------------------------------------------------------------------------------------------
+  bool isReflective();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Returns whether the material is reflective or not
+  // -------------------------------------------------------------------------------------------------------------------
+  bool isRefractive();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Sets the specular modulator for the specular contribution in the Phong shader
+  // -------------------------------------------------------------------------------------------------------------------
+  void setHardness(float _highlight_size);
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Sets the reflection parameters
+  /// @param[in] _refl_intensity    (percentage, from 0 to 100) Reflectiveness of the object
+  /// @param[in] _diffuse_intensity (percentage, from 0 to 100) This value equals to 100 - _refl_intensity
+  // -------------------------------------------------------------------------------------------------------------------
+  void setReflection(float _refl_intensity, float _diffuse_intensity);
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Sets the refraction settings
+  /// @param[in] _ior               Inex of refraction. You can look them up in a table or in the internet.
+  /// @param[in] _transparency      (percentage, from 0 to 100) How refractive the material is
+  /// @param[in] _diffuse_intensity (percentage, from 0 to 100) This value equals to 100 - _transparency
+  // -------------------------------------------------------------------------------------------------------------------
+  void setRefraction(float _ior, float _transparency, float _diffuse_intensity);
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Returns amount of reflection
+  /// @return Amout of reflection
+  // -------------------------------------------------------------------------------------------------------------------
+  float getReflIntensity();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Returns index of refraction
+  /// @return Index of refraction
+  // -------------------------------------------------------------------------------------------------------------------
+  float getIOR();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Returns transparency
+  /// @return Transparency
+  // -------------------------------------------------------------------------------------------------------------------
+  float getTransparency();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Returns amount of diffuse contribution
+  /// @return Amount of diffuse
+  // -------------------------------------------------------------------------------------------------------------------
+  float getDiffuseIntensity();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Returns the object colour
+  /// @return Colour of the object
+  // -------------------------------------------------------------------------------------------------------------------
+  ngl::Colour objColour();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief However I implemented this overloaded function that grabs an intersection, this is used for the checker
+  /// materials, normally used on planes. Don't set up a checker on a Sphere.
+  /// @param[in] _isect The world position of an intersection.
+  // -------------------------------------------------------------------------------------------------------------------
+  ngl::Colour objColour(ngl::Vec3 &_isect);
+
+
+  /* ATTRIBUTES */
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Tells whether the object is reflective
+  // -------------------------------------------------------------------------------------------------------------------
+  bool m_isReflective = false;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Specifies whether object is transparent
+  // -------------------------------------------------------------------------------------------------------------------
+  bool m_isRefractive = false;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Diffuse intensity, self-explanatory
+  // -------------------------------------------------------------------------------------------------------------------
   float m_diffuse_intensity;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Amount of reflection
+  // -------------------------------------------------------------------------------------------------------------------
   float m_refl_intensity;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Index of refraction
+  // -------------------------------------------------------------------------------------------------------------------
   float m_ior;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Amount of refraction, in other words 'transparency'
+  // -------------------------------------------------------------------------------------------------------------------
   float m_transparency;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief This will drive the spreadness of the specular highlights
+  // -------------------------------------------------------------------------------------------------------------------
   float m_spec_hardness = 40;
 
-  Material()
-  {
-    m_isReflective = false;
-    m_isRefractive = false;
-  }
-
-  Material(ngl::Colour _c) : m_colour1(_c), m_isChecker(false)
-  {
-    m_isReflective = false;
-    m_isRefractive = false;
-  }
-
-  Material(ngl::Colour _c1, ngl::Colour _c2 ) : m_colour1(_c1), m_colour2(_c2)
-  {
-    m_isChecker = true;
-    m_isReflective = false;
-    m_isRefractive = false;
-  }
-
-  bool isReflective() {return m_isReflective;}
-  bool isRefractive() {return m_isRefractive;}
-
-  void setHardness(float _highlight_size)
-  {
-    m_spec_hardness = _highlight_size;
-  }
-
-  void setReflection(float _refl_intensity, float _diffuse_intensity)
-  {
-    m_isReflective = true;
-    m_refl_intensity = _refl_intensity;
-    m_diffuse_intensity = _diffuse_intensity;
-  }
-
-  void setRefraction(float _ior, float _transparency, float _diffuse_intensity)
-  {
-    m_isRefractive = true;
-    m_ior = _ior;
-    m_transparency = _transparency;
-    m_diffuse_intensity = _diffuse_intensity;
-  }
-
-  float getReflIntensity() {return m_refl_intensity;}
-  float getIOR() {return m_ior;}
-  float getTransparency() {return m_transparency;}
-  float getDiffuseIntensity() {return m_diffuse_intensity;}
-
-  ngl::Colour objColour() {return m_colour1;}
-
-  ngl::Colour objColour(ngl::Vec3 &_isect)
-  {
-    if(m_isChecker)
-    {
-      int index_x = (int)(floor(_isect.m_x)) % 2;
-      int index_z = (int)(floor(_isect.m_z)) % 2;
-      if (((bool)index_x && (bool)index_z) || ((bool)index_x == 0 && (bool)index_z == 0))
-      {
-        return m_colour1;
-      }
-      else
-      {
-        return m_colour2;
-      }
-    }
-    else
-    {
-      return m_colour1;
-    }
-  }
-
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Colour of the object
+  // -------------------------------------------------------------------------------------------------------------------
   ngl::Colour m_colour1;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief For checker materials we will have colour1 and colour2, for plain ones just colour1
+  // -------------------------------------------------------------------------------------------------------------------
   ngl::Colour m_colour2;
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Specifies whether it is checker or not
+  // -------------------------------------------------------------------------------------------------------------------
   bool m_isChecker;
 
 };

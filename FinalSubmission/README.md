@@ -10,6 +10,7 @@ X Fix shadows --> they should accept a multiplying float instead of a boolean on
   work them out by analysing angle between normal and incoming light and then raise the cosine
   to get smooth shadows.
 - Solve problem with ambient lights
+- Check for memory leaks
 - Singleton classes
 - Time stamps and "Rendering..." console output
 - Write Docs and tidy up code

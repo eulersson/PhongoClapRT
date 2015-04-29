@@ -1,4 +1,4 @@
-NAME "example" DIMENSIONS ["300" "300"]
+NAME "example" DIMENSIONS ["1024" "1024"]
 CAMERA ["0", "1", "-2"] ["0", "0", "6"]
 DEPTH "4" ANTI-ALIASING "2"
 
