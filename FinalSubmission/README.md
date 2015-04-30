@@ -1,6 +1,6 @@
 #Phongo Clap RT
 
-![](https://raw.githubusercontent.com/docwhite/LSystemsMaya/master/examples/example_preset1.png)
+![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/colorful.png)
 
 ##Brief
 
