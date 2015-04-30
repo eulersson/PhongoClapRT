@@ -23,6 +23,7 @@ X Fix shadows --> they should accept a multiplying float instead of a boolean on
 - (after deadline) Implement OpenEXR
 - (after deadline) Stochastic Sampling to break aliasing
 - (after deadline) Improve AA on refractions and reflections
+- (after deadline) Make it multi-threaded
 
 #Usage
 

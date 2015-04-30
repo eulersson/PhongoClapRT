@@ -8,12 +8,11 @@
 #include "Shape.h"
 #include "Light.h"
 
-
 class Scene
 {
 public:
-  Scene() : m_fileName(std::string("Hello")) {}
-  Scene(std::string _n) : m_fileName(_n) {}
+  Scene();
+  Scene(std::string _n);
   ~Scene();
   void addObject(geo::Shape *_object);
   void addLight(Light  *_light);
@@ -26,7 +25,6 @@ private:
   std::string m_fileName;
   std::vector<geo::Shape*> m_objects;
   std::vector<Light*> m_lights;
-
 };
 
 #endif // Scene.h

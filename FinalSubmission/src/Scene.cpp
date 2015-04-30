@@ -1,10 +1,13 @@
+//----------------------------------------------------------------------------------------------------------------------
+/// @file Scene.cpp
+/// @brief Definitions for Scene class
+//----------------------------------------------------------------------------------------------------------------------
+
 #include "Scene.h"
 
-
-Scene::~Scene()
-{
-
-}
+Scene::Scene() {}
+Scene::Scene(std::string _n) : m_fileName(_n) {}
+Scene::~Scene() {}
 
 void Scene::addObject(geo::Shape *_object)
 {
@@ -15,24 +18,3 @@ void Scene::addLight(Light *_light)
 {
   m_lights.push_back(dynamic_cast<Light*>(_light));
 }
-
-
-
-/*
-class Scene
-{
-public:
-  Scene() : m_fileName(std::string("Hello")) {}
-  Scene(Streamer _s, std::string _n) : m_streamer(_s), m_fileName(_n) {}
-  ~Scene();
-  void addObject(const Shape* _object);
-  void addLight(const Light* _light);
-private:
-  Streamer m_streamer;
-  std::string m_fileName;
-  std::vector<Shape*> m_objects;
-  std::vector<Light*> m_lights;
-
-};
-
-*/

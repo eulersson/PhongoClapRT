@@ -19,12 +19,33 @@
 #include "Shape.h"
 #include "Plane.h"
 #include "Sphere.h"
-
+//----------------------------------------------------------------------------------------------------------------------
+/// @class Parser
+/// @brief Reads from text file and iterates using boost tokenizer to "pickup" and store values based on syntax.
+/// @author Ramon Blanquer
+/// @todo Try to move all this to a .cpp file which I cannot manage to do... it says "multiple definitions"...
+//----------------------------------------------------------------------------------------------------------------------
 class Parser
 {
 
 public:
-
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Default constructor for the parser
+  /// @param[in] _image_name     The final rendered image will be named [_image_name].ppm
+  /// @param[in] _text_tile      Textfile to read from, scene file.
+  /// @param[in] _width          Width of the image
+  /// @param[in] _height         Height of the image
+  /// @param[in] _camPosX        Camera position vector, X component
+  /// @param[in] _camPosY        Camera position vector, Y component
+  /// @param[in] _camPosZ        Camera position vector, Z component
+  /// @param[in] _lookAtX        Aim vector for the camera, X component
+  /// @param[in] _lookAtY        Aim vector for the camera, Y component
+  /// @param[in] _lookAtZ        Aim vector for the camera, Z component
+  /// @param[in] _max_depth      Maximum number of stack frames for the recursive tracing function.
+  /// @param[in] _anti_aliasing  Antialiasing factor, this is the number of subdivisions for each pixel.
+  /// @param[in] _scene_lights   Placeholder for all the lights that are read. Passed to Renderer in main function.
+  /// @param[in] _scene_objects  Placeholder for all the objects that are read. Passed to Renderer in main function.
+  // -------------------------------------------------------------------------------------------------------------------
   Parser(std::string &_image_name,
          std::string &_text_file,
          int &_width,
@@ -63,23 +84,23 @@ public:
     std::cout << "OK! Filename: " << _image_name << std::endl; ++it; ++it;
     std::cout << "Parsing file dimensions...\n";
 
-    tmp = *it; _width = atoi(tmp.c_str()); ++it; ++it; // WIDTH
-    tmp = *it; _height = atoi(tmp.c_str()); // HEIGHT
+    tmp = *it; _width = atoi(tmp.c_str()); ++it; ++it; // WIDTH parsed
+    tmp = *it; _height = atoi(tmp.c_str());            // HEIGHT parsed
 
     std::cout << "OK! " << _width << "x" << _height << " image specified.\n";
 
     std::cout << "Parsing camera...\n"; ++it; ++it;
-    tmp = *it; _camPosX = atof(tmp.c_str()); ++it; ++it; // camPosX
-    tmp = *it; _camPosY = atof(tmp.c_str()); ++it; ++it; // camPosY
-    tmp = *it; _camPosZ = atof(tmp.c_str()); ++it; ++it; // camPosZ
-    tmp = *it; _lookAtX = atof(tmp.c_str()); ++it; ++it; // lookAtX
-    tmp = *it; _lookAtY = atof(tmp.c_str()); ++it; ++it; // lookAtY
-    tmp = *it; _lookAtZ = atof(tmp.c_str()); // lookAtZ
+    tmp = *it; _camPosX = atof(tmp.c_str()); ++it; ++it; // camPosX parsed
+    tmp = *it; _camPosY = atof(tmp.c_str()); ++it; ++it; // camPosY parsed
+    tmp = *it; _camPosZ = atof(tmp.c_str()); ++it; ++it; // camPosZ parsed
+    tmp = *it; _lookAtX = atof(tmp.c_str()); ++it; ++it; // lookAtX parsed
+    tmp = *it; _lookAtY = atof(tmp.c_str()); ++it; ++it; // lookAtY parsed
+    tmp = *it; _lookAtZ = atof(tmp.c_str());             // lookAtZ parsed
 
     std::cout << "OK! Camera parsed with pos["<<_camPosX <<","<<_camPosY<<","<<_camPosZ<<"] and lookup["<<_lookAtX<<","<<_lookAtY<<","<<_lookAtZ<<"]\n"; ++it; ++it;
 
-    tmp = *it; _max_depth = atoi(tmp.c_str()); ++it; ++it; // max_depth
-    tmp = *it; _anti_aliasing = atoi(tmp.c_str()); ++it; ++it; // anti_aliasing
+    tmp = *it; _max_depth = atoi(tmp.c_str()); ++it; ++it;     // max_depth parsed
+    tmp = *it; _anti_aliasing = atoi(tmp.c_str()); ++it; ++it; // anti_aliasing parsed
 
     std::cout << "Parsing lights...\n";
     parseLights(text, _scene_lights);
@@ -88,9 +109,15 @@ public:
     parseObjects(text, _scene_objects);
 
   }
-
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Default destructor for the parser
+  // -------------------------------------------------------------------------------------------------------------------
   ~Parser() {}
-
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Read objects snippet of text and push elements to the object vector on the go
+  /// @param[in] _text           Piece of text to read from. In this case from plus sign to plus sign --> +[...]+
+  /// @param[in] _scene_objects  Placeholder for all the objects that are read. Passed to Renderer in main function.
+  // -------------------------------------------------------------------------------------------------------------------
   void parseObjects(std::string& _text, std::vector<geo::Shape*> &_scene_objects)
   {
     typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
@@ -118,7 +145,11 @@ public:
       ++it;
     }
   }
-
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Read objects snippet of text and push elements to the object vector on the go
+  /// @param[in] _text           Piece of text to read from. In this case from dollar sign to dollar sign --> $[...]$
+  /// @param[in] _scene_lights   Placeholder for all the objects that are read. Passed to Renderer in main function.
+  // -------------------------------------------------------------------------------------------------------------------
   void parseLights(std::string& _text, std::vector<Light*> &_scene_lights)
   {
     typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
@@ -137,7 +168,11 @@ public:
       ++it;
     }
   }
-
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Read the text line that defines a light and push it into the vector container.
+  /// @param[in] _text_light     The line of code that defines a light.
+  /// @param[in] _scene_lights   Placeholder for all the lights that are read. Passed to Renderer in main function.
+  // -------------------------------------------------------------------------------------------------------------------
   void parseSingleLight(std::string &_text_light, std::vector<Light*> &_scene_lights)
   {
     typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
@@ -170,7 +205,11 @@ public:
     _scene_lights.push_back(light);
     std::cout << "OK! Light with name " << light_name << " has been parsed.\n";
   }
-
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Read the text line that defines a plane and push it into the vector container.
+  /// @param[in] _text          The line of code that defines a plane.
+  /// @param[in] _scene_objects Placeholder for all the objects that are read. Passed to Renderer in main function.
+  // -------------------------------------------------------------------------------------------------------------------
   void parsePlane(std::string& _text, std::vector<geo::Shape*> &_scene_objects)
   {
     typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
@@ -252,7 +291,11 @@ public:
       }
     }
   }
-
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Read the text line that defines a sphere and push it into the vector container.
+  /// @param[in] _text          The line of code that defines an object.
+  /// @param[in] _scene_objects Placeholder for all the objects that are read. Passed to Renderer in main function.
+  // -------------------------------------------------------------------------------------------------------------------
   void parseSphere(std::string& _text, std::vector<geo::Shape*> &_scene_objects)
   {
     typedef boost::tokenizer<boost::char_separator<char> > tokenizer;

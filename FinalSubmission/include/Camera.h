@@ -23,6 +23,10 @@ public:
   Camera() : m_pos(ngl::Vec3(0,0,0)), m_dir(ngl::Vec3(0,0,1)), m_down(ngl::Vec3(0,1,0)), m_right(ngl::Vec3(1,0,0)) {}
   //--------------------------------------------------------------------------------------------------------------------
   /// @brief Camera ctor that initialises the private interface with the data provided by the user
+  /// @param[in] m_pos   Camera position
+  /// @param[in] m_dir   Camera aim vector
+  /// @param[in] m_down  Down vector
+  /// @param[in] m_right Right vector
   // -------------------------------------------------------------------------------------------------------------------
   Camera(ngl::Vec3 _pos, ngl::Vec3 _dir, ngl::Vec3 _right, ngl::Vec3 _down) : m_pos(_pos), m_dir(_dir),  m_down(_down), m_right(_right) {}
   //--------------------------------------------------------------------------------------------------------------------

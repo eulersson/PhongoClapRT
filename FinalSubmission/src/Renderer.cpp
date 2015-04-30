@@ -1,3 +1,8 @@
+//----------------------------------------------------------------------------------------------------------------------
+/// @file Renderer.cpp
+/// @brief Where all the calculations happen
+//----------------------------------------------------------------------------------------------------------------------
+
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -11,6 +16,7 @@
 // from https://www.ross.click/2011/02/creating-a-progress-bar-in-c-or-any-other-console-app/
 // Process has done i out of n rounds,
 // and we want a bar of width w and resolution r.
+
 inline void Renderer::loadBar(int x, int n, int r, int w)
 {
     // Only update r times.
@@ -35,7 +41,7 @@ inline void Renderer::loadBar(int x, int n, int r, int w)
     printf("]\n\033[F\033[J");
 }
 
-Renderer::Renderer(Scene &_scene, Film &_film, Camera &_camera, int _depth, int _anti_aliasing)
+Renderer::Renderer(Scene &_scene, Film &_film, Camera &_camera, int _depth, int _anti_aliasing, std::string _image_name)
 {
   m_scene = &_scene;
   m_film = &_film;
@@ -45,12 +51,10 @@ Renderer::Renderer(Scene &_scene, Film &_film, Camera &_camera, int _depth, int 
   m_anti_aliasing = _anti_aliasing;
   m_max_depth = _depth;
   m_bg_colour = ngl::Vec3(0,0,0);
+  m_image_name = _image_name;
 }
 
-Renderer::~Renderer()
-{
-
-}
+Renderer::~Renderer() {}
 
 int Renderer::getIndexClosest(std::vector<double> _interxs)
 {
@@ -82,55 +86,11 @@ int Renderer::getIndexClosest(std::vector<double> _interxs)
     }
     else {return -1;}
   }
-
 }
 
-ngl::Colour Renderer::getColourAt(ngl::Vec3 _interx_pos, ngl::Vec3 _interx_dir, int iowo)
-{
-  ngl::Colour winning_object_colour = m_scene->m_objects.at(iowo)->getColour(_interx_pos);
-  ngl::Vec3   winning_object_normal = m_scene->m_objects.at(iowo)->getNormalAt(_interx_pos);
-  bool shadowed = false;
-
-  for(unsigned int i = 0; i < m_scene->m_lights.size(); i++)
-  {
-    ngl::Vec3 light_direction = m_scene->m_lights.at(i)->m_pos - _interx_pos;
-    float light_distance = light_direction.length();
-    light_direction.normalize();
-
-    if(winning_object_normal.dot(light_direction) > 0)
-    {
-      geo::Ray shadow_ray(_interx_pos, light_direction);
-
-      for (unsigned int j = 0; j < m_scene->m_objects.size(); j++)
-      {
-          float intersection = m_scene->m_objects.at(j)->getIntersection(shadow_ray);
-
-          if (intersection > 0.01 && intersection <= light_distance) shadowed = true;
-      }
-    }
-  }
-
-  _interx_dir.normalize();
-
-  ngl::Colour final_col;
-
-  if (shadowed == true)
-  {
-    final_col = winning_object_colour * -(winning_object_normal.dot(_interx_dir));
-    final_col *= 0.5;
-  }
-  else
-  {
-    final_col = winning_object_colour * -(winning_object_normal.dot(_interx_dir));
-  }
-  return final_col;
-
-
-}
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * RAYCASTLGORITHM * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * RAYCASTLGORITHM * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 bool Renderer::raycast(ngl::Vec3 _from, int _avoid)
 {
   bool shadowed = false;
@@ -159,19 +119,14 @@ bool Renderer::raycast(ngl::Vec3 _from, int _avoid)
       if(intersections.at(k) > distance) continue;
       shadowed = true;
     }
-
   }
-
     return shadowed;
-
 }
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * TRACE ALGORITHM * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * TRACE ALGORITHM * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
 {
   // create vector that will store intersection values for parameter t in the primary ray
@@ -208,10 +163,9 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
  // calculate if point is obscured or shadowed
  bool isObscured = raycast(pHit + nHit * bias, closest_index);
 
-                          // // // // // // // // //
-                          //  calculate radiance  //
-                          // // // // // // // // //
-
+                      // // // // // // // // // // // // //
+                      //  put all contributions together  //
+                      // // // // // // // // // // // // //
 
   // is the object reflective or refractive???
   if ((m_scene->m_objects.at(closest_index)->getMaterial()->isReflective() ||
@@ -386,8 +340,6 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
     return isObscured ? outRadiance * 0.7f : outRadiance;
   }
 }
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 void Renderer::render()
 {
@@ -423,13 +375,13 @@ void Renderer::render()
             colourStack.push_back(col);
           }
         }
+
         // AVERAGE COLOURS
         float cRed   = 0.0f;
         float cGreen = 0.0f;
         float cBlue  = 0.0f;
 
         for(int i = 0; i < m_anti_aliasing; i++)
-
         {
           cRed    += colourStack.at(i).m_r;
           cGreen  += colourStack.at(i).m_g;
@@ -445,6 +397,7 @@ void Renderer::render()
         // FLUSH VECTOR
         colourStack.clear();
       }
+
       else // there is anti-aliasing
       {
         float x_amount = (x+0.5)/(float)m_film->m_width;
@@ -459,11 +412,10 @@ void Renderer::render()
 
       // write pixel into the Film object associated to the Render object
       m_film->writePixel(finalColour);
-
-      // write the file into disk afterwards and display it
-
     }
   }
-  m_film->writeFile();
+
+  // write the file into disk afterwards and display it
+  m_film->writeFile(m_image_name.c_str());
 
 }

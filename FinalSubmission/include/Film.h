@@ -42,12 +42,14 @@ public:
   ~Film();
   //--------------------------------------------------------------------------------------------------------------------
   /// @brief Will create a pixel and push it to the pixel vector
+  /// @param[in] _colour Colour that will be written in that pixel
   //--------------------------------------------------------------------------------------------------------------------
   void writePixel(ngl::Colour _colour);
   //--------------------------------------------------------------------------------------------------------------------
   /// @brief Iterates over the pixel vector and writes into a file using basic output stream methods
+  /// @param[in] _image_name The file will be written with the name [_image_name].ppm
   //--------------------------------------------------------------------------------------------------------------------
-  void writeFile();
+  void writeFile(const char* _image_name);
 
   // give renderer permissions to access m_width and m_height with no need of getters
   friend class Renderer;

@@ -30,11 +30,16 @@ void printOutTime(float _seconds)
 
     std::cout << "Render time: "  << minutes << "min " << seconds << "seconds\n";
   }
-
 }
 
 int main(int argc, char *argv[])
 {
+  if (argc != 2)
+  {
+    std::cout << "ERROR, you must indicate the scene file you want to read from.\n"
+                 "Usage: ./aidan [path_to_textfile]";
+  }
+  assert(argc == 2);
 
   // USER DEFINES THESE VARIABLES
   int width         = 0;
@@ -50,9 +55,13 @@ int main(int argc, char *argv[])
 
   std::vector<Light*> scene_lights;
   std::vector<geo::Shape*> scene_objects;
+  std::string text_file;
 
-  std::string text_file("scene_file.txt");
-  std::string image_name("yourImage.ppm");
+
+    text_file = argv[1];
+
+
+  std::string image_name;
 
   Parser scene_parser(image_name,
                       text_file,
@@ -94,8 +103,6 @@ int main(int argc, char *argv[])
     myScene.addLight(scene_lights.at(i));
   }
 
-
-
   // initialise film
   Film myFilm(width,height);
 
@@ -113,13 +120,8 @@ int main(int argc, char *argv[])
   // initialise camera
   Camera myCamera(campos,camdir,camright,camdown);
 
-
   // initialise renderer and bind film and camera to it
-  Renderer renderer(myScene, myFilm, myCamera, max_depth, anti_aliasing);
-
-
-
-
+  Renderer renderer(myScene, myFilm, myCamera, max_depth, anti_aliasing, image_name);
 
   // start the rendering process
   renderer.render();
@@ -128,12 +130,11 @@ int main(int argc, char *argv[])
   float seconds = (float)t/CLOCKS_PER_SEC;
   printOutTime(seconds);
 
-
-
+  std::cout << image_name << ".ppm has been written successfully.\n";
+  std::string command = "display " + image_name + ".ppm";
 
   // display the image
-  system("display image.ppm");
-
+  system(command.c_str());
 
   return 0;
 }
