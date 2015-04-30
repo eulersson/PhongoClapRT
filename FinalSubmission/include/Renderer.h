@@ -24,7 +24,23 @@ class Renderer
 {
 public:
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Constructor for the renderer class
+  /// @brief Constructor for the renderer class.
+  //--------------------------------------------------------------------------------------------------------------------
+  Renderer();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Destructor, frees any possible memory from the heap.
+  //--------------------------------------------------------------------------------------------------------------------
+  ~Renderer();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Implements a loading bar. This algorithm is taken from another person.
+  /// @param[in] x Current value (in my case the current pixel expressed as `y * height + x`.
+  /// @param[in] n Total number of elements (in my case width/height).
+  /// @param[in] r Number of times for the bar to be refreshed.
+  /// @param[in] w Width in characters of the loading bar.
+  //--------------------------------------------------------------------------------------------------------------------
+  static inline void loadBar(int x, int n, int r, int w);
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Grabs all the information and places it into the private interface.
   /// @param[in] _scene         Scene which will contain all the lights, objects, etc...
   /// @param[in] _film          Film structure to query the width, height and other attributes from.
   /// @param[in] _camera        Camera used to fire the primary and secondary rays.
@@ -32,27 +48,15 @@ public:
   /// @param[in] _anti_aliasing Amount of antialiasing.
   /// @param[in] _image_name    The image filename.
   //--------------------------------------------------------------------------------------------------------------------
-  Renderer(Scene &_scence, Film &_film, Camera &_camera, int _max_depth, int _anti_aliasing, std::string _image_name);
-  //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Destructor, frees any possible memory from the heap
-  //--------------------------------------------------------------------------------------------------------------------
-  ~Renderer();
-  //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Implements a loading bar. This algorithm is taken from another person
-  /// @param[in] x Current value (in my case the current pixel expressed as y*height + x)
-  /// @param[in] n Total number of elements (in my case width/height)
-  /// @param[in] r Number of times for the bar to be refreshed
-  /// @param[in] w Width in characters of the loading bar
-  //--------------------------------------------------------------------------------------------------------------------
-  static inline void loadBar(int x, int n, int r, int w);
+  void bind(Scene *_scence, Film *_film, Camera *_camera, int _max_depth, int _anti_aliasing, std::string _image_name);
   //--------------------------------------------------------------------------------------------------------------------
   /// @brief Will trigger the class and start doing all the calculations
   //--------------------------------------------------------------------------------------------------------------------
   void render();
   //--------------------------------------------------------------------------------------------------------------------
   /// @brief Given an intersections vector will return the closest to the camera, the one that it will read colour from
-  /// @param[in] _intersections Vector with all the 't' parameters from the ray equation R = O + t * d, aka intersection
-  /// @returns Object index that has the smallest intersection value
+  /// @param[in] _intersections Vector with all the 't' parameters from the ray equation 1R = O + t * d` (intersection)
+  /// @returns Object index that has the smallest intersection value.
   //--------------------------------------------------------------------------------------------------------------------
   int getIndexClosest(std::vector<double> _intersections);
   //--------------------------------------------------------------------------------------------------------------------
@@ -70,10 +74,11 @@ public:
   /// given position in the first parameter aiming towards the direction specified in the second one. If it hits a
   /// reflective or refractive material the new reflection/transimission ray will be calculated and this method will be
   /// called again. The limiter will be the depth argument.
-  /// @param[in] _from      Position where to fire the ray from
-  /// @param[in] _direction Aim vector that defines the directions in which we want to fire the ray
-  /// @param[in] _avoid     Index of the object we want to avoid. By index I mean the position in the m_scene_objects vector
-  /// @returns The radiance colour of the ray fired
+  /// @param[in] _from      Position where to fire the ray from.
+  /// @param[in] _direction Aim vector that defines the directions in which we want to fire the ray.
+  /// @param[in] _avoid     Index of the object we want to avoid.
+  ///                       By index I mean the position in the m_scene_objects vector.
+  /// @returns The radiance colour of the ray fired.
   //--------------------------------------------------------------------------------------------------------------------
   ngl::Colour trace(ngl::Vec3 _from, ngl::Vec3 _direction, int _depth);
 

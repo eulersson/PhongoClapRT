@@ -22,6 +22,14 @@ class Shape
 {
 public:
   //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Default constructor.
+  //--------------------------------------------------------------------------------------------------------------------
+  Shape() {}
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief Frees any memory grabbed from the heap.
+  //--------------------------------------------------------------------------------------------------------------------
+  ~Shape() {delete m_material;}
+  //--------------------------------------------------------------------------------------------------------------------
   /// @brief Returs colour of a Shape object
   /// @returns Colour of the Shape object
   //--------------------------------------------------------------------------------------------------------------------
@@ -33,7 +41,7 @@ public:
   virtual ngl::Colour getColour(ngl::Vec3 &_isect) = 0;
   //--------------------------------------------------------------------------------------------------------------------
   /// @brief Passing a ray it will calculate the intersection in the derived class, this is purely abstract method
-  /// @returns Variable (mathematically speaking) 't' in equation R = O + t * d
+  /// @returns Variable (mathematically speaking) **'t'** in equation `R = O + t * d`.
   //--------------------------------------------------------------------------------------------------------------------
   virtual float getIntersection(geo::Ray& _ray) = 0;
   //--------------------------------------------------------------------------------------------------------------------
@@ -42,9 +50,9 @@ public:
   //--------------------------------------------------------------------------------------------------------------------
   virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p) = 0;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Sets parameters related to refraction, this will be given to the Material class
-  /// @param[in] _ior          Index of refraction
-  /// @param[in] _transparency Amount of refraction of the object
+  /// @brief Sets parameters related to refraction, this will be given to the Material class.
+  /// @param[in] _ior          Index of refraction.
+  /// @param[in] _transparency Amount of refraction of the object.
   /// @param[in] _ diffuse_intensity This is calculated automatically, but it is the complementary of transparency,
   /// I could say this is the 'opacity'.
   //--------------------------------------------------------------------------------------------------------------------
@@ -53,9 +61,9 @@ public:
     m_material->setRefraction(_ior,_transparency, _diffuse_intensity);
   }
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Sets reflection attributes
-  /// @param[in] _refl_intensity    How reflective the material is
-  /// @param[in] _diffuse_intensity How non-reflective the material is
+  /// @brief Sets reflection attributes.
+  /// @param[in] _refl_intensity    How reflective the material is.
+  /// @param[in] _diffuse_intensity How non-reflective the material is.
   //--------------------------------------------------------------------------------------------------------------------
   void hasReflection(float _refl_intensity, float _diffuse_intensity)
   {
@@ -75,7 +83,7 @@ public:
 
 protected:
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Type of geometric object it is
+  /// @brief Type of geometric object it is.
   //--------------------------------------------------------------------------------------------------------------------
   char m_type;
   //--------------------------------------------------------------------------------------------------------------------

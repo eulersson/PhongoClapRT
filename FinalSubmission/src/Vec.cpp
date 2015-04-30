@@ -1,6 +1,9 @@
+/// @file Vec.h
+/// @author Ramon Blanquer
+/// @brief Definitions for the extended ngl::Vec3
+
 #include <cmath>
 #include "Vec.h"
-
 
 namespace geo
 {

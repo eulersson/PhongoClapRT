@@ -3,7 +3,7 @@
 
 /// @file Plane.h
 /// @author Ramon Blanquer
-/// @brief Implements the interface for creating a plane shape and the methods for finding its intersections
+/// @brief Implements the interface for creating a plane shape and the methods for finding its intersections.
 
 #include "Shape.h"
 #include "Ray.h"
@@ -14,10 +14,10 @@ namespace geo
 {
 //----------------------------------------------------------------------------------------------------------------------
 /// @class Plane
-/// @brief Inherits from shape. Implements functionability for plane shape and its materials
+/// @brief Inherits from shape. Implements functionability for plane shape and its materials.
 ///  and the ray-plane intersections algorithms.
 /// @author Ramon Blanquer
-/// @todo Implement new ways to instanciate a plane, ie specifying three points, or one point and a normal
+/// @todo Implement new ways to instanciate a plane, ie specifying three points, or one point and a normal.
 //----------------------------------------------------------------------------------------------------------------------
 class Plane : public Shape
 {
@@ -27,7 +27,11 @@ public:
   // -------------------------------------------------------------------------------------------------------------------
   Plane();
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief This constructor reads some arguments and pass them to the private interface
+  /// @brief Default destructor.
+  // -------------------------------------------------------------------------------------------------------------------
+  ~Plane();
+  //--------------------------------------------------------------------------------------------------------------------
+  /// @brief This constructor reads some arguments and pass them to the private interface.
   /// @param[in] _distance  Distance from the origin the plane is located at.
   /// @param[in] _n         Normal of the plane.
   /// @param[in] _c         Plain colour of the plane.
@@ -44,7 +48,7 @@ public:
   /// @brief Virtual method that implements the ray-plane intersection
   /// @param[in] _ray Ray that will be used to solve the equation for finding the "t" parameter of the ray that
   /// satisfies that this point is shared by both ray and plane aka intersection point.
-  /// @returns The 't' parameter from the R = O + t * d equation form of the line, thus the intersection point.
+  /// @returns The **'t'** parameter from the `R = O + t * d` equation form of the line, thus the intersection point.
   // -------------------------------------------------------------------------------------------------------------------
   virtual float getIntersection(geo::Ray &_ray);
   //--------------------------------------------------------------------------------------------------------------------

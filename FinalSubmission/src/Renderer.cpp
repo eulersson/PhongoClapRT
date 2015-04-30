@@ -1,7 +1,5 @@
-//----------------------------------------------------------------------------------------------------------------------
 /// @file Renderer.cpp
 /// @brief Where all the calculations happen
-//----------------------------------------------------------------------------------------------------------------------
 
 #include <iostream>
 #include <vector>
@@ -13,10 +11,13 @@
 #include <ngl/Vec3.h>
 #include <ngl/Types.h>
 
-// from https://www.ross.click/2011/02/creating-a-progress-bar-in-c-or-any-other-console-app/
+// from https://www.ross.click/2011/02/creating-a-progress-bar-in-c-or-any-other-console-app/  ROSS HEMSLEY
 // Process has done i out of n rounds,
 // and we want a bar of width w and resolution r.
 
+/// The following section is from :-
+/// Hemsley, R.(2011). Creating a progress bar in C/C++ (or any other console app). [online] [Accessed 2015].
+/// Available from: <https://www.ross.click/2011/02/creating-a-progress-bar-in-c-or-any-other-console-app/>.
 inline void Renderer::loadBar(int x, int n, int r, int w)
 {
     // Only update r times.
@@ -36,16 +37,30 @@ inline void Renderer::loadBar(int x, int n, int r, int w)
     for (int x=c; x<w; x++)
        printf(" ");
 
-    // ANSI Control codes to go back to the
-    // previous line and clear it.
+    // ANSI Control codes to go back to the previous line and clear it.
     printf("]\n\033[F\033[J");
 }
+/// end of Citation
+///
+Renderer::Renderer() {}
 
-Renderer::Renderer(Scene &_scene, Film &_film, Camera &_camera, int _depth, int _anti_aliasing, std::string _image_name)
+Renderer::~Renderer()
 {
-  m_scene = &_scene;
-  m_film = &_film;
-  m_camera = &_camera;
+  for(unsigned int i = 0; i < m_scene->m_objects.size(); i++)
+  {
+    delete m_scene->m_objects.at(i);
+  }
+  for(unsigned int i = 0; i < m_scene->m_lights.size(); i++)
+  {
+    delete m_scene->m_lights.at(i);
+  }
+}
+
+void Renderer::bind(Scene *_scene, Film *_film, Camera *_camera, int _depth, int _anti_aliasing, std::string _image_name)
+{
+  m_scene = _scene;
+  m_film = _film;
+  m_camera = _camera;
   m_width = m_film->m_width;
   m_height = m_film->m_height;
   m_anti_aliasing = _anti_aliasing;
@@ -53,8 +68,6 @@ Renderer::Renderer(Scene &_scene, Film &_film, Camera &_camera, int _depth, int 
   m_bg_colour = ngl::Vec3(0,0,0);
   m_image_name = _image_name;
 }
-
-Renderer::~Renderer() {}
 
 int Renderer::getIndexClosest(std::vector<double> _interxs)
 {
@@ -122,7 +135,6 @@ bool Renderer::raycast(ngl::Vec3 _from, int _avoid)
   }
     return shadowed;
 }
-
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * TRACE ALGORITHM * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -210,14 +222,6 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
       crfr = trace(pHit - nHit * bias, refr_dir, depth+1);
     }
 
-
-
-
-
-
-
-
-
     ngl::Colour surfaceColor = m_scene->m_objects.at(closest_index)->getColour(pHit);
     float cosineFactor = std::max(-nHit.dot(cam_ray.getDirection()),(float)0);
     float attenuation;
@@ -248,49 +252,28 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
       ngl::Vec3 R = 2 * (L.dot(N) * N) - L;
       R.normalize();
 
-      float spec_hardness = m_scene->m_objects.at(closest_index)->getMaterial()->m_spec_hardness;
-
-
       diffuse_contrib  += (surfaceColor * (Kd * pow(std::max(L.dot(N),(float)0),2) * m_scene->m_lights.at(m)->m_diff_int))*attenuation;
       specular_contrib += ((Ks * pow(std::max(R.dot(-_direction),(float)0),900)*400 * m_scene->m_lights.at(m)->m_spec_int))*attenuation;
-
     }
 
     specular_contrib.clamp(0,0.8);
 
-
-    //outRadiance *= cosineFactor+0.1;
-
-
-
-
-
-
-
-
-
     ngl::Colour s01 = crfl * m_scene->m_objects.at(closest_index)->getMaterial()->getReflIntensity();
     ngl::Colour s02 = crfr * m_scene->m_objects.at(closest_index)->getMaterial()->getTransparency();
     ngl::Colour s03 = s01 + s02;
-   // float cosineFactor = -nHit.dot(cam_ray.getDirection());
     ngl::Colour diffuseColor = m_scene->m_objects.at(closest_index)->getColour(pHit) * cosineFactor * m_scene->m_objects.at(closest_index)->getMaterial()->getDiffuseIntensity();
 
-    //ngl::Colour surfaceColor = diffuseColor + s03;
-    //return isObscured ? outSpecs * 1.0f : outSpecs;
-
     // Do PHONG MODEL calculations stuff. By now I keep it VERY VERY simple
-    ngl::Colour outRadiance = diffuseColor + s03 + specular_contrib;
+    ngl::Colour outRadiance = diffuseColor + s03 + specular_contrib + ambient_contrib;
     outRadiance.clamp(0,1);
 
     return isObscured ? outRadiance * 0.7f : outRadiance;
-
   }
 
   // if it is not REFLECTIVE nor REFRACTIVE
   else
   {
     ngl::Colour surfaceColor = m_scene->m_objects.at(closest_index)->getColour(pHit);
-    float cosineFactor = std::max(-nHit.dot(cam_ray.getDirection()),(float)0);
     float attenuation;
 
     ngl::Colour Ka(1,0,0.4,1);
@@ -321,21 +304,16 @@ ngl::Colour Renderer::trace(ngl::Vec3 _from, ngl::Vec3 _direction, int depth)
 
       float spec_hardness = m_scene->m_objects.at(closest_index)->getMaterial()->m_spec_hardness;
 
-
       diffuse_contrib  += (surfaceColor * (Kd * pow(std::max(L.dot(N),(float)0),2) * m_scene->m_lights.at(m)->m_diff_int))*attenuation;
       specular_contrib += ((Ks * pow(std::max(R.dot(-_direction),(float)0),spec_hardness) * m_scene->m_lights.at(m)->m_spec_int))*attenuation;
-
     }
 
     diffuse_contrib.clamp(0,1);
     specular_contrib.clamp(0,1);
 
     ngl::Colour outRadiance = diffuse_contrib + specular_contrib + ambient_contrib;
-    //outRadiance *= cosineFactor+0.1;
 
     outRadiance.clamp(0,1);
-
-
 
     return isObscured ? outRadiance * 0.7f : outRadiance;
   }

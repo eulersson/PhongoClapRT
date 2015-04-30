@@ -4,7 +4,7 @@
 /// @file Parser.h
 /// @author Ramon Blanquer
 /// @brief Parses a text file that user passes as an argument when executing the program
-/// @todo I CANNOT MOVE THE DEFINITIONS TO A CPP FILE! IT COMPLAINTS ABOUT MULTIPLE DECLARATIONS, try to do it!
+/// @todo **I cannot move the definitions to a source file!** It complains about multiple declarations...
 
 #include <boost/tokenizer.hpp>
 #include <string>
@@ -27,20 +27,19 @@
 //----------------------------------------------------------------------------------------------------------------------
 class Parser
 {
-
 public:
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Default constructor for the parser
-  /// @param[in] _image_name     The final rendered image will be named [_image_name].ppm
+  /// @brief Default constructor for the parser.
+  /// @param[in] _image_name     The final rendered image will be named `[_image_name].ppm`.
   /// @param[in] _text_tile      Textfile to read from, scene file.
-  /// @param[in] _width          Width of the image
-  /// @param[in] _height         Height of the image
-  /// @param[in] _camPosX        Camera position vector, X component
-  /// @param[in] _camPosY        Camera position vector, Y component
-  /// @param[in] _camPosZ        Camera position vector, Z component
-  /// @param[in] _lookAtX        Aim vector for the camera, X component
-  /// @param[in] _lookAtY        Aim vector for the camera, Y component
-  /// @param[in] _lookAtZ        Aim vector for the camera, Z component
+  /// @param[in] _width          Width of the image.
+  /// @param[in] _height         Height of the image.
+  /// @param[in] _camPosX        Camera position vector, X component.
+  /// @param[in] _camPosY        Camera position vector, Y component.
+  /// @param[in] _camPosZ        Camera position vector, Z component.
+  /// @param[in] _lookAtX        Aim vector for the camera, X component.
+  /// @param[in] _lookAtY        Aim vector for the camera, Y component.
+  /// @param[in] _lookAtZ        Aim vector for the camera, Z component.
   /// @param[in] _max_depth      Maximum number of stack frames for the recursive tracing function.
   /// @param[in] _anti_aliasing  Antialiasing factor, this is the number of subdivisions for each pixel.
   /// @param[in] _scene_lights   Placeholder for all the lights that are read. Passed to Renderer in main function.
@@ -97,7 +96,8 @@ public:
     tmp = *it; _lookAtY = atof(tmp.c_str()); ++it; ++it; // lookAtY parsed
     tmp = *it; _lookAtZ = atof(tmp.c_str());             // lookAtZ parsed
 
-    std::cout << "OK! Camera parsed with pos["<<_camPosX <<","<<_camPosY<<","<<_camPosZ<<"] and lookup["<<_lookAtX<<","<<_lookAtY<<","<<_lookAtZ<<"]\n"; ++it; ++it;
+    std::cout << "OK! Camera parsed with pos["<<_camPosX <<","<<_camPosY<<","<<_camPosZ<<"] and lookup["<<_lookAtX<<","
+              <<_lookAtY<<","<<_lookAtZ<<"]\n"; ++it; ++it;
 
     tmp = *it; _max_depth = atoi(tmp.c_str()); ++it; ++it;     // max_depth parsed
     tmp = *it; _anti_aliasing = atoi(tmp.c_str()); ++it; ++it; // anti_aliasing parsed
@@ -107,7 +107,6 @@ public:
 
     std::cout << "Parsing objects...\n";
     parseObjects(text, _scene_objects);
-
   }
   //--------------------------------------------------------------------------------------------------------------------
   /// @brief Default destructor for the parser
@@ -255,7 +254,6 @@ public:
       }
       else
       {
-
         geo::Shape* plane = new geo::Plane(distance,ngl::Vec3(nX,nY,nZ),ngl::Colour(col1_r,col1_g,col1_b,1), ngl::Colour(col2_r,col2_g,col2_b,1));
         _scene_objects.push_back(plane);
 
@@ -333,7 +331,6 @@ public:
       _scene_objects.push_back(sphere);
 
       std::cout << "OK! Sphere " << sphere_name << " has been parsed successfully.\n";
-
     }
     else if(tmp == "@reflective") {
       it++;

@@ -6,14 +6,14 @@
 
 /// @file Light.h
 /// @author Ramon Blanquer
-/// @brief A class for the lights in the scene
+/// @brief A class for the lights in the scene. There is no sepparate `.cpp` file due to its simplicity.
 
 // LIGHT - Base Class
 //----------------------------------------------------------------------------------------------------------------------
 /// @class Light
 /// @brief This is a base class that will be used as template when creating concretes types of light.
 /// @author Ramon Blanquer
-/// @todo Implement Kd, Ka and Ks on the sphere
+/// @todo Implement `Kd`, `Ka` and `Ks` on the sphere
 //----------------------------------------------------------------------------------------------------------------------
 class Light
 {
@@ -35,7 +35,7 @@ public:
               float _falloff) : m_pos(_pos), m_diff_col(_diff_col), m_spec_col(_spec_col),
                                 m_diff_int(_diff_int), m_spec_int(_spec_int), m_falloff(_falloff) {}
   //------------------------------------------------------------------------------------------------------------------
-  /// @brief Destructor for the Light class.
+  /// @brief Destructor for the Light objects.
   //------------------------------------------------------------------------------------------------------------------
   ~Light() {}
 
@@ -44,27 +44,27 @@ public:
 
 protected:
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Light's position vector
+  /// @brief Light's position vector.
   //--------------------------------------------------------------------------------------------------------------------
   ngl::Vec3   m_pos;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Diffuse colour emmited by the light
+  /// @brief *Diffuse* colour emmited by the light.
   //--------------------------------------------------------------------------------------------------------------------
   ngl::Colour m_diff_col;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Specular colour emmited by the light
+  /// @brief *Specular* colour emmited by the light.
   //--------------------------------------------------------------------------------------------------------------------
   ngl::Colour m_spec_col;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Diffuse contribution intensity. It will multiply the diffuse colour when doing the Phong calculations
+  /// @brief *Diffuse* contribution **intensity**. It will multiply the diffuse colour when doing the Phong calculations
   //--------------------------------------------------------------------------------------------------------------------
   float m_diff_int;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Specular contribution intensity. It will multiply the specular colour when doing the Phong calculations
+  /// @brief *Specular* contribution **intensity**. Will multiply the specular colour when doing the Phong calculations
   //--------------------------------------------------------------------------------------------------------------------
   float m_spec_int;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Controlls the falloff of the light. Higher values will accentuate the decay
+  /// @brief Controlls the *falloff* of the light. Higher values will accentuate the decay.
   //--------------------------------------------------------------------------------------------------------------------
   float m_falloff;
 };

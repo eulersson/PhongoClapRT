@@ -3,7 +3,7 @@
 
 /// @file Vec.h
 /// @author Ramon Blanquer
-/// @brief This class extends the functionability of ngl::Vec3
+/// @brief This class extends the functionability of ngl::Vec3, by Jon Macey's NGL
 
 #include <ngl/Vec3.h>
 #include "Ray.h"
@@ -30,4 +30,4 @@ public:
 };
 }
 
-#endif
+#endif // Vec.h

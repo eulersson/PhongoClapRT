@@ -1,3 +1,6 @@
+/// @file Material.cpp
+/// @brief Definitions for the Material class.
+
 #include "Material.h"
 #include <ngl/Colour.h>
 
@@ -73,8 +76,8 @@ ngl::Colour Material::objColour()
 
 ngl::Colour Material::objColour(ngl::Vec3 &_isect)
 {
-  // This will floor the z and x position of a plane and for each integer value modulus operation will be performed
-  // after that, depending on whether the remainder is 0 or 1 we apply one colour or another.
+  /* This will floor the z and x position of a plane and for each integer value modulus operation will be performed
+   * after that, depending on whether the remainder is 0 or 1 we apply one colour or another.*/
 
   if(m_isChecker)
   {

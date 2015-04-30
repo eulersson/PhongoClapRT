@@ -1,20 +1,17 @@
-//----------------------------------------------------------------------------------------------------------------------
 /// @file Film.cpp
-/// @brief Implementation files for Film class
-//----------------------------------------------------------------------------------------------------------------------
+/// @brief Definitions for the Film class.
 
 #include "Film.h"
 #include <ngl/Colour.h>
 
-Film::Film(int _w, int _h)
+Film::Film() {}
+
+Film::~Film() {}
+
+void Film::setDimensions(int _w, int _h)
 {
   m_width = _w;
   m_height = _h;
-}
-
-Film::~Film()
-{
-  // Deallocate all the pixel memory
 }
 
 void Film::writePixel(ngl::Colour _colour)
@@ -33,11 +30,10 @@ void Film::writeFile(const char* _image_name)
 
   for(unsigned int i = 0; i < m_pixels.size(); ++i)
   {
-    m_file << (unsigned char) (m_pixels.at(i).r * 255)  <<
-            (unsigned char) (m_pixels.at(i).g * 255) <<
-            (unsigned char) (m_pixels.at(i).b * 255);
+    m_file << (unsigned char) (m_pixels.at(i).r * 255) <<
+              (unsigned char) (m_pixels.at(i).g * 255) <<
+              (unsigned char) (m_pixels.at(i).b * 255);
   }
 
   m_file.close();
-
 }

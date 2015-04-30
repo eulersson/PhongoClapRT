@@ -1,80 +1,80 @@
 #ifndef _MATERIAL_H_
 #define _MATERIAL_H_
 
-#include <ngl/Colour.h>
-#include <cmath>
-#include "Ray.h"
-
 /// @file Material.h
 /// @author Ramon Blanquer
 /// @brief This will be used to return the colour when queried from the Shape derived classes.
+
+#include <ngl/Colour.h>
+#include <cmath>
+#include "Ray.h"
 
 class Material
 {
 public:
   /* METHODS */
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Material constructor
+  /// @brief Material constructor.
   // -------------------------------------------------------------------------------------------------------------------
   Material();
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Material constructor passing a colour, this will not be a checker material
-  /// @param[in] Colour of the object
+  /// @brief Material constructor passing a colour, this will not be a *checker* material.
+  /// @param[in] Colour of the object.
   // -------------------------------------------------------------------------------------------------------------------
   Material(ngl::Colour _c);
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Material constructor passing two colours will enable the checker shading
-  /// @param[in] _c Colours to be applied to checkerboard
+  /// @brief Material constructor passing two colours will enable the checker shading.
+  /// @param[in] _c Colours to be applied to checkerboard.
   // -------------------------------------------------------------------------------------------------------------------
   Material(ngl::Colour _c1, ngl::Colour _c2 );
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Returns whether the material is reflective or not
+  /// @brief Returns whether the material is reflective or not.
   // -------------------------------------------------------------------------------------------------------------------
   bool isReflective();
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Returns whether the material is reflective or not
+  /// @brief Returns whether the material is reflective or not.
   // -------------------------------------------------------------------------------------------------------------------
   bool isRefractive();
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Sets the specular modulator for the specular contribution in the Phong shader
+  /// @brief Sets the specular modulator for the specular contribution in the Phong shader.
   // -------------------------------------------------------------------------------------------------------------------
   void setHardness(float _highlight_size);
   //--------------------------------------------------------------------------------------------------------------------
   /// @brief Sets the reflection parameters
-  /// @param[in] _refl_intensity    (percentage, from 0 to 100) Reflectiveness of the object
-  /// @param[in] _diffuse_intensity (percentage, from 0 to 100) This value equals to 100 - _refl_intensity
+  /// @param[in] _refl_intensity    (percentage, from 0 to 100) Reflectiveness of the object.
+  /// @param[in] _diffuse_intensity (percentage, from 0 to 100) This value equals to `100 - _refl_intensity`.
   // -------------------------------------------------------------------------------------------------------------------
   void setReflection(float _refl_intensity, float _diffuse_intensity);
   //--------------------------------------------------------------------------------------------------------------------
   /// @brief Sets the refraction settings
   /// @param[in] _ior               Inex of refraction. You can look them up in a table or in the internet.
-  /// @param[in] _transparency      (percentage, from 0 to 100) How refractive the material is
-  /// @param[in] _diffuse_intensity (percentage, from 0 to 100) This value equals to 100 - _transparency
+  /// @param[in] _transparency      (percentage, from 0 to 100) How refractive the material is.
+  /// @param[in] _diffuse_intensity (percentage, from 0 to 100) This value equals to `100 - _transparency`.
   // -------------------------------------------------------------------------------------------------------------------
   void setRefraction(float _ior, float _transparency, float _diffuse_intensity);
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Returns amount of reflection
-  /// @return Amout of reflection
+  /// @brief Returns amount of reflection.
+  /// @return Amout of reflection.
   // -------------------------------------------------------------------------------------------------------------------
   float getReflIntensity();
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Returns index of refraction
-  /// @return Index of refraction
+  /// @brief Returns index of refraction.
+  /// @return Index of refraction.
   // -------------------------------------------------------------------------------------------------------------------
   float getIOR();
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Returns transparency
-  /// @return Transparency
+  /// @brief Returns transparency.
+  /// @return Transparency.
   // -------------------------------------------------------------------------------------------------------------------
   float getTransparency();
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Returns amount of diffuse contribution
-  /// @return Amount of diffuse
+  /// @brief Returns amount of diffuse contribution.
+  /// @return Amount of diffuse.
   // -------------------------------------------------------------------------------------------------------------------
   float getDiffuseIntensity();
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Returns the object colour
-  /// @return Colour of the object
+  /// @brief Returns the object colour.
+  /// @return Colour of the object.
   // -------------------------------------------------------------------------------------------------------------------
   ngl::Colour objColour();
   //--------------------------------------------------------------------------------------------------------------------
@@ -87,47 +87,46 @@ public:
 
   /* ATTRIBUTES */
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Tells whether the object is reflective
+  /// @brief Tells whether the object is reflective.
   // -------------------------------------------------------------------------------------------------------------------
   bool m_isReflective = false;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Specifies whether object is transparent
+  /// @brief Specifies whether object is transparent.
   // -------------------------------------------------------------------------------------------------------------------
   bool m_isRefractive = false;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Diffuse intensity, self-explanatory
+  /// @brief Diffuse intensity, self-explanatory.
   // -------------------------------------------------------------------------------------------------------------------
   float m_diffuse_intensity;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Amount of reflection
+  /// @brief Amount of reflection.
   // -------------------------------------------------------------------------------------------------------------------
   float m_refl_intensity;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Index of refraction
+  /// @brief Index of refraction.
   // -------------------------------------------------------------------------------------------------------------------
   float m_ior;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Amount of refraction, in other words 'transparency'
+  /// @brief Amount of refraction, in other words 'transparency'.
   // -------------------------------------------------------------------------------------------------------------------
   float m_transparency;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief This will drive the spreadness of the specular highlights
+  /// @brief This will drive the spreadness of the specular highlights.
   // -------------------------------------------------------------------------------------------------------------------
   float m_spec_hardness = 40;
 
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Colour of the object
+  /// @brief Colour of the object.
   // -------------------------------------------------------------------------------------------------------------------
   ngl::Colour m_colour1;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief For checker materials we will have colour1 and colour2, for plain ones just colour1
+  /// @brief For checker materials we will have colour1 and colour2, for plain ones just colour1.
   // -------------------------------------------------------------------------------------------------------------------
   ngl::Colour m_colour2;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Specifies whether it is checker or not
+  /// @brief Specifies whether it is checker or not.
   // -------------------------------------------------------------------------------------------------------------------
   bool m_isChecker;
-
 };
 
 #endif // Material.h

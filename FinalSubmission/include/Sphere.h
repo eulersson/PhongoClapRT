@@ -3,7 +3,7 @@
 
 /// @file Sphere.h
 /// @author Ramon Blanquer
-/// @brief A class for implicit sphere definitions
+/// @brief A class for implicit sphere definitions.
 
 #include <ngl/Vec3.h>
 #include <ngl/Colour.h>
@@ -18,14 +18,13 @@ namespace geo
 /// @brief Class that hold an implicit definition of a sphere through center and radius parameters. It also implements
 /// a method for finding intersections.
 /// @author Ramon Blanquer
-/// @todo Implement colour on the sphere
+/// @todo Implement colour on the sphere.
 //----------------------------------------------------------------------------------------------------------------------
 class Sphere : public Shape
 {
 public:
-
   //------------------------------------------------------------------------------------------------------------------
-  /// @brief Sphere ctor, by default it will instanciate a 1 unit radius sphere in the origin (0,0,0).
+  /// @brief Sphere constructor, by default it will instanciate a `1` unit radius sphere in the *origin* `(0,0,0)`.
   // -----------------------------------------------------------------------------------------------------------------
   Sphere() : m_center(ngl::Vec3(1,1,1)), m_radius(2.0f)
   {
@@ -50,7 +49,7 @@ public:
   //------------------------------------------------------------------------------------------------------------------
   /// @brief Destructor so that all memory is freed.
   //------------------------------------------------------------------------------------------------------------------
-  ~Sphere() {};
+  ~Sphere() {}
   //------------------------------------------------------------------------------------------------------------------
   // setters
   //------------------------------------------------------------------------------------------------------------------

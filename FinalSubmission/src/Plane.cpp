@@ -1,10 +1,7 @@
-//----------------------------------------------------------------------------------------------------------------------
 /// @file Plane.cpp
-/// @brief Implementation files for Plane class
-//----------------------------------------------------------------------------------------------------------------------
+/// @brief Implementation files for Plane class.
 
 #include <ngl/Vec3.h>
-
 #include "Plane.h"
 #include "Ray.h"
 #include "Material.h"
@@ -98,6 +95,4 @@ ngl::Colour Plane::getColour(ngl::Vec3 &_isect)
     return m_material->objColour();
   }
 }
-
-
 }

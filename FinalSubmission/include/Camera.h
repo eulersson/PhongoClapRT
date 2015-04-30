@@ -3,7 +3,7 @@
 
 /// @file Camera.h
 /// @author Ramon Blanquer
-/// @brief Implements camera functionability, no transformations, just explicit definition
+/// @brief Implements camera functionability, no transformations, just explicit definition.
 /// @todo Implement transformations.
 
 #include <ngl/Vec3.h>
@@ -11,50 +11,49 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 /// @class Camera
-/// @brief Holds camera functions which will be accessed by the Render class
+/// @brief Holds camera functions which will be accessed by the Render class.
 /// @author Ramon Blanquer
 //----------------------------------------------------------------------------------------------------------------------
 class Camera    
 {
 public:
-  //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Camera ctor when user doesn't specify the parameters these will be set as default
   // -------------------------------------------------------------------------------------------------------------------
-  Camera() : m_pos(ngl::Vec3(0,0,0)), m_dir(ngl::Vec3(0,0,1)), m_down(ngl::Vec3(0,1,0)), m_right(ngl::Vec3(1,0,0)) {}
-  //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Camera ctor that initialises the private interface with the data provided by the user
-  /// @param[in] m_pos   Camera position
-  /// @param[in] m_dir   Camera aim vector
-  /// @param[in] m_down  Down vector
-  /// @param[in] m_right Right vector
+  /// @brief Camera constructor.
   // -------------------------------------------------------------------------------------------------------------------
-  Camera(ngl::Vec3 _pos, ngl::Vec3 _dir, ngl::Vec3 _right, ngl::Vec3 _down) : m_pos(_pos), m_dir(_dir),  m_down(_down), m_right(_right) {}
+  Camera();
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Blank destructor
-  // -------------------------------------------------------------------------------------------------------------------
-  ~Camera() {}
+  /// @brief Blank destructor.
+  //-------------------------------------------------------------------------------------------------------------------
+  ~Camera();
+  //-------------------------------------------------------------------------------------------------------------------
+  /// @brief Initialises the camera settings.
+  /// @param[in] m_pos   Camera position.
+  /// @param[in] m_dir   Camera aim vector.
+  /// @param[in] m_down  Down vector.
+  /// @param[in] m_right Right vector.
+  //-------------------------------------------------------------------------------------------------------------------
+  void setParameters(ngl::Vec3 _pos, ngl::Vec3 _dir, ngl::Vec3 _right, ngl::Vec3 _down);
 
   // allows to Renderer class access to private interface
   friend class Renderer;
 
 private:
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Camera position vector
+  /// @brief Camera position vector.
   // -------------------------------------------------------------------------------------------------------------------
   ngl::Vec3 m_pos;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Camera aim vector
+  /// @brief Camera aim vector.
   // -------------------------------------------------------------------------------------------------------------------
   ngl::Vec3 m_dir;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Camera down vector
+  /// @brief Camera down vector.
   // -------------------------------------------------------------------------------------------------------------------
   ngl::Vec3 m_down;
   //--------------------------------------------------------------------------------------------------------------------
-  /// @brief Camera right vector
+  /// @brief Camera right vector.
   // -------------------------------------------------------------------------------------------------------------------
   ngl::Vec3 m_right;
-
 };
 
 #endif // Camera.h

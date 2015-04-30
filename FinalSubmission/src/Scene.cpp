@@ -1,12 +1,12 @@
-//----------------------------------------------------------------------------------------------------------------------
 /// @file Scene.cpp
-/// @brief Definitions for Scene class
-//----------------------------------------------------------------------------------------------------------------------
+/// @brief Definitions for Scene class.
 
 #include "Scene.h"
 
 Scene::Scene() {}
+
 Scene::Scene(std::string _n) : m_fileName(_n) {}
+
 Scene::~Scene() {}
 
 void Scene::addObject(geo::Shape *_object)

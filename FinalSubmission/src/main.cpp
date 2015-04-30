@@ -1,3 +1,6 @@
+/// @file main.cpp
+/// @brief The program starts here.
+
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
@@ -8,6 +11,7 @@
 #include <vector>
 #include <boost/tokenizer.hpp>
 
+#include "Singleton.h"
 #include "Parser.h"
 #include "Scene.h"
 #include "Film.h"
@@ -55,14 +59,8 @@ int main(int argc, char *argv[])
 
   std::vector<Light*> scene_lights;
   std::vector<geo::Shape*> scene_objects;
-  std::string text_file;
-
-
-    text_file = argv[1];
-
-
+  std::string text_file = argv[1];
   std::string image_name;
-
   Parser scene_parser(image_name,
                       text_file,
                       width,
@@ -77,63 +75,71 @@ int main(int argc, char *argv[])
                       anti_aliasing,
                       scene_lights,
                       scene_objects);
-  clock_t t;
-  t = clock();
-  std::cout << "Rendering...\n";
 
-
-  // ASSERTIONS and EXCEPTION HANDLING
   if(anti_aliasing < 1)
   {
     std::cout << "ERROR: Anti-aliasing should be 1 (no-antialising) or more." << std::endl;
     assert(anti_aliasing > 0);
   }
 
-  // initialise scene
-  Scene myScene;
+  // instanciate a scene object
+  Scene* myScene_instance = Singleton<Scene>::Instance();
 
-
+  // push all the object that the user specified into the scene
   for(unsigned int i = 0; i < scene_objects.size(); i++)
   {
-    myScene.addObject(scene_objects.at(i));
+    myScene_instance->addObject(scene_objects.at(i));
   }
 
+  // push all the lights specified by the user into the scene
   for(unsigned int i = 0; i < scene_lights.size(); i++)
   {
-    myScene.addLight(scene_lights.at(i));
+    myScene_instance->addLight(scene_lights.at(i));
   }
 
-  // initialise film
-  Film myFilm(width,height);
+  // instanciate film and set its dimensions
+  Film* myFilm_instance = Singleton<Film>::Instance();
+  myFilm_instance->setDimensions(width, height);
 
+  // calculate camera right and down vectors for generating the camera rays properly in the renderer
   ngl::Vec3 Y (0,1,0);
   ngl::Vec3 campos(camPosX,camPosY,camPosZ);
   ngl::Vec3 lookat(lookAtX,lookAtY,lookAtZ);
-
-  ngl::Vec3 diff_btw = campos - lookat;
-  diff_btw.normalize();
-
+  ngl::Vec3 diff_btw = campos - lookat; diff_btw.normalize();
   ngl::Vec3 camdir = -diff_btw;
   ngl::Vec3 camright = Y.cross(camdir);
   ngl::Vec3 camdown = camright.cross(camdir);
 
   // initialise camera
-  Camera myCamera(campos,camdir,camright,camdown);
+  Camera* myCamera_instance = Singleton<Camera>::Instance();
+  myCamera_instance->setParameters(campos,camdir,camright,camdown);
 
-  // initialise renderer and bind film and camera to it
-  Renderer renderer(myScene, myFilm, myCamera, max_depth, anti_aliasing, image_name);
+  // instanciate a renderer and bind film and camera to it
+  Renderer* renderer_instance = Singleton<Renderer>::Instance();
+  renderer_instance->bind(myScene_instance, myFilm_instance, myCamera_instance, max_depth, anti_aliasing, image_name);
+
+  // clock in so that we can now what the render time is after the render process takes place
+  clock_t t;
+  t = clock();
+  std::cout << "Rendering...\n";
 
   // start the rendering process
-  renderer.render();
+  renderer_instance->render();
 
+  // Calculate render time
   t = clock() - t;
   float seconds = (float)t/CLOCKS_PER_SEC;
   printOutTime(seconds);
 
+  // destroy the renderer, camera, film and scene
+  Singleton<Renderer>::destroyInstance();
+  Singleton<Camera>::destroyInstance();
+  Singleton<Film>::destroyInstance();
+  Singleton<Scene>::destroyInstance();
+
+  // Sucess message for the user and display the image
   std::cout << image_name << ".ppm has been written successfully.\n";
   std::string command = "display " + image_name + ".ppm";
-
-  // display the image
   system(command.c_str());
 
   return 0;
