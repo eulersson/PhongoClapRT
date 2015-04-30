@@ -25,12 +25,13 @@ void Film::writePixel(ngl::Colour _colour)
 
 void Film::writeFile(const char* _image_name)
 {
+
   m_file.open(_image_name, std::ios::out | std::ios::binary);
   m_file << "P6\n" << m_width << " " << m_height << "\n255\n";
 
   for(unsigned int i = 0; i < m_pixels.size(); ++i)
   {
-    m_file << (unsigned char) (m_pixels.at(i).r * 255) <<
+    m_file << (unsigned char) (m_pixels.at(i).r * 255)  <<
               (unsigned char) (m_pixels.at(i).g * 255) <<
               (unsigned char) (m_pixels.at(i).b * 255);
   }

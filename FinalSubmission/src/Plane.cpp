@@ -16,6 +16,8 @@ Plane::Plane() : m_distance(5.0f), m_n(ngl::Vec3(1,1,1))
   m_material = mat;
 }
 
+Plane::~Plane() {}
+
 Plane::Plane(float _distance, ngl::Vec3 _n, ngl::Colour _c)
 {
   m_distance = _distance;

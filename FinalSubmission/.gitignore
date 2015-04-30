@@ -1,5 +1,4 @@
-aidan
 *.o
 Makefile
-aidan.pro.user
-tete
+clap
+clap.pro.user*

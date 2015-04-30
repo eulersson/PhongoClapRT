@@ -393,7 +393,9 @@ void Renderer::render()
     }
   }
 
+
   // write the file into disk afterwards and display it
-  m_film->writeFile(m_image_name.c_str());
+  std::string imageFileName = m_image_name + ".ppm";
+  m_film->writeFile(imageFileName.c_str());
 
 }

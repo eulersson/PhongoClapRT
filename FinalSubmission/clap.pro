@@ -1,4 +1,4 @@
-TARGET = aidan
+TARGET = clap
 
 OBJECTS_DIR = obj
 
@@ -8,8 +8,7 @@ MOC_DIR = moc
 
 SOURCES += $$PWD/src/*.cpp
 
-HEADERS += $$PWD/include/*h \
-    src/Parser.h
+HEADERS += $$PWD/include/*h
 
 # Include form here
 
@@ -18,11 +17,9 @@ INCLUDEPATH += $$(HOME)/NGL/include/
 
 DESTDIR = ./
 
-OTHER_FILES += shaders/*.glsl \
-               ../InitialDesign/* \
+OTHER_FILES += ../InitialDesign/* \
                README.md \
                .gitignore \
-               ../example.cpp \
                ../Doxyfile \
 
 CONFIG += console

@@ -1,6 +1,6 @@
-NAME "example" DIMENSIONS ["200" "200"]
+NAME "colorful" DIMENSIONS ["500" "500"]
 CAMERA ["0", "1", "-2"] ["0", "0", "6"]
-DEPTH "4" ANTI-ALIASING "2"
+DEPTH "4" ANTI-ALIASING "4"
 
 Lights
 {
