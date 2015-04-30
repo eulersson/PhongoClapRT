@@ -92,113 +92,83 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Sphere.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Sphere_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//----------------------------------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"></span><span class="comment">//----------------------------------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;ngl/Vec3.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;ngl/Colour.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Shape_8h.html">Shape.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Sphere_8h.html">Sphere.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegeo.html">geo</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classgeo_1_1Sphere.html#a642f483e32861d773f9326b0ad0280cf">   14</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classgeo_1_1Sphere.html#a642f483e32861d773f9326b0ad0280cf">Sphere::getIntersection</a>(<a class="code" href="classgeo_1_1Ray.html">Ray</a>&amp; ray)</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">float</span> ray_origin_x = ray.<a class="code" href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">getOrigin</a>().m_x;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">float</span> ray_origin_y = ray.<a class="code" href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">getOrigin</a>().m_y;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">float</span> ray_origin_z = ray.<a class="code" href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">getOrigin</a>().m_z;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">float</span> ray_direction_x = ray.<a class="code" href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">getDirection</a>().m_x;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">float</span> ray_direction_y = ray.<a class="code" href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">getDirection</a>().m_y;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">float</span> ray_direction_z = ray.<a class="code" href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">getDirection</a>().m_z;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">float</span> sphere_center_x = this-&gt;<a class="code" href="classgeo_1_1Sphere.html#a9a3e14c0260b9ad6d163c8ec915bde73">getCenter</a>().m_x;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">float</span> sphere_center_y = this-&gt;<a class="code" href="classgeo_1_1Sphere.html#a9a3e14c0260b9ad6d163c8ec915bde73">getCenter</a>().m_y;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">float</span> sphere_center_z = this-&gt;<a class="code" href="classgeo_1_1Sphere.html#a9a3e14c0260b9ad6d163c8ec915bde73">getCenter</a>().m_z;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">//float a = 1;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">float</span> b = (2*(ray_origin_x - sphere_center_x)*ray_direction_x)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            + (2*(ray_origin_y - sphere_center_y)*ray_direction_y)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            + (2*(ray_origin_z - sphere_center_z)*ray_direction_z);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">float</span> c = pow(ray_origin_x - sphere_center_x, 2)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            + pow(ray_origin_y - sphere_center_y, 2)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            + pow(ray_origin_z - sphere_center_z, 2)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            - (this-&gt;<a class="code" href="classgeo_1_1Sphere.html#abf221511f860df6f62b455974b499e36">getRadius</a>()*this-&gt;<a class="code" href="classgeo_1_1Sphere.html#abf221511f860df6f62b455974b499e36">getRadius</a>());</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">float</span> discriminant = b*b - 4*c;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span>(discriminant &gt; 0)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="comment">//ray intersects sphere</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="comment">// first root</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="keywordtype">float</span> root_1 = ((-1*b - sqrt(discriminant))/2) - 0.000001;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="keywordflow">if</span> (root_1 &gt; 0)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> root_1;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">// second root is the smallest positive root</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">float</span> root_2 = ((sqrt(discriminant)-b)/2) - 0.000001;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> root_2;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">/*</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">    // from Wikipedia: http://en.wikipedia.org/wiki/Line%E2%80%93sphere_intersection</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">    ngl::Vec3 diff;</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">    diff = ray.getOrigin() - this-&gt;getCenter();</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">    //float a = 1;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">    float b = 2 * diff.dot(ray.getDirection());</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">    float c =   pow(ray.getOrigin().m_x - this-&gt;getCenter().m_x,2)</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">              + pow(ray.getOrigin().m_y - this-&gt;getCenter().m_y,2)</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">              + pow(ray.getOrigin().m_z - this-&gt;getCenter().m_z,2)</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">              - (this-&gt;getRadius()*this-&gt;getRadius());</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">    //float c = diff.dot(diff) - pow(this-&gt;getRadius(),2);</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">    float discriminant = b * b - 4 * c;</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">    if (discriminant &lt; 0) {return -1;}</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">    else if (discriminant == 0) {return - 0.5 * b;}</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">    else {return - 0.5 * (b - sqrt(discriminant));}*/</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classgeo_1_1Sphere.html#a5d843c6244d2d2ef248614b01801ed9a">   89</a></span>&#160;  ngl::Vec3 <a class="code" href="classgeo_1_1Sphere.html#a5d843c6244d2d2ef248614b01801ed9a">Sphere::getNormalAt</a>(ngl::Vec3 _p)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    ngl::Vec3 normal;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    normal = _p - <a class="code" href="classgeo_1_1Sphere.html#a5ad3ec42b247661ccc7dd552ddcb6b7a">m_center</a>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    normal.normalize();</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> normal;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="ttc" id="classgeo_1_1Sphere_html_a5d843c6244d2d2ef248614b01801ed9a"><div class="ttname"><a href="classgeo_1_1Sphere.html#a5d843c6244d2d2ef248614b01801ed9a">geo::Sphere::getNormalAt</a></div><div class="ttdeci">virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p)</div><div class="ttdoc">Calculates what the normal is at a given point of a sphere. It doesn&#39;t check whether it is on the sur...</div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8cpp_source.html#l00089">Sphere.cpp:89</a></div></div>
-<div class="ttc" id="classgeo_1_1Ray_html_ae6cc1338a6dadc275773fd040c0e63b6"><div class="ttname"><a href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">geo::Ray::getOrigin</a></div><div class="ttdeci">ngl::Vec3 getOrigin()</div><div class="ttdoc">Getter method for the origin. </div><div class="ttdef"><b>Definition:</b> <a href="Ray_8cpp_source.html#l00043">Ray.cpp:43</a></div></div>
-<div class="ttc" id="classgeo_1_1Sphere_html_a642f483e32861d773f9326b0ad0280cf"><div class="ttname"><a href="classgeo_1_1Sphere.html#a642f483e32861d773f9326b0ad0280cf">geo::Sphere::getIntersection</a></div><div class="ttdeci">virtual float getIntersection(geo::Ray &amp;_ray)</div><div class="ttdoc">Calculates the intersection of the passed ray with the sphere according to the parametric form of a r...</div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8cpp_source.html#l00014">Sphere.cpp:14</a></div></div>
+<a href="Sphere_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;ngl/Vec3.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;ngl/Colour.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Shape_8h.html">Shape.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Sphere_8h.html">Sphere.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegeo.html">geo</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classgeo_1_1Sphere.html#a642f483e32861d773f9326b0ad0280cf">   12</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classgeo_1_1Sphere.html#a642f483e32861d773f9326b0ad0280cf">Sphere::getIntersection</a>(<a class="code" href="classgeo_1_1Ray.html">Ray</a>&amp; ray)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">float</span> ray_origin_x = ray.<a class="code" href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">getOrigin</a>().m_x;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">float</span> ray_origin_y = ray.<a class="code" href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">getOrigin</a>().m_y;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">float</span> ray_origin_z = ray.<a class="code" href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">getOrigin</a>().m_z;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">float</span> ray_direction_x = ray.<a class="code" href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">getDirection</a>().m_x;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">float</span> ray_direction_y = ray.<a class="code" href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">getDirection</a>().m_y;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">float</span> ray_direction_z = ray.<a class="code" href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">getDirection</a>().m_z;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">float</span> sphere_center_x = this-&gt;<a class="code" href="classgeo_1_1Sphere.html#a9a3e14c0260b9ad6d163c8ec915bde73">getCenter</a>().m_x;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">float</span> sphere_center_y = this-&gt;<a class="code" href="classgeo_1_1Sphere.html#a9a3e14c0260b9ad6d163c8ec915bde73">getCenter</a>().m_y;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">float</span> sphere_center_z = this-&gt;<a class="code" href="classgeo_1_1Sphere.html#a9a3e14c0260b9ad6d163c8ec915bde73">getCenter</a>().m_z;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">//float a = 1;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">float</span> b = (2*(ray_origin_x - sphere_center_x)*ray_direction_x)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            + (2*(ray_origin_y - sphere_center_y)*ray_direction_y)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            + (2*(ray_origin_z - sphere_center_z)*ray_direction_z);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">float</span> c = pow(ray_origin_x - sphere_center_x, 2)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            + pow(ray_origin_y - sphere_center_y, 2)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            + pow(ray_origin_z - sphere_center_z, 2)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            - (this-&gt;<a class="code" href="classgeo_1_1Sphere.html#abf221511f860df6f62b455974b499e36">getRadius</a>()*this-&gt;<a class="code" href="classgeo_1_1Sphere.html#abf221511f860df6f62b455974b499e36">getRadius</a>());</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">float</span> discriminant = b*b - 4*c;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span>(discriminant &gt; 0)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <span class="comment">//ray intersects sphere</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="comment">// first root</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <span class="keywordtype">float</span> root_1 = ((-1*b - sqrt(discriminant))/2) - 0.000001;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="keywordflow">if</span> (root_1 &gt; 0)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> root_1;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// second root is the smallest positive root</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">float</span> root_2 = ((sqrt(discriminant)-b)/2) - 0.000001;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">return</span> root_2;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classgeo_1_1Sphere.html#a5d843c6244d2d2ef248614b01801ed9a">   61</a></span>&#160;  ngl::Vec3 <a class="code" href="classgeo_1_1Sphere.html#a5d843c6244d2d2ef248614b01801ed9a">Sphere::getNormalAt</a>(ngl::Vec3 _p)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    ngl::Vec3 normal;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    normal = _p - <a class="code" href="classgeo_1_1Sphere.html#a5ad3ec42b247661ccc7dd552ddcb6b7a">m_center</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    normal.normalize();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> normal;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="ttc" id="classgeo_1_1Sphere_html_a5d843c6244d2d2ef248614b01801ed9a"><div class="ttname"><a href="classgeo_1_1Sphere.html#a5d843c6244d2d2ef248614b01801ed9a">geo::Sphere::getNormalAt</a></div><div class="ttdeci">virtual ngl::Vec3 getNormalAt(ngl::Vec3 _p)</div><div class="ttdoc">Calculates what the normal is at a given point of a sphere. It doesn&#39;t check whether it is on the sur...</div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8cpp_source.html#l00061">Sphere.cpp:61</a></div></div>
+<div class="ttc" id="classgeo_1_1Ray_html_ae6cc1338a6dadc275773fd040c0e63b6"><div class="ttname"><a href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">geo::Ray::getOrigin</a></div><div class="ttdeci">ngl::Vec3 getOrigin()</div><div class="ttdoc">Getter method for the origin. </div><div class="ttdef"><b>Definition:</b> <a href="Ray_8cpp_source.html#l00039">Ray.cpp:39</a></div></div>
+<div class="ttc" id="classgeo_1_1Sphere_html_a642f483e32861d773f9326b0ad0280cf"><div class="ttname"><a href="classgeo_1_1Sphere.html#a642f483e32861d773f9326b0ad0280cf">geo::Sphere::getIntersection</a></div><div class="ttdeci">virtual float getIntersection(geo::Ray &amp;_ray)</div><div class="ttdoc">Calculates the intersection of the passed ray with the sphere according to the parametric form of a r...</div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8cpp_source.html#l00012">Sphere.cpp:12</a></div></div>
 <div class="ttc" id="Sphere_8h_html"><div class="ttname"><a href="Sphere_8h.html">Sphere.h</a></div><div class="ttdoc">A class for implicit sphere definitions. </div></div>
-<div class="ttc" id="classgeo_1_1Sphere_html_abf221511f860df6f62b455974b499e36"><div class="ttname"><a href="classgeo_1_1Sphere.html#abf221511f860df6f62b455974b499e36">geo::Sphere::getRadius</a></div><div class="ttdeci">float getRadius() const </div><div class="ttdoc">Returns radius of a sphere. </div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8h_source.html#l00072">Sphere.h:72</a></div></div>
+<div class="ttc" id="classgeo_1_1Sphere_html_abf221511f860df6f62b455974b499e36"><div class="ttname"><a href="classgeo_1_1Sphere.html#abf221511f860df6f62b455974b499e36">geo::Sphere::getRadius</a></div><div class="ttdeci">float getRadius() const </div><div class="ttdoc">Returns radius of a sphere. </div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8h_source.html#l00071">Sphere.h:71</a></div></div>
 <div class="ttc" id="classgeo_1_1Ray_html"><div class="ttname"><a href="classgeo_1_1Ray.html">geo::Ray</a></div><div class="ttdef"><b>Definition:</b> <a href="Ray_8h_source.html#l00017">Ray.h:17</a></div></div>
-<div class="ttc" id="classgeo_1_1Sphere_html_a9a3e14c0260b9ad6d163c8ec915bde73"><div class="ttname"><a href="classgeo_1_1Sphere.html#a9a3e14c0260b9ad6d163c8ec915bde73">geo::Sphere::getCenter</a></div><div class="ttdeci">ngl::Vec3 getCenter() const </div><div class="ttdoc">Returns center of a sphere. </div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8h_source.html#l00077">Sphere.h:77</a></div></div>
-<div class="ttc" id="classgeo_1_1Sphere_html_a5ad3ec42b247661ccc7dd552ddcb6b7a"><div class="ttname"><a href="classgeo_1_1Sphere.html#a5ad3ec42b247661ccc7dd552ddcb6b7a">geo::Sphere::m_center</a></div><div class="ttdeci">ngl::Vec3 m_center</div><div class="ttdoc">Center of the sphere, in world space coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8h_source.html#l00111">Sphere.h:111</a></div></div>
+<div class="ttc" id="classgeo_1_1Sphere_html_a9a3e14c0260b9ad6d163c8ec915bde73"><div class="ttname"><a href="classgeo_1_1Sphere.html#a9a3e14c0260b9ad6d163c8ec915bde73">geo::Sphere::getCenter</a></div><div class="ttdeci">ngl::Vec3 getCenter() const </div><div class="ttdoc">Returns center of a sphere. </div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8h_source.html#l00076">Sphere.h:76</a></div></div>
+<div class="ttc" id="classgeo_1_1Sphere_html_a5ad3ec42b247661ccc7dd552ddcb6b7a"><div class="ttname"><a href="classgeo_1_1Sphere.html#a5ad3ec42b247661ccc7dd552ddcb6b7a">geo::Sphere::m_center</a></div><div class="ttdeci">ngl::Vec3 m_center</div><div class="ttdoc">Center of the sphere, in world space coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="Sphere_8h_source.html#l00110">Sphere.h:110</a></div></div>
 <div class="ttc" id="Shape_8h_html"><div class="ttname"><a href="Shape_8h.html">Shape.h</a></div></div>
-<div class="ttc" id="namespacegeo_html"><div class="ttname"><a href="namespacegeo.html">geo</a></div><div class="ttdef"><b>Definition:</b> <a href="Plane_8cpp_source.html#l00012">Plane.cpp:12</a></div></div>
-<div class="ttc" id="classgeo_1_1Ray_html_a734afeb203f664bfb0653ad9e0491f06"><div class="ttname"><a href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">geo::Ray::getDirection</a></div><div class="ttdeci">ngl::Vec3 getDirection()</div><div class="ttdoc">Getter method for the direction. </div><div class="ttdef"><b>Definition:</b> <a href="Ray_8cpp_source.html#l00045">Ray.cpp:45</a></div></div>
+<div class="ttc" id="namespacegeo_html"><div class="ttname"><a href="namespacegeo.html">geo</a></div><div class="ttdef"><b>Definition:</b> <a href="Plane_8cpp_source.html#l00009">Plane.cpp:9</a></div></div>
+<div class="ttc" id="classgeo_1_1Ray_html_a734afeb203f664bfb0653ad9e0491f06"><div class="ttname"><a href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">geo::Ray::getDirection</a></div><div class="ttdeci">ngl::Vec3 getDirection()</div><div class="ttdoc">Getter method for the direction. </div><div class="ttdef"><b>Definition:</b> <a href="Ray_8cpp_source.html#l00044">Ray.cpp:44</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

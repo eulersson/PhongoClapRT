@@ -6,9 +6,9 @@
 <area shape="rect" id="node7" href="$Shape_8h.html" title="FinalSubmission/include\l/Shape.h" alt="" coords="652,187,815,229"/>
 <area shape="rect" id="node11" href="$Plane_8h.html" title="Implements the interface for creating a plane shape and the methods for finding its intersections..." alt="" coords="169,278,332,319"/>
 <area shape="rect" id="node12" href="$Sphere_8h.html" title="A class for implicit sphere definitions. " alt="" coords="407,278,569,319"/>
-<area shape="rect" id="node16" href="$Vec_8h.html" title="This class extends the functionability of ngl::Vec3. " alt="" coords="1343,97,1505,138"/>
-<area shape="rect" id="node6" href="$Material_8cpp.html" title="FinalSubmission/src\l/Material.cpp" alt="" coords="487,187,627,229"/>
-<area shape="rect" id="node8" href="$main_8cpp.html" title="FinalSubmission/src\l/main.cpp" alt="" coords="458,459,597,501"/>
+<area shape="rect" id="node16" href="$Vec_8h.html" title="Definitions for the extended ngl::Vec3. " alt="" coords="1343,97,1505,138"/>
+<area shape="rect" id="node6" href="$Material_8cpp.html" title="Definitions for the Material class. " alt="" coords="487,187,627,229"/>
+<area shape="rect" id="node8" href="$main_8cpp.html" title="The program starts here. " alt="" coords="458,459,597,501"/>
 <area shape="rect" id="node9" href="$Sphere_8cpp.html" title="implementation files for Sphere class " alt="" coords="458,369,597,410"/>
 <area shape="rect" id="node10" href="$Parser_8h.html" title="Parses a text file that user passes as an argument when executing the program. " alt="" coords="220,369,383,410"/>
 <area shape="rect" id="node13" href="$Scene_8h.html" title="This hold all the objects and lights that the parser interpred and later pushed into the scene..." alt="" coords="652,278,815,319"/>

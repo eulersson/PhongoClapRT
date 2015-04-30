@@ -1,10 +1,10 @@
 <map id="FinalSubmission/include/Material.h" name="FinalSubmission/include/Material.h">
-<area shape="rect" id="node2" href="$Material_8cpp.html" title="FinalSubmission/src\l/Material.cpp" alt="" coords="5,97,144,138"/>
+<area shape="rect" id="node2" href="$Material_8cpp.html" title="Definitions for the Material class. " alt="" coords="5,97,144,138"/>
 <area shape="rect" id="node3" href="$Plane_8cpp.html" title="Implementation files for Plane class. " alt="" coords="55,278,195,319"/>
 <area shape="rect" id="node4" href="$Renderer_8cpp.html" title="Where all the calculations happen. " alt="" coords="902,369,1041,410"/>
 <area shape="rect" id="node5" href="$Shape_8h.html" title="FinalSubmission/include\l/Shape.h" alt="" coords="389,97,552,138"/>
 <area shape="rect" id="node10" href="$Sphere_8h.html" title="A class for implicit sphere definitions. " alt="" coords="508,187,671,229"/>
-<area shape="rect" id="node6" href="$main_8cpp.html" title="FinalSubmission/src\l/main.cpp" alt="" coords="449,369,588,410"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title="The program starts here. " alt="" coords="449,369,588,410"/>
 <area shape="rect" id="node7" href="$Sphere_8cpp.html" title="implementation files for Sphere class " alt="" coords="854,278,993,319"/>
 <area shape="rect" id="node8" href="$Parser_8h.html" title="Parses a text file that user passes as an argument when executing the program. " alt="" coords="379,278,541,319"/>
 <area shape="rect" id="node9" href="$Plane_8h.html" title="Implements the interface for creating a plane shape and the methods for finding its intersections..." alt="" coords="271,187,433,229"/>

@@ -99,7 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Inherits from shape. Implements functionability for plane shape and its materials and the ray-plane intersections algorithms.  
+<p>Inherits from shape. Implements functionability for plane shape and its materials. and the ray-plane intersections algorithms.  
  <a href="classgeo_1_1Plane.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Plane_8h_source.html">Plane.h</a>&gt;</code></p>
@@ -108,7 +108,7 @@ Inheritance diagram for geo::Plane:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgeo_1_1Plane__inherit__graph.png" border="0" usemap="#geo_1_1Plane_inherit__map" alt="Inheritance graph"/></div>
 <map name="geo_1_1Plane_inherit__map" id="geo_1_1Plane_inherit__map">
-<area shape="rect" id="node2" href="classgeo_1_1Shape.html" title="Semi abstract class with virtual methods that holds all the calls for getting intersections, getting normals, also for specifying the properties of the material that will be hold by the Material member of this class. " alt="" coords="5,6,133,215"/>
+<area shape="rect" id="node2" href="classgeo_1_1Shape.html" title="Semi abstract class with virtual methods that holds all the calls for getting intersections, getting normals, also for specifying the properties of the material that will be hold by the Material member of this class. " alt="" coords="5,6,133,245"/>
 </map>
 </div>
 <div class="dynheader">
@@ -116,7 +116,7 @@ Collaboration diagram for geo::Plane:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgeo_1_1Plane__coll__graph.png" border="0" usemap="#geo_1_1Plane_coll__map" alt="Collaboration graph"/></div>
 <map name="geo_1_1Plane_coll__map" id="geo_1_1Plane_coll__map">
-<area shape="rect" id="node2" href="classgeo_1_1Shape.html" title="Semi abstract class with virtual methods that holds all the calls for getting intersections, getting normals, also for specifying the properties of the material that will be hold by the Material member of this class. " alt="" coords="17,469,145,664"/>
+<area shape="rect" id="node2" href="classgeo_1_1Shape.html" title="Semi abstract class with virtual methods that holds all the calls for getting intersections, getting normals, also for specifying the properties of the material that will be hold by the Material member of this class. " alt="" coords="17,469,145,693"/>
 <area shape="rect" id="node3" href="classMaterial.html" title="{Material\n|+ m_isReflective\l+ m_isRefractive\l+ m_diffuse_intensity\l+ m_refl_intensity\l+ m_ior\l+ m_transparency\l+ m_spec_hardness\l+ m_colour1\l+ m_colour2\l+ m_isChecker\l|+ Material()\l+ Material()\l+ Material()\l+ isReflective()\l+ isRefractive()\l+ setHardness()\l+ setReflection()\l+ setRefraction()\l+ getReflIntensity()\l+ getIOR()\l+ getTransparency()\l+ getDiffuseIntensity()\l+ objColour()\l+ objColour()\l}" alt="" coords="5,5,157,405"/>
 </map>
 </div>
@@ -126,6 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a464ebabb9d4538ef8b5ecda054dc9b99"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeo_1_1Plane.html#a464ebabb9d4538ef8b5ecda054dc9b99">Plane</a> ()</td></tr>
 <tr class="memdesc:a464ebabb9d4538ef8b5ecda054dc9b99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the plane. If no arguments passed it will be initialised with distance(5) n(1,1,1)  <a href="#a464ebabb9d4538ef8b5ecda054dc9b99">More...</a><br /></td></tr>
 <tr class="separator:a464ebabb9d4538ef8b5ecda054dc9b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc494667a0bc495dd742b29562319f9c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeo_1_1Plane.html#afc494667a0bc495dd742b29562319f9c">~Plane</a> ()</td></tr>
+<tr class="memdesc:afc494667a0bc495dd742b29562319f9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="#afc494667a0bc495dd742b29562319f9c">More...</a><br /></td></tr>
+<tr class="separator:afc494667a0bc495dd742b29562319f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0f8ceccd10bd8eef3eeeb31a0c07b7f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeo_1_1Plane.html#ae0f8ceccd10bd8eef3eeeb31a0c07b7f">Plane</a> (float _distance, ngl::Vec3 _n, ngl::Colour _c)</td></tr>
 <tr class="memdesc:ae0f8ceccd10bd8eef3eeeb31a0c07b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor reads some arguments and pass them to the private interface.  <a href="#ae0f8ceccd10bd8eef3eeeb31a0c07b7f">More...</a><br /></td></tr>
 <tr class="separator:ae0f8ceccd10bd8eef3eeeb31a0c07b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,6 +148,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0b311e0760489418834093e38eb59a2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the colour for checker-board planes. This will imply passing an intersection point in world space so that we can make the right calculations to see whether we must return the colour1 or colour2.  <a href="#a0b311e0760489418834093e38eb59a2b">More...</a><br /></td></tr>
 <tr class="separator:a0b311e0760489418834093e38eb59a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgeo_1_1Shape"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgeo_1_1Shape')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgeo_1_1Shape.html">geo::Shape</a></td></tr>
+<tr class="memitem:a8094a10b0bbca152bd8d0da08f255c9e inherit pub_methods_classgeo_1_1Shape"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeo_1_1Shape.html#a8094a10b0bbca152bd8d0da08f255c9e">Shape</a> ()</td></tr>
+<tr class="memdesc:a8094a10b0bbca152bd8d0da08f255c9e inherit pub_methods_classgeo_1_1Shape"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a8094a10b0bbca152bd8d0da08f255c9e">More...</a><br /></td></tr>
+<tr class="separator:a8094a10b0bbca152bd8d0da08f255c9e inherit pub_methods_classgeo_1_1Shape"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e857e24797a6007ddeb8fb280ff7366 inherit pub_methods_classgeo_1_1Shape"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeo_1_1Shape.html#a1e857e24797a6007ddeb8fb280ff7366">~Shape</a> ()</td></tr>
+<tr class="memdesc:a1e857e24797a6007ddeb8fb280ff7366 inherit pub_methods_classgeo_1_1Shape"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees any memory grabbed from the heap.  <a href="#a1e857e24797a6007ddeb8fb280ff7366">More...</a><br /></td></tr>
+<tr class="separator:a1e857e24797a6007ddeb8fb280ff7366 inherit pub_methods_classgeo_1_1Shape"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6147d2e8b15e2155bb14f1cf2ea1ee9 inherit pub_methods_classgeo_1_1Shape"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeo_1_1Shape.html#ae6147d2e8b15e2155bb14f1cf2ea1ee9">hasRefraction</a> (float _ior, float _transparency, float _diffuse_intensity)</td></tr>
 <tr class="memdesc:ae6147d2e8b15e2155bb14f1cf2ea1ee9 inherit pub_methods_classgeo_1_1Shape"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameters related to refraction, this will be given to the <a class="el" href="classMaterial.html">Material</a> class.  <a href="#ae6147d2e8b15e2155bb14f1cf2ea1ee9">More...</a><br /></td></tr>
 <tr class="separator:ae6147d2e8b15e2155bb14f1cf2ea1ee9 inherit pub_methods_classgeo_1_1Shape"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,9 +190,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:aa934349cbb3362c7027daf3ceff58305 inherit pro_attribs_classgeo_1_1Shape"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Inherits from shape. Implements functionability for plane shape and its materials and the ray-plane intersections algorithms. </p>
+<div class="textblock"><p>Inherits from shape. Implements functionability for plane shape and its materials. and the ray-plane intersections algorithms. </p>
 <dl class="section author"><dt>Author</dt><dd>Ramon Blanquer </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Implement new ways to instanciate a plane, ie specifying three points, or one point and a normal </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Implement new ways to instanciate a plane, ie specifying three points, or one point and a normal. </dd></dl>
 
 <p>Definition at line <a class="el" href="Plane_8h_source.html#l00022">22</a> of file <a class="el" href="Plane_8h_source.html">Plane.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -202,23 +211,40 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Default constructor for the plane. If no arguments passed it will be initialised with distance(5) n(1,1,1) </p>
 
-<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00014">14</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00011">11</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
 
-<p>References <a class="el" href="Shape_8h_source.html#l00084">geo::Shape::m_colour</a>, <a class="el" href="Shape_8h_source.html#l00088">geo::Shape::m_material</a>, and <a class="el" href="Shape_8h_source.html#l00080">geo::Shape::m_type</a>.</p>
-<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;             : <a class="code" href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">m_distance</a>(5.0f), <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>(ngl::Vec3(1,1,1))</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">m_colour</a> = ngl::Colour(1,0,0);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">m_type</a>=<span class="charliteral">&#39;p&#39;</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="classMaterial.html">Material</a>* mat = <span class="keyword">new</span> <a class="code" href="classMaterial.html">Material</a>(ngl::Colour(1,1,1,1), ngl::Colour(0,0,0,1));</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a> = mat;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
-<div class="ttc" id="classgeo_1_1Plane_html_a9958deb77202973586886a5a9727228e"><div class="ttname"><a href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">geo::Plane::m_distance</a></div><div class="ttdeci">float m_distance</div><div class="ttdoc">Distance from the origin the plane is located at. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00072">Plane.h:72</a></div></div>
-<div class="ttc" id="classgeo_1_1Shape_html_a442a6025ca9387f394f3a1378a6b4dfc"><div class="ttname"><a href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">geo::Shape::m_colour</a></div><div class="ttdeci">ngl::Colour m_colour</div><div class="ttdoc">Colour of the shape. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00084">Shape.h:84</a></div></div>
+<p>References <a class="el" href="Shape_8h_source.html#l00092">geo::Shape::m_colour</a>, <a class="el" href="Shape_8h_source.html#l00096">geo::Shape::m_material</a>, and <a class="el" href="Shape_8h_source.html#l00088">geo::Shape::m_type</a>.</p>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;             : <a class="code" href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">m_distance</a>(5.0f), <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>(ngl::Vec3(1,1,1))</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">m_colour</a> = ngl::Colour(1,0,0);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">m_type</a>=<span class="charliteral">&#39;p&#39;</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="classMaterial.html">Material</a>* mat = <span class="keyword">new</span> <a class="code" href="classMaterial.html">Material</a>(ngl::Colour(1,1,1,1), ngl::Colour(0,0,0,1));</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a> = mat;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00096">Shape.h:96</a></div></div>
+<div class="ttc" id="classgeo_1_1Plane_html_a9958deb77202973586886a5a9727228e"><div class="ttname"><a href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">geo::Plane::m_distance</a></div><div class="ttdeci">float m_distance</div><div class="ttdoc">Distance from the origin the plane is located at. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00076">Plane.h:76</a></div></div>
+<div class="ttc" id="classgeo_1_1Shape_html_a442a6025ca9387f394f3a1378a6b4dfc"><div class="ttname"><a href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">geo::Shape::m_colour</a></div><div class="ttdeci">ngl::Colour m_colour</div><div class="ttdoc">Colour of the shape. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00092">Shape.h:92</a></div></div>
 <div class="ttc" id="classMaterial_html"><div class="ttname"><a href="classMaterial.html">Material</a></div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00012">Material.h:12</a></div></div>
-<div class="ttc" id="classgeo_1_1Shape_html_af9314bc313866a3e3397b9975e3c41d7"><div class="ttname"><a href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">geo::Shape::m_type</a></div><div class="ttdeci">char m_type</div><div class="ttdoc">Type of geometric object it is. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00080">Shape.h:80</a></div></div>
-<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00076">Plane.h:76</a></div></div>
+<div class="ttc" id="classgeo_1_1Shape_html_af9314bc313866a3e3397b9975e3c41d7"><div class="ttname"><a href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">geo::Shape::m_type</a></div><div class="ttdeci">char m_type</div><div class="ttdoc">Type of geometric object it is. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
+<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00080">Plane.h:80</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="afc494667a0bc495dd742b29562319f9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">geo::Plane::~Plane </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default destructor. </p>
+
 </div>
 </div>
 <a class="anchor" id="ae0f8ceccd10bd8eef3eeeb31a0c07b7f"></a>
@@ -261,33 +287,33 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00022">22</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00019">19</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
 
-<p>References <a class="el" href="Shape_8h_source.html#l00084">geo::Shape::m_colour</a>, <a class="el" href="Plane_8h_source.html#l00072">m_distance</a>, <a class="el" href="Shape_8h_source.html#l00088">geo::Shape::m_material</a>, <a class="el" href="Plane_8h_source.html#l00076">m_n</a>, and <a class="el" href="Shape_8h_source.html#l00080">geo::Shape::m_type</a>.</p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <a class="code" href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">m_distance</a> = _distance;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">m_colour</a> = _c;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">m_type</a>=<span class="charliteral">&#39;p&#39;</span>;</div>
+<p>References <a class="el" href="Shape_8h_source.html#l00092">geo::Shape::m_colour</a>, <a class="el" href="Plane_8h_source.html#l00076">m_distance</a>, <a class="el" href="Shape_8h_source.html#l00096">geo::Shape::m_material</a>, <a class="el" href="Plane_8h_source.html#l00080">m_n</a>, and <a class="el" href="Shape_8h_source.html#l00088">geo::Shape::m_type</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">m_distance</a> = _distance;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">m_colour</a> = _c;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">m_type</a>=<span class="charliteral">&#39;p&#39;</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="classMaterial.html">Material</a>* mat = <span class="keyword">new</span> <a class="code" href="classMaterial.html">Material</a>(_c);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a> = mat;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="classMaterial.html">Material</a>* mat = <span class="keyword">new</span> <a class="code" href="classMaterial.html">Material</a>(_c);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a> = mat;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordflow">if</span>(_n.length() &gt; 1.01 || _n.length() &lt; 0.99)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    _n.normalize();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a> = _n;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a> = _n;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
-<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
-<div class="ttc" id="classgeo_1_1Plane_html_a9958deb77202973586886a5a9727228e"><div class="ttname"><a href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">geo::Plane::m_distance</a></div><div class="ttdeci">float m_distance</div><div class="ttdoc">Distance from the origin the plane is located at. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00072">Plane.h:72</a></div></div>
-<div class="ttc" id="classgeo_1_1Shape_html_a442a6025ca9387f394f3a1378a6b4dfc"><div class="ttname"><a href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">geo::Shape::m_colour</a></div><div class="ttdeci">ngl::Colour m_colour</div><div class="ttdoc">Colour of the shape. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00084">Shape.h:84</a></div></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordflow">if</span>(_n.length() &gt; 1.01 || _n.length() &lt; 0.99)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    _n.normalize();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a> = _n;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a> = _n;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00096">Shape.h:96</a></div></div>
+<div class="ttc" id="classgeo_1_1Plane_html_a9958deb77202973586886a5a9727228e"><div class="ttname"><a href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">geo::Plane::m_distance</a></div><div class="ttdeci">float m_distance</div><div class="ttdoc">Distance from the origin the plane is located at. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00076">Plane.h:76</a></div></div>
+<div class="ttc" id="classgeo_1_1Shape_html_a442a6025ca9387f394f3a1378a6b4dfc"><div class="ttname"><a href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">geo::Shape::m_colour</a></div><div class="ttdeci">ngl::Colour m_colour</div><div class="ttdoc">Colour of the shape. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00092">Shape.h:92</a></div></div>
 <div class="ttc" id="classMaterial_html"><div class="ttname"><a href="classMaterial.html">Material</a></div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00012">Material.h:12</a></div></div>
-<div class="ttc" id="classgeo_1_1Shape_html_af9314bc313866a3e3397b9975e3c41d7"><div class="ttname"><a href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">geo::Shape::m_type</a></div><div class="ttdeci">char m_type</div><div class="ttdoc">Type of geometric object it is. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00080">Shape.h:80</a></div></div>
-<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00076">Plane.h:76</a></div></div>
+<div class="ttc" id="classgeo_1_1Shape_html_af9314bc313866a3e3397b9975e3c41d7"><div class="ttname"><a href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">geo::Shape::m_type</a></div><div class="ttdeci">char m_type</div><div class="ttdoc">Type of geometric object it is. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
+<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00080">Plane.h:80</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,33 +363,33 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00042">42</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00039">39</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
 
-<p>References <a class="el" href="Shape_8h_source.html#l00084">geo::Shape::m_colour</a>, <a class="el" href="Plane_8h_source.html#l00072">m_distance</a>, <a class="el" href="Shape_8h_source.html#l00088">geo::Shape::m_material</a>, <a class="el" href="Plane_8h_source.html#l00076">m_n</a>, and <a class="el" href="Shape_8h_source.html#l00080">geo::Shape::m_type</a>.</p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">m_distance</a> = _distance;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">m_colour</a> = _c1;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">m_type</a>=<span class="charliteral">&#39;p&#39;</span>;</div>
+<p>References <a class="el" href="Shape_8h_source.html#l00092">geo::Shape::m_colour</a>, <a class="el" href="Plane_8h_source.html#l00076">m_distance</a>, <a class="el" href="Shape_8h_source.html#l00096">geo::Shape::m_material</a>, <a class="el" href="Plane_8h_source.html#l00080">m_n</a>, and <a class="el" href="Shape_8h_source.html#l00088">geo::Shape::m_type</a>.</p>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">m_distance</a> = _distance;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">m_colour</a> = _c1;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">m_type</a>=<span class="charliteral">&#39;p&#39;</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classMaterial.html">Material</a>* mat = <span class="keyword">new</span> <a class="code" href="classMaterial.html">Material</a>(_c1, _c2);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a> = mat;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classMaterial.html">Material</a>* mat = <span class="keyword">new</span> <a class="code" href="classMaterial.html">Material</a>(_c1, _c2);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a> = mat;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordflow">if</span>(_n.length() &gt; 1.01 || _n.length() &lt; 0.99)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    _n.normalize();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a> = _n;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a> = _n;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
-<div class="ttc" id="classgeo_1_1Plane_html_a9958deb77202973586886a5a9727228e"><div class="ttname"><a href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">geo::Plane::m_distance</a></div><div class="ttdeci">float m_distance</div><div class="ttdoc">Distance from the origin the plane is located at. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00072">Plane.h:72</a></div></div>
-<div class="ttc" id="classgeo_1_1Shape_html_a442a6025ca9387f394f3a1378a6b4dfc"><div class="ttname"><a href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">geo::Shape::m_colour</a></div><div class="ttdeci">ngl::Colour m_colour</div><div class="ttdoc">Colour of the shape. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00084">Shape.h:84</a></div></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">if</span>(_n.length() &gt; 1.01 || _n.length() &lt; 0.99)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    _n.normalize();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a> = _n;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a> = _n;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00096">Shape.h:96</a></div></div>
+<div class="ttc" id="classgeo_1_1Plane_html_a9958deb77202973586886a5a9727228e"><div class="ttname"><a href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">geo::Plane::m_distance</a></div><div class="ttdeci">float m_distance</div><div class="ttdoc">Distance from the origin the plane is located at. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00076">Plane.h:76</a></div></div>
+<div class="ttc" id="classgeo_1_1Shape_html_a442a6025ca9387f394f3a1378a6b4dfc"><div class="ttname"><a href="classgeo_1_1Shape.html#a442a6025ca9387f394f3a1378a6b4dfc">geo::Shape::m_colour</a></div><div class="ttdeci">ngl::Colour m_colour</div><div class="ttdoc">Colour of the shape. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00092">Shape.h:92</a></div></div>
 <div class="ttc" id="classMaterial_html"><div class="ttname"><a href="classMaterial.html">Material</a></div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00012">Material.h:12</a></div></div>
-<div class="ttc" id="classgeo_1_1Shape_html_af9314bc313866a3e3397b9975e3c41d7"><div class="ttname"><a href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">geo::Shape::m_type</a></div><div class="ttdeci">char m_type</div><div class="ttdoc">Type of geometric object it is. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00080">Shape.h:80</a></div></div>
-<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00076">Plane.h:76</a></div></div>
+<div class="ttc" id="classgeo_1_1Shape_html_af9314bc313866a3e3397b9975e3c41d7"><div class="ttname"><a href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">geo::Shape::m_type</a></div><div class="ttdeci">char m_type</div><div class="ttdoc">Type of geometric object it is. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
+<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00080">Plane.h:80</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -394,14 +420,14 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classgeo_1_1Shape.html#a40c25b549262c8547dda55c48cb519c0">geo::Shape</a>.</p>
 
-<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00085">85</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00082">82</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
 
-<p>References <a class="el" href="Shape_8h_source.html#l00088">geo::Shape::m_material</a>, and <a class="el" href="Material_8cpp_source.html#l00069">Material::objColour()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">objColour</a>();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
-<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
-<div class="ttc" id="classMaterial_html_a51cb0470f5b22e399e9c7921efe38083"><div class="ttname"><a href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a></div><div class="ttdeci">ngl::Colour objColour()</div><div class="ttdoc">Returns the object colour. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00069">Material.cpp:69</a></div></div>
+<p>References <a class="el" href="Shape_8h_source.html#l00096">geo::Shape::m_material</a>, and <a class="el" href="Material_8cpp_source.html#l00072">Material::objColour()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">objColour</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00096">Shape.h:96</a></div></div>
+<div class="ttc" id="classMaterial_html_a51cb0470f5b22e399e9c7921efe38083"><div class="ttname"><a href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a></div><div class="ttdeci">ngl::Colour objColour()</div><div class="ttdoc">Returns the object colour. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00072">Material.cpp:72</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -448,21 +474,21 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classgeo_1_1Shape.html#a78dc047060139fe44d90f613c4a638aa">geo::Shape</a>.</p>
 
-<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00090">90</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00087">87</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
 
-<p>References <a class="el" href="Material_8h_source.html#l00129">Material::m_isChecker</a>, <a class="el" href="Shape_8h_source.html#l00088">geo::Shape::m_material</a>, and <a class="el" href="Material_8cpp_source.html#l00069">Material::objColour()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;{</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a54cff9397560683ffde5280ea630e852">m_isChecker</a>)</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">objColour</a>(_isect);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">objColour</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
-<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
-<div class="ttc" id="classMaterial_html_a51cb0470f5b22e399e9c7921efe38083"><div class="ttname"><a href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a></div><div class="ttdeci">ngl::Colour objColour()</div><div class="ttdoc">Returns the object colour. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00069">Material.cpp:69</a></div></div>
+<p>References <a class="el" href="Material_8h_source.html#l00129">Material::m_isChecker</a>, <a class="el" href="Shape_8h_source.html#l00096">geo::Shape::m_material</a>, and <a class="el" href="Material_8cpp_source.html#l00072">Material::objColour()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a54cff9397560683ffde5280ea630e852">m_isChecker</a>)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">objColour</a>(_isect);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">objColour</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00096">Shape.h:96</a></div></div>
+<div class="ttc" id="classMaterial_html_a51cb0470f5b22e399e9c7921efe38083"><div class="ttname"><a href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a></div><div class="ttdeci">ngl::Colour objColour()</div><div class="ttdoc">Returns the object colour. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00072">Material.cpp:72</a></div></div>
 <div class="ttc" id="classMaterial_html_a54cff9397560683ffde5280ea630e852"><div class="ttname"><a href="classMaterial.html#a54cff9397560683ffde5280ea630e852">Material::m_isChecker</a></div><div class="ttdeci">bool m_isChecker</div><div class="ttdoc">Specifies whether it is checker or not. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00129">Material.h:129</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -506,33 +532,33 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The 't' parameter from the R = O + t * d equation form of the line, thus the intersection point. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The **'t'** parameter from the <code>R = O + t * d</code> equation form of the line, thus the intersection point. </dd></dl>
 
 <p>Implements <a class="el" href="classgeo_1_1Shape.html#af590f7b354e353f4760cb2779e693b1f">geo::Shape</a>.</p>
 
-<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00062">62</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00059">59</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
 
-<p>References <a class="el" href="Ray_8cpp_source.html#l00045">geo::Ray::getDirection()</a>, <a class="el" href="Ray_8cpp_source.html#l00043">geo::Ray::getOrigin()</a>, <a class="el" href="Plane_8h_source.html#l00072">m_distance</a>, and <a class="el" href="Plane_8h_source.html#l00076">m_n</a>.</p>
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  ngl::Vec3 ray_dir = _ray.<a class="code" href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">getDirection</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">float</span> a = ray_dir.dot(<a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">if</span>(a == 0)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// ray is paralel</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">double</span> b = <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>.dot(_ray.<a class="code" href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">getOrigin</a>() + (-(<a class="code" href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">m_distance</a>*<a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>)));</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> -1*b/a;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="ttc" id="classgeo_1_1Ray_html_ae6cc1338a6dadc275773fd040c0e63b6"><div class="ttname"><a href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">geo::Ray::getOrigin</a></div><div class="ttdeci">ngl::Vec3 getOrigin()</div><div class="ttdoc">Getter method for the origin. </div><div class="ttdef"><b>Definition:</b> <a href="Ray_8cpp_source.html#l00043">Ray.cpp:43</a></div></div>
-<div class="ttc" id="classgeo_1_1Plane_html_a9958deb77202973586886a5a9727228e"><div class="ttname"><a href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">geo::Plane::m_distance</a></div><div class="ttdeci">float m_distance</div><div class="ttdoc">Distance from the origin the plane is located at. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00072">Plane.h:72</a></div></div>
-<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00076">Plane.h:76</a></div></div>
-<div class="ttc" id="classgeo_1_1Ray_html_a734afeb203f664bfb0653ad9e0491f06"><div class="ttname"><a href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">geo::Ray::getDirection</a></div><div class="ttdeci">ngl::Vec3 getDirection()</div><div class="ttdoc">Getter method for the direction. </div><div class="ttdef"><b>Definition:</b> <a href="Ray_8cpp_source.html#l00045">Ray.cpp:45</a></div></div>
+<p>References <a class="el" href="Ray_8cpp_source.html#l00044">geo::Ray::getDirection()</a>, <a class="el" href="Ray_8cpp_source.html#l00039">geo::Ray::getOrigin()</a>, <a class="el" href="Plane_8h_source.html#l00076">m_distance</a>, and <a class="el" href="Plane_8h_source.html#l00080">m_n</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  ngl::Vec3 ray_dir = _ray.<a class="code" href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">getDirection</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">float</span> a = ray_dir.dot(<a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">if</span>(a == 0)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// ray is paralel</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">double</span> b = <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>.dot(_ray.<a class="code" href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">getOrigin</a>() + (-(<a class="code" href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">m_distance</a>*<a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>)));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> -1*b/a;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="ttc" id="classgeo_1_1Ray_html_ae6cc1338a6dadc275773fd040c0e63b6"><div class="ttname"><a href="classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6">geo::Ray::getOrigin</a></div><div class="ttdeci">ngl::Vec3 getOrigin()</div><div class="ttdoc">Getter method for the origin. </div><div class="ttdef"><b>Definition:</b> <a href="Ray_8cpp_source.html#l00039">Ray.cpp:39</a></div></div>
+<div class="ttc" id="classgeo_1_1Plane_html_a9958deb77202973586886a5a9727228e"><div class="ttname"><a href="classgeo_1_1Plane.html#a9958deb77202973586886a5a9727228e">geo::Plane::m_distance</a></div><div class="ttdeci">float m_distance</div><div class="ttdoc">Distance from the origin the plane is located at. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00076">Plane.h:76</a></div></div>
+<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00080">Plane.h:80</a></div></div>
+<div class="ttc" id="classgeo_1_1Ray_html_a734afeb203f664bfb0653ad9e0491f06"><div class="ttname"><a href="classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06">geo::Ray::getDirection</a></div><div class="ttdeci">ngl::Vec3 getDirection()</div><div class="ttdoc">Getter method for the direction. </div><div class="ttdef"><b>Definition:</b> <a href="Ray_8cpp_source.html#l00044">Ray.cpp:44</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -574,13 +600,13 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classgeo_1_1Shape.html#a71566eb7e5fa1c22866ef42e3a24ddad">geo::Shape</a>.</p>
 
-<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00080">80</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Plane_8cpp_source.html#l00077">77</a> of file <a class="el" href="Plane_8cpp_source.html">Plane.cpp</a>.</p>
 
-<p>References <a class="el" href="Plane_8h_source.html#l00076">m_n</a>.</p>
-<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
-<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00076">Plane.h:76</a></div></div>
+<p>References <a class="el" href="Plane_8h_source.html#l00080">m_n</a>.</p>
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">m_n</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="ttc" id="classgeo_1_1Plane_html_a3936319cdf6a2515ebccb3c5602e188b"><div class="ttname"><a href="classgeo_1_1Plane.html#a3936319cdf6a2515ebccb3c5602e188b">geo::Plane::m_n</a></div><div class="ttdeci">ngl::Vec3 m_n</div><div class="ttdoc">Normal of the plane. </div><div class="ttdef"><b>Definition:</b> <a href="Plane_8h_source.html#l00080">Plane.h:80</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -605,7 +631,7 @@ Here is the call graph for this function:</div>
 
 <p>Distance from the origin the plane is located at. </p>
 
-<p>Definition at line <a class="el" href="Plane_8h_source.html#l00072">72</a> of file <a class="el" href="Plane_8h_source.html">Plane.h</a>.</p>
+<p>Definition at line <a class="el" href="Plane_8h_source.html#l00076">76</a> of file <a class="el" href="Plane_8h_source.html">Plane.h</a>.</p>
 
 </div>
 </div>
@@ -629,7 +655,7 @@ Here is the call graph for this function:</div>
 
 <p>Normal of the plane. </p>
 
-<p>Definition at line <a class="el" href="Plane_8h_source.html#l00076">76</a> of file <a class="el" href="Plane_8h_source.html">Plane.h</a>.</p>
+<p>Definition at line <a class="el" href="Plane_8h_source.html#l00080">80</a> of file <a class="el" href="Plane_8h_source.html">Plane.h</a>.</p>
 
 </div>
 </div>

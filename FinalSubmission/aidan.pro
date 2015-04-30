@@ -24,7 +24,6 @@ OTHER_FILES += shaders/*.glsl \
                .gitignore \
                ../example.cpp \
                ../Doxyfile \
-               ../html/* \
 
 CONFIG += console
 

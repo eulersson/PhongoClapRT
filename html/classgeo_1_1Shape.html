@@ -108,8 +108,8 @@ Inheritance diagram for geo::Shape:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgeo_1_1Shape__inherit__graph.png" border="0" usemap="#geo_1_1Shape_inherit__map" alt="Inheritance graph"/></div>
 <map name="geo_1_1Shape_inherit__map" id="geo_1_1Shape_inherit__map">
-<area shape="rect" id="node2" href="classgeo_1_1Plane.html" title="Inherits from shape. Implements functionability for plane shape and its materials and the ray&#45;plane i..." alt="" coords="5,294,133,474"/>
-<area shape="rect" id="node3" href="classgeo_1_1Sphere.html" title="Class that hold an implicit definition of a sphere through center and radius parameters. It also implements a method for finding intersections. " alt="" coords="157,265,285,503"/>
+<area shape="rect" id="node2" href="classgeo_1_1Plane.html" title="Inherits from shape. Implements functionability for plane shape and its materials. and the ray&#45;plane intersections algorithms. " alt="" coords="5,316,133,511"/>
+<area shape="rect" id="node3" href="classgeo_1_1Sphere.html" title="Class that hold an implicit definition of a sphere through center and radius parameters. It also implements a method for finding intersections. " alt="" coords="157,294,285,533"/>
 </map>
 </div>
 <div class="dynheader">
@@ -123,6 +123,12 @@ Collaboration diagram for geo::Shape:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a8094a10b0bbca152bd8d0da08f255c9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeo_1_1Shape.html#a8094a10b0bbca152bd8d0da08f255c9e">Shape</a> ()</td></tr>
+<tr class="memdesc:a8094a10b0bbca152bd8d0da08f255c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a8094a10b0bbca152bd8d0da08f255c9e">More...</a><br /></td></tr>
+<tr class="separator:a8094a10b0bbca152bd8d0da08f255c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e857e24797a6007ddeb8fb280ff7366"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeo_1_1Shape.html#a1e857e24797a6007ddeb8fb280ff7366">~Shape</a> ()</td></tr>
+<tr class="memdesc:a1e857e24797a6007ddeb8fb280ff7366"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees any memory grabbed from the heap.  <a href="#a1e857e24797a6007ddeb8fb280ff7366">More...</a><br /></td></tr>
+<tr class="separator:a1e857e24797a6007ddeb8fb280ff7366"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40c25b549262c8547dda55c48cb519c0"><td class="memItemLeft" align="right" valign="top">virtual ngl::Colour&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeo_1_1Shape.html#a40c25b549262c8547dda55c48cb519c0">getColour</a> ()=0</td></tr>
 <tr class="memdesc:a40c25b549262c8547dda55c48cb519c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returs colour of a <a class="el" href="classgeo_1_1Shape.html" title="Semi abstract class with virtual methods that holds all the calls for getting intersections, getting normals, also for specifying the properties of the material that will be hold by the Material member of this class. ">Shape</a> object.  <a href="#a40c25b549262c8547dda55c48cb519c0">More...</a><br /></td></tr>
 <tr class="separator:a40c25b549262c8547dda55c48cb519c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,7 +171,67 @@ Protected Attributes</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Ramon Blanquer </dd></dl>
 
 <p>Definition at line <a class="el" href="Shape_8h_source.html#l00021">21</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a8094a10b0bbca152bd8d0da08f255c9e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">geo::Shape::Shape </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor. </p>
+
+<p>Definition at line <a class="el" href="Shape_8h_source.html#l00027">27</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1e857e24797a6007ddeb8fb280ff7366"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">geo::Shape::~Shape </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Frees any memory grabbed from the heap. </p>
+
+<p>Definition at line <a class="el" href="Shape_8h_source.html#l00031">31</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
+
+<p>References <a class="el" href="Shape_8h_source.html#l00096">m_material</a>.</p>
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{<span class="keyword">delete</span> <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>;}</div>
+<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00096">Shape.h:96</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a40c25b549262c8547dda55c48cb519c0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -246,7 +312,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Passing a ray it will calculate the intersection in the derived class, this is purely abstract method. </p>
-<dl class="section return"><dt>Returns</dt><dd>Variable (mathematically speaking) 't' in equation R = O + t * d </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Variable (mathematically speaking) **'t'** in equation <code>R = O + t * d</code>. </dd></dl>
 
 <p>Implemented in <a class="el" href="classgeo_1_1Sphere.html#a642f483e32861d773f9326b0ad0280cf">geo::Sphere</a>, and <a class="el" href="classgeo_1_1Plane.html#aa9a088f949d861d200847789d117705f">geo::Plane</a>.</p>
 
@@ -276,11 +342,11 @@ Protected Attributes</h2></td></tr>
 <p>Returns the material attached to a shape object. This is useful for querying or changing private interface, that's why it is not const. </p>
 <dl class="section return"><dt>Returns</dt><dd>The object associated with a <a class="el" href="classgeo_1_1Shape.html" title="Semi abstract class with virtual methods that holds all the calls for getting intersections, getting normals, also for specifying the properties of the material that will be hold by the Material member of this class. ">Shape</a> instance. </dd></dl>
 
-<p>Definition at line <a class="el" href="Shape_8h_source.html#l00069">69</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
+<p>Definition at line <a class="el" href="Shape_8h_source.html#l00077">77</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
 
-<p>References <a class="el" href="Shape_8h_source.html#l00088">m_material</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>;}</div>
-<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
+<p>References <a class="el" href="Shape_8h_source.html#l00096">m_material</a>.</p>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>;}</div>
+<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00096">Shape.h:96</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,11 +403,11 @@ Protected Attributes</h2></td></tr>
 <p>Derived classes will be Spheres or Planes, I will store the type of geometry in this attribute. </p>
 <dl class="section return"><dt>Returns</dt><dd>Whether it is a sphere or a plane, this will be expanded to other geometry in the future. </dd></dl>
 
-<p>Definition at line <a class="el" href="Shape_8h_source.html#l00074">74</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
+<p>Definition at line <a class="el" href="Shape_8h_source.html#l00082">82</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
 
-<p>References <a class="el" href="Shape_8h_source.html#l00080">m_type</a>.</p>
-<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">m_type</a>;}</div>
-<div class="ttc" id="classgeo_1_1Shape_html_af9314bc313866a3e3397b9975e3c41d7"><div class="ttname"><a href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">geo::Shape::m_type</a></div><div class="ttdeci">char m_type</div><div class="ttdoc">Type of geometric object it is. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00080">Shape.h:80</a></div></div>
+<p>References <a class="el" href="Shape_8h_source.html#l00088">m_type</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">m_type</a>;}</div>
+<div class="ttc" id="classgeo_1_1Shape_html_af9314bc313866a3e3397b9975e3c41d7"><div class="ttname"><a href="classgeo_1_1Shape.html#af9314bc313866a3e3397b9975e3c41d7">geo::Shape::m_type</a></div><div class="ttdeci">char m_type</div><div class="ttdoc">Type of geometric object it is. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -380,20 +446,20 @@ Protected Attributes</h2></td></tr>
 <p>Sets reflection attributes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_refl_intensity</td><td>How reflective the material is </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">_diffuse_intensity</td><td>How non-reflective the material is </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_refl_intensity</td><td>How reflective the material is. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_diffuse_intensity</td><td>How non-reflective the material is. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Shape_8h_source.html#l00060">60</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
+<p>Definition at line <a class="el" href="Shape_8h_source.html#l00068">68</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
 
-<p>References <a class="el" href="Shape_8h_source.html#l00088">m_material</a>, and <a class="el" href="Material_8cpp_source.html#l00034">Material::setReflection()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">setReflection</a>(_refl_intensity, _diffuse_intensity);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  }</div>
-<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
-<div class="ttc" id="classMaterial_html_a28bdec26a732fe2e621cd19091f3a0b5"><div class="ttname"><a href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">Material::setReflection</a></div><div class="ttdeci">void setReflection(float _refl_intensity, float _diffuse_intensity)</div><div class="ttdoc">Sets the reflection parameters. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00034">Material.cpp:34</a></div></div>
+<p>References <a class="el" href="Shape_8h_source.html#l00096">m_material</a>, and <a class="el" href="Material_8cpp_source.html#l00037">Material::setReflection()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">setReflection</a>(_refl_intensity, _diffuse_intensity);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
+<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00096">Shape.h:96</a></div></div>
+<div class="ttc" id="classMaterial_html_a28bdec26a732fe2e621cd19091f3a0b5"><div class="ttname"><a href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">Material::setReflection</a></div><div class="ttdeci">void setReflection(float _refl_intensity, float _diffuse_intensity)</div><div class="ttdoc">Sets the reflection parameters. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00037">Material.cpp:37</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -448,21 +514,21 @@ Here is the call graph for this function:</div>
 <p>Sets parameters related to refraction, this will be given to the <a class="el" href="classMaterial.html">Material</a> class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_ior</td><td>Index of refraction </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">_transparency</td><td>Amount of refraction of the object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_ior</td><td>Index of refraction. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_transparency</td><td>Amount of refraction of the object. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">_</td><td>diffuse_intensity This is calculated automatically, but it is the complementary of transparency, I could say this is the 'opacity'. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Shape_8h_source.html#l00051">51</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
+<p>Definition at line <a class="el" href="Shape_8h_source.html#l00059">59</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
 
-<p>References <a class="el" href="Shape_8h_source.html#l00088">m_material</a>, and <a class="el" href="Material_8cpp_source.html#l00041">Material::setRefraction()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">setRefraction</a>(_ior,_transparency, _diffuse_intensity);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
-<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00088">Shape.h:88</a></div></div>
-<div class="ttc" id="classMaterial_html_ab616b8a0d02cf9aa0b1f92a52a551212"><div class="ttname"><a href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">Material::setRefraction</a></div><div class="ttdeci">void setRefraction(float _ior, float _transparency, float _diffuse_intensity)</div><div class="ttdoc">Sets the refraction settings. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00041">Material.cpp:41</a></div></div>
+<p>References <a class="el" href="Shape_8h_source.html#l00096">m_material</a>, and <a class="el" href="Material_8cpp_source.html#l00044">Material::setRefraction()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">m_material</a>-&gt;<a class="code" href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">setRefraction</a>(_ior,_transparency, _diffuse_intensity);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
+<div class="ttc" id="classgeo_1_1Shape_html_aa934349cbb3362c7027daf3ceff58305"><div class="ttname"><a href="classgeo_1_1Shape.html#aa934349cbb3362c7027daf3ceff58305">geo::Shape::m_material</a></div><div class="ttdeci">Material * m_material</div><div class="ttdoc">Material attached to the Shape object. </div><div class="ttdef"><b>Definition:</b> <a href="Shape_8h_source.html#l00096">Shape.h:96</a></div></div>
+<div class="ttc" id="classMaterial_html_ab616b8a0d02cf9aa0b1f92a52a551212"><div class="ttname"><a href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">Material::setRefraction</a></div><div class="ttdeci">void setRefraction(float _ior, float _transparency, float _diffuse_intensity)</div><div class="ttdoc">Sets the refraction settings. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00044">Material.cpp:44</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -497,7 +563,7 @@ Here is the call graph for this function:</div>
 
 <p>Colour of the shape. </p>
 
-<p>Definition at line <a class="el" href="Shape_8h_source.html#l00084">84</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
+<p>Definition at line <a class="el" href="Shape_8h_source.html#l00092">92</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
 
 </div>
 </div>
@@ -521,7 +587,7 @@ Here is the call graph for this function:</div>
 
 <p><a class="el" href="classMaterial.html">Material</a> attached to the <a class="el" href="classgeo_1_1Shape.html" title="Semi abstract class with virtual methods that holds all the calls for getting intersections, getting normals, also for specifying the properties of the material that will be hold by the Material member of this class. ">Shape</a> object. </p>
 
-<p>Definition at line <a class="el" href="Shape_8h_source.html#l00088">88</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
+<p>Definition at line <a class="el" href="Shape_8h_source.html#l00096">96</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
 
 </div>
 </div>
@@ -545,7 +611,7 @@ Here is the call graph for this function:</div>
 
 <p>Type of geometric object it is. </p>
 
-<p>Definition at line <a class="el" href="Shape_8h_source.html#l00080">80</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
+<p>Definition at line <a class="el" href="Shape_8h_source.html#l00088">88</a> of file <a class="el" href="Shape_8h_source.html">Shape.h</a>.</p>
 
 </div>
 </div>

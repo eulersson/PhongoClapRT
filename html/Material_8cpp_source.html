@@ -92,124 +92,125 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Material.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Material_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Material_8h.html">Material.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;ngl/Colour.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">    4</a></span>&#160;<a class="code" href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">Material::Material</a>() {}</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classMaterial.html#a70f42c7dcc43f13b4bc765f0f77befac">    6</a></span>&#160;<a class="code" href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">Material::Material</a>(ngl::Colour _c)</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a> = _c;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <a class="code" href="classMaterial.html#a54cff9397560683ffde5280ea630e852">m_isChecker</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classMaterial.html#a49763315e7e83274f6b781f15bf84ab3">   12</a></span>&#160;<a class="code" href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">Material::Material</a>(ngl::Colour _c1, ngl::Colour _c2 )</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a> = _c1;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="classMaterial.html#ac6e53fd7698857e506fd459284341944">m_colour2</a> = _c2;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="classMaterial.html#a54cff9397560683ffde5280ea630e852">m_isChecker</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classMaterial.html#a4d14399b390d6795965b51ae9f51e9f4">   19</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMaterial.html#a4d14399b390d6795965b51ae9f51e9f4">Material::isReflective</a>()</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a8dccdfc4bc19d919cb5397473789d6b9">m_isReflective</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classMaterial.html#ad7ca9400c928202eaca2082e291125b1">   24</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMaterial.html#ad7ca9400c928202eaca2082e291125b1">Material::isRefractive</a>()</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a517135bd31f838a9d4c8bb179fa778cf">m_isRefractive</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classMaterial.html#aed96d6ed5038668c6e08ae497208af43">   29</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMaterial.html#aed96d6ed5038668c6e08ae497208af43">Material::setHardness</a>(<span class="keywordtype">float</span> _highlight_size)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="classMaterial.html#adc03fd80a24fddf48b6f8453a77e8424">m_spec_hardness</a> = _highlight_size;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">   34</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">Material::setReflection</a>(<span class="keywordtype">float</span> _refl_intensity, <span class="keywordtype">float</span> _diffuse_intensity)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="classMaterial.html#a8dccdfc4bc19d919cb5397473789d6b9">m_isReflective</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classMaterial.html#a43ba69b02a5c20cf8e96fa51b9421d46">m_refl_intensity</a> = _refl_intensity;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classMaterial.html#a7442d61311840dc10e0fe3f8c12f99c1">m_diffuse_intensity</a> = _diffuse_intensity;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">   41</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">Material::setRefraction</a>(<span class="keywordtype">float</span> _ior, <span class="keywordtype">float</span> _transparency, <span class="keywordtype">float</span> _diffuse_intensity)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="classMaterial.html#a517135bd31f838a9d4c8bb179fa778cf">m_isRefractive</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classMaterial.html#a13d113562d43584734184d5262b3e6e3">m_ior</a> = _ior;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classMaterial.html#aa82f1d76b648c0fb03dd820ea472c2b1">m_transparency</a> = _transparency;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="classMaterial.html#a7442d61311840dc10e0fe3f8c12f99c1">m_diffuse_intensity</a> = _diffuse_intensity;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classMaterial.html#a673f9f5db96482258960f4fb275df042">   49</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classMaterial.html#a673f9f5db96482258960f4fb275df042">Material::getReflIntensity</a>()</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a43ba69b02a5c20cf8e96fa51b9421d46">m_refl_intensity</a>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classMaterial.html#ae89c172a86fb91dc0e4086d415db4830">   54</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classMaterial.html#ae89c172a86fb91dc0e4086d415db4830">Material::getIOR</a>()</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a13d113562d43584734184d5262b3e6e3">m_ior</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classMaterial.html#a8c262a408dc0e27079238e2f920cb599">   59</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classMaterial.html#a8c262a408dc0e27079238e2f920cb599">Material::getTransparency</a>()</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#aa82f1d76b648c0fb03dd820ea472c2b1">m_transparency</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classMaterial.html#a67fa22cc3a7cc2ce8524cab996abf069">   64</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classMaterial.html#a67fa22cc3a7cc2ce8524cab996abf069">Material::getDiffuseIntensity</a>()</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a7442d61311840dc10e0fe3f8c12f99c1">m_diffuse_intensity</a>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">   69</a></span>&#160;ngl::Colour <a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a>()</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classMaterial.html#a18a3a227dc2d06883d9ca0503c20fe9f">   74</a></span>&#160;ngl::Colour <a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a>(ngl::Vec3 &amp;_isect)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">// This will floor the z and x position of a plane and for each integer value modulus operation will be performed</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="comment">// after that, depending on whether the remainder is 0 or 1 we apply one colour or another.</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classMaterial.html#a54cff9397560683ffde5280ea630e852">m_isChecker</a>)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">int</span> index_x = (int)(floor(_isect.m_x)) % 2;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">int</span> index_z = (int)(floor(_isect.m_z)) % 2;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">if</span> (((<span class="keywordtype">bool</span>)index_x &amp;&amp; (bool)index_z) || ((bool)index_x == 0 &amp;&amp; (<span class="keywordtype">bool</span>)index_z == 0))</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#ac6e53fd7698857e506fd459284341944">m_colour2</a>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
-<div class="ttc" id="classMaterial_html_a137e987401b63eb7c6c27c3e38bc74b5"><div class="ttname"><a href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">Material::Material</a></div><div class="ttdeci">Material()</div><div class="ttdoc">Material constructor. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00004">Material.cpp:4</a></div></div>
+<a href="Material_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Material_8h.html">Material.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;ngl/Colour.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">    7</a></span>&#160;<a class="code" href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">Material::Material</a>() {}</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classMaterial.html#a70f42c7dcc43f13b4bc765f0f77befac">    9</a></span>&#160;<a class="code" href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">Material::Material</a>(ngl::Colour _c)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a> = _c;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="classMaterial.html#a54cff9397560683ffde5280ea630e852">m_isChecker</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classMaterial.html#a49763315e7e83274f6b781f15bf84ab3">   15</a></span>&#160;<a class="code" href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">Material::Material</a>(ngl::Colour _c1, ngl::Colour _c2 )</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a> = _c1;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="classMaterial.html#ac6e53fd7698857e506fd459284341944">m_colour2</a> = _c2;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="classMaterial.html#a54cff9397560683ffde5280ea630e852">m_isChecker</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classMaterial.html#a4d14399b390d6795965b51ae9f51e9f4">   22</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMaterial.html#a4d14399b390d6795965b51ae9f51e9f4">Material::isReflective</a>()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a8dccdfc4bc19d919cb5397473789d6b9">m_isReflective</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classMaterial.html#ad7ca9400c928202eaca2082e291125b1">   27</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMaterial.html#ad7ca9400c928202eaca2082e291125b1">Material::isRefractive</a>()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a517135bd31f838a9d4c8bb179fa778cf">m_isRefractive</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classMaterial.html#aed96d6ed5038668c6e08ae497208af43">   32</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMaterial.html#aed96d6ed5038668c6e08ae497208af43">Material::setHardness</a>(<span class="keywordtype">float</span> _highlight_size)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classMaterial.html#adc03fd80a24fddf48b6f8453a77e8424">m_spec_hardness</a> = _highlight_size;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">   37</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">Material::setReflection</a>(<span class="keywordtype">float</span> _refl_intensity, <span class="keywordtype">float</span> _diffuse_intensity)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classMaterial.html#a8dccdfc4bc19d919cb5397473789d6b9">m_isReflective</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classMaterial.html#a43ba69b02a5c20cf8e96fa51b9421d46">m_refl_intensity</a> = _refl_intensity;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classMaterial.html#a7442d61311840dc10e0fe3f8c12f99c1">m_diffuse_intensity</a> = _diffuse_intensity;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">   44</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">Material::setRefraction</a>(<span class="keywordtype">float</span> _ior, <span class="keywordtype">float</span> _transparency, <span class="keywordtype">float</span> _diffuse_intensity)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="classMaterial.html#a517135bd31f838a9d4c8bb179fa778cf">m_isRefractive</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classMaterial.html#a13d113562d43584734184d5262b3e6e3">m_ior</a> = _ior;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classMaterial.html#aa82f1d76b648c0fb03dd820ea472c2b1">m_transparency</a> = _transparency;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classMaterial.html#a7442d61311840dc10e0fe3f8c12f99c1">m_diffuse_intensity</a> = _diffuse_intensity;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classMaterial.html#a673f9f5db96482258960f4fb275df042">   52</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classMaterial.html#a673f9f5db96482258960f4fb275df042">Material::getReflIntensity</a>()</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a43ba69b02a5c20cf8e96fa51b9421d46">m_refl_intensity</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classMaterial.html#ae89c172a86fb91dc0e4086d415db4830">   57</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classMaterial.html#ae89c172a86fb91dc0e4086d415db4830">Material::getIOR</a>()</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a13d113562d43584734184d5262b3e6e3">m_ior</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classMaterial.html#a8c262a408dc0e27079238e2f920cb599">   62</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classMaterial.html#a8c262a408dc0e27079238e2f920cb599">Material::getTransparency</a>()</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#aa82f1d76b648c0fb03dd820ea472c2b1">m_transparency</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classMaterial.html#a67fa22cc3a7cc2ce8524cab996abf069">   67</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classMaterial.html#a67fa22cc3a7cc2ce8524cab996abf069">Material::getDiffuseIntensity</a>()</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a7442d61311840dc10e0fe3f8c12f99c1">m_diffuse_intensity</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">   72</a></span>&#160;ngl::Colour <a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a>()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classMaterial.html#a18a3a227dc2d06883d9ca0503c20fe9f">   77</a></span>&#160;ngl::Colour <a class="code" href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a>(ngl::Vec3 &amp;_isect)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="comment">/* This will floor the z and x position of a plane and for each integer value modulus operation will be performed</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">   * after that, depending on whether the remainder is 0 or 1 we apply one colour or another.*/</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classMaterial.html#a54cff9397560683ffde5280ea630e852">m_isChecker</a>)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> index_x = (int)(floor(_isect.m_x)) % 2;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">int</span> index_z = (int)(floor(_isect.m_z)) % 2;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">if</span> (((<span class="keywordtype">bool</span>)index_x &amp;&amp; (bool)index_z) || ((bool)index_x == 0 &amp;&amp; (<span class="keywordtype">bool</span>)index_z == 0))</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#ac6e53fd7698857e506fd459284341944">m_colour2</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">m_colour1</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="ttc" id="classMaterial_html_a137e987401b63eb7c6c27c3e38bc74b5"><div class="ttname"><a href="classMaterial.html#a137e987401b63eb7c6c27c3e38bc74b5">Material::Material</a></div><div class="ttdeci">Material()</div><div class="ttdoc">Material constructor. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00007">Material.cpp:7</a></div></div>
 <div class="ttc" id="classMaterial_html_a517135bd31f838a9d4c8bb179fa778cf"><div class="ttname"><a href="classMaterial.html#a517135bd31f838a9d4c8bb179fa778cf">Material::m_isRefractive</a></div><div class="ttdeci">bool m_isRefractive</div><div class="ttdoc">Specifies whether object is transparent. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00096">Material.h:96</a></div></div>
 <div class="ttc" id="classMaterial_html_a13d113562d43584734184d5262b3e6e3"><div class="ttname"><a href="classMaterial.html#a13d113562d43584734184d5262b3e6e3">Material::m_ior</a></div><div class="ttdeci">float m_ior</div><div class="ttdoc">Index of refraction. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00108">Material.h:108</a></div></div>
 <div class="ttc" id="Material_8h_html"><div class="ttname"><a href="Material_8h.html">Material.h</a></div><div class="ttdoc">This will be used to return the colour when queried from the Shape derived classes. </div></div>
-<div class="ttc" id="classMaterial_html_aed96d6ed5038668c6e08ae497208af43"><div class="ttname"><a href="classMaterial.html#aed96d6ed5038668c6e08ae497208af43">Material::setHardness</a></div><div class="ttdeci">void setHardness(float _highlight_size)</div><div class="ttdoc">Sets the specular modulator for the specular contribution in the Phong shader. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00029">Material.cpp:29</a></div></div>
-<div class="ttc" id="classMaterial_html_ae89c172a86fb91dc0e4086d415db4830"><div class="ttname"><a href="classMaterial.html#ae89c172a86fb91dc0e4086d415db4830">Material::getIOR</a></div><div class="ttdeci">float getIOR()</div><div class="ttdoc">Returns index of refraction. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00054">Material.cpp:54</a></div></div>
+<div class="ttc" id="classMaterial_html_aed96d6ed5038668c6e08ae497208af43"><div class="ttname"><a href="classMaterial.html#aed96d6ed5038668c6e08ae497208af43">Material::setHardness</a></div><div class="ttdeci">void setHardness(float _highlight_size)</div><div class="ttdoc">Sets the specular modulator for the specular contribution in the Phong shader. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00032">Material.cpp:32</a></div></div>
+<div class="ttc" id="classMaterial_html_ae89c172a86fb91dc0e4086d415db4830"><div class="ttname"><a href="classMaterial.html#ae89c172a86fb91dc0e4086d415db4830">Material::getIOR</a></div><div class="ttdeci">float getIOR()</div><div class="ttdoc">Returns index of refraction. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00057">Material.cpp:57</a></div></div>
 <div class="ttc" id="classMaterial_html_a43ba69b02a5c20cf8e96fa51b9421d46"><div class="ttname"><a href="classMaterial.html#a43ba69b02a5c20cf8e96fa51b9421d46">Material::m_refl_intensity</a></div><div class="ttdeci">float m_refl_intensity</div><div class="ttdoc">Amount of reflection. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00104">Material.h:104</a></div></div>
-<div class="ttc" id="classMaterial_html_a67fa22cc3a7cc2ce8524cab996abf069"><div class="ttname"><a href="classMaterial.html#a67fa22cc3a7cc2ce8524cab996abf069">Material::getDiffuseIntensity</a></div><div class="ttdeci">float getDiffuseIntensity()</div><div class="ttdoc">Returns amount of diffuse contribution. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00064">Material.cpp:64</a></div></div>
+<div class="ttc" id="classMaterial_html_a67fa22cc3a7cc2ce8524cab996abf069"><div class="ttname"><a href="classMaterial.html#a67fa22cc3a7cc2ce8524cab996abf069">Material::getDiffuseIntensity</a></div><div class="ttdeci">float getDiffuseIntensity()</div><div class="ttdoc">Returns amount of diffuse contribution. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00067">Material.cpp:67</a></div></div>
 <div class="ttc" id="classMaterial_html_aa82f1d76b648c0fb03dd820ea472c2b1"><div class="ttname"><a href="classMaterial.html#aa82f1d76b648c0fb03dd820ea472c2b1">Material::m_transparency</a></div><div class="ttdeci">float m_transparency</div><div class="ttdoc">Amount of refraction, in other words &#39;transparency&#39;. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00112">Material.h:112</a></div></div>
 <div class="ttc" id="classMaterial_html_adc03fd80a24fddf48b6f8453a77e8424"><div class="ttname"><a href="classMaterial.html#adc03fd80a24fddf48b6f8453a77e8424">Material::m_spec_hardness</a></div><div class="ttdeci">float m_spec_hardness</div><div class="ttdoc">This will drive the spreadness of the specular highlights. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00116">Material.h:116</a></div></div>
 <div class="ttc" id="classMaterial_html_a8dccdfc4bc19d919cb5397473789d6b9"><div class="ttname"><a href="classMaterial.html#a8dccdfc4bc19d919cb5397473789d6b9">Material::m_isReflective</a></div><div class="ttdeci">bool m_isReflective</div><div class="ttdoc">Tells whether the object is reflective. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00092">Material.h:92</a></div></div>
-<div class="ttc" id="classMaterial_html_a8c262a408dc0e27079238e2f920cb599"><div class="ttname"><a href="classMaterial.html#a8c262a408dc0e27079238e2f920cb599">Material::getTransparency</a></div><div class="ttdeci">float getTransparency()</div><div class="ttdoc">Returns transparency. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00059">Material.cpp:59</a></div></div>
+<div class="ttc" id="classMaterial_html_a8c262a408dc0e27079238e2f920cb599"><div class="ttname"><a href="classMaterial.html#a8c262a408dc0e27079238e2f920cb599">Material::getTransparency</a></div><div class="ttdeci">float getTransparency()</div><div class="ttdoc">Returns transparency. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00062">Material.cpp:62</a></div></div>
 <div class="ttc" id="classMaterial_html_a440324095fb2974b50b68dbaf661cc64"><div class="ttname"><a href="classMaterial.html#a440324095fb2974b50b68dbaf661cc64">Material::m_colour1</a></div><div class="ttdeci">ngl::Colour m_colour1</div><div class="ttdoc">Colour of the object. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00121">Material.h:121</a></div></div>
 <div class="ttc" id="classMaterial_html_a7442d61311840dc10e0fe3f8c12f99c1"><div class="ttname"><a href="classMaterial.html#a7442d61311840dc10e0fe3f8c12f99c1">Material::m_diffuse_intensity</a></div><div class="ttdeci">float m_diffuse_intensity</div><div class="ttdoc">Diffuse intensity, self-explanatory. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00100">Material.h:100</a></div></div>
-<div class="ttc" id="classMaterial_html_ad7ca9400c928202eaca2082e291125b1"><div class="ttname"><a href="classMaterial.html#ad7ca9400c928202eaca2082e291125b1">Material::isRefractive</a></div><div class="ttdeci">bool isRefractive()</div><div class="ttdoc">Returns whether the material is reflective or not. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00024">Material.cpp:24</a></div></div>
-<div class="ttc" id="classMaterial_html_a673f9f5db96482258960f4fb275df042"><div class="ttname"><a href="classMaterial.html#a673f9f5db96482258960f4fb275df042">Material::getReflIntensity</a></div><div class="ttdeci">float getReflIntensity()</div><div class="ttdoc">Returns amount of reflection. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00049">Material.cpp:49</a></div></div>
-<div class="ttc" id="classMaterial_html_a28bdec26a732fe2e621cd19091f3a0b5"><div class="ttname"><a href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">Material::setReflection</a></div><div class="ttdeci">void setReflection(float _refl_intensity, float _diffuse_intensity)</div><div class="ttdoc">Sets the reflection parameters. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00034">Material.cpp:34</a></div></div>
-<div class="ttc" id="classMaterial_html_ab616b8a0d02cf9aa0b1f92a52a551212"><div class="ttname"><a href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">Material::setRefraction</a></div><div class="ttdeci">void setRefraction(float _ior, float _transparency, float _diffuse_intensity)</div><div class="ttdoc">Sets the refraction settings. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00041">Material.cpp:41</a></div></div>
+<div class="ttc" id="classMaterial_html_ad7ca9400c928202eaca2082e291125b1"><div class="ttname"><a href="classMaterial.html#ad7ca9400c928202eaca2082e291125b1">Material::isRefractive</a></div><div class="ttdeci">bool isRefractive()</div><div class="ttdoc">Returns whether the material is reflective or not. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00027">Material.cpp:27</a></div></div>
+<div class="ttc" id="classMaterial_html_a673f9f5db96482258960f4fb275df042"><div class="ttname"><a href="classMaterial.html#a673f9f5db96482258960f4fb275df042">Material::getReflIntensity</a></div><div class="ttdeci">float getReflIntensity()</div><div class="ttdoc">Returns amount of reflection. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00052">Material.cpp:52</a></div></div>
+<div class="ttc" id="classMaterial_html_a28bdec26a732fe2e621cd19091f3a0b5"><div class="ttname"><a href="classMaterial.html#a28bdec26a732fe2e621cd19091f3a0b5">Material::setReflection</a></div><div class="ttdeci">void setReflection(float _refl_intensity, float _diffuse_intensity)</div><div class="ttdoc">Sets the reflection parameters. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00037">Material.cpp:37</a></div></div>
+<div class="ttc" id="classMaterial_html_ab616b8a0d02cf9aa0b1f92a52a551212"><div class="ttname"><a href="classMaterial.html#ab616b8a0d02cf9aa0b1f92a52a551212">Material::setRefraction</a></div><div class="ttdeci">void setRefraction(float _ior, float _transparency, float _diffuse_intensity)</div><div class="ttdoc">Sets the refraction settings. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00044">Material.cpp:44</a></div></div>
 <div class="ttc" id="classMaterial_html_ac6e53fd7698857e506fd459284341944"><div class="ttname"><a href="classMaterial.html#ac6e53fd7698857e506fd459284341944">Material::m_colour2</a></div><div class="ttdeci">ngl::Colour m_colour2</div><div class="ttdoc">For checker materials we will have colour1 and colour2, for plain ones just colour1. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00125">Material.h:125</a></div></div>
-<div class="ttc" id="classMaterial_html_a4d14399b390d6795965b51ae9f51e9f4"><div class="ttname"><a href="classMaterial.html#a4d14399b390d6795965b51ae9f51e9f4">Material::isReflective</a></div><div class="ttdeci">bool isReflective()</div><div class="ttdoc">Returns whether the material is reflective or not. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00019">Material.cpp:19</a></div></div>
-<div class="ttc" id="classMaterial_html_a51cb0470f5b22e399e9c7921efe38083"><div class="ttname"><a href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a></div><div class="ttdeci">ngl::Colour objColour()</div><div class="ttdoc">Returns the object colour. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00069">Material.cpp:69</a></div></div>
+<div class="ttc" id="classMaterial_html_a4d14399b390d6795965b51ae9f51e9f4"><div class="ttname"><a href="classMaterial.html#a4d14399b390d6795965b51ae9f51e9f4">Material::isReflective</a></div><div class="ttdeci">bool isReflective()</div><div class="ttdoc">Returns whether the material is reflective or not. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00022">Material.cpp:22</a></div></div>
+<div class="ttc" id="classMaterial_html_a51cb0470f5b22e399e9c7921efe38083"><div class="ttname"><a href="classMaterial.html#a51cb0470f5b22e399e9c7921efe38083">Material::objColour</a></div><div class="ttdeci">ngl::Colour objColour()</div><div class="ttdoc">Returns the object colour. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8cpp_source.html#l00072">Material.cpp:72</a></div></div>
 <div class="ttc" id="classMaterial_html_a54cff9397560683ffde5280ea630e852"><div class="ttname"><a href="classMaterial.html#a54cff9397560683ffde5280ea630e852">Material::m_isChecker</a></div><div class="ttdeci">bool m_isChecker</div><div class="ttdoc">Specifies whether it is checker or not. </div><div class="ttdef"><b>Definition:</b> <a href="Material_8h_source.html#l00129">Material.h:129</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

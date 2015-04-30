@@ -92,30 +92,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Vec.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Vec_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Vec_8h.html">Vec.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegeo.html">geo</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classgeo_1_1Vec.html#a0ad1fab5b7fd3384bb4a5830b6239420">    7</a></span>&#160;<a class="code" href="classgeo_1_1Vec.html#a0ad1fab5b7fd3384bb4a5830b6239420">Vec::Vec</a>(<a class="code" href="structgeo_1_1Point.html">Point</a> _A, <a class="code" href="structgeo_1_1Point.html">Point</a> _B)</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  m_x = (_B.<a class="code" href="structgeo_1_1Point.html#ad30b4014a32da62e3f40be341f3a6e75">x</a> - _A.<a class="code" href="structgeo_1_1Point.html#ad30b4014a32da62e3f40be341f3a6e75">x</a>);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  m_y = (_B.<a class="code" href="structgeo_1_1Point.html#a24b89b9379e8706174513856683bf154">y</a> - _A.<a class="code" href="structgeo_1_1Point.html#a24b89b9379e8706174513856683bf154">y</a>);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  m_z = (_B.<a class="code" href="structgeo_1_1Point.html#a1f7d90c1e6c1cca72b4cf7afce64b548">z</a> - _A.<a class="code" href="structgeo_1_1Point.html#a1f7d90c1e6c1cca72b4cf7afce64b548">z</a>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classgeo_1_1Vec.html#a065e6ecd8861cf4943beb316df54d617">   13</a></span>&#160;<a class="code" href="classgeo_1_1Vec.html#a0ad1fab5b7fd3384bb4a5830b6239420">Vec::Vec</a>(<a class="code" href="classgeo_1_1Ray.html">Ray</a> _r, <span class="keywordtype">float</span> _t)</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<a href="Vec_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Vec_8h.html">Vec.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegeo.html">geo</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classgeo_1_1Vec.html#a0ad1fab5b7fd3384bb4a5830b6239420">   10</a></span>&#160;<a class="code" href="classgeo_1_1Vec.html#a0ad1fab5b7fd3384bb4a5830b6239420">Vec::Vec</a>(<a class="code" href="structgeo_1_1Point.html">Point</a> _A, <a class="code" href="structgeo_1_1Point.html">Point</a> _B)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  m_x = (_B.<a class="code" href="structgeo_1_1Point.html#ad30b4014a32da62e3f40be341f3a6e75">x</a> - _A.<a class="code" href="structgeo_1_1Point.html#ad30b4014a32da62e3f40be341f3a6e75">x</a>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  m_y = (_B.<a class="code" href="structgeo_1_1Point.html#a24b89b9379e8706174513856683bf154">y</a> - _A.<a class="code" href="structgeo_1_1Point.html#a24b89b9379e8706174513856683bf154">y</a>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  m_z = (_B.<a class="code" href="structgeo_1_1Point.html#a1f7d90c1e6c1cca72b4cf7afce64b548">z</a> - _A.<a class="code" href="structgeo_1_1Point.html#a1f7d90c1e6c1cca72b4cf7afce64b548">z</a>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classgeo_1_1Vec.html#a065e6ecd8861cf4943beb316df54d617">   16</a></span>&#160;<a class="code" href="classgeo_1_1Vec.html#a0ad1fab5b7fd3384bb4a5830b6239420">Vec::Vec</a>(<a class="code" href="classgeo_1_1Ray.html">Ray</a> _r, <span class="keywordtype">float</span> _t)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
 <div class="ttc" id="structgeo_1_1Point_html_a24b89b9379e8706174513856683bf154"><div class="ttname"><a href="structgeo_1_1Point.html#a24b89b9379e8706174513856683bf154">geo::Point::y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition:</b> <a href="Vec_8h_source.html#l00018">Vec.h:18</a></div></div>
 <div class="ttc" id="classgeo_1_1Ray_html"><div class="ttname"><a href="classgeo_1_1Ray.html">geo::Ray</a></div><div class="ttdef"><b>Definition:</b> <a href="Ray_8h_source.html#l00017">Ray.h:17</a></div></div>
-<div class="ttc" id="Vec_8h_html"><div class="ttname"><a href="Vec_8h.html">Vec.h</a></div><div class="ttdoc">This class extends the functionability of ngl::Vec3. </div></div>
+<div class="ttc" id="Vec_8h_html"><div class="ttname"><a href="Vec_8h.html">Vec.h</a></div><div class="ttdoc">Definitions for the extended ngl::Vec3. </div></div>
 <div class="ttc" id="structgeo_1_1Point_html_ad30b4014a32da62e3f40be341f3a6e75"><div class="ttname"><a href="structgeo_1_1Point.html#ad30b4014a32da62e3f40be341f3a6e75">geo::Point::x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition:</b> <a href="Vec_8h_source.html#l00017">Vec.h:17</a></div></div>
-<div class="ttc" id="classgeo_1_1Vec_html_a0ad1fab5b7fd3384bb4a5830b6239420"><div class="ttname"><a href="classgeo_1_1Vec.html#a0ad1fab5b7fd3384bb4a5830b6239420">geo::Vec::Vec</a></div><div class="ttdeci">Vec(geo::Point _A, geo::Point _B)</div><div class="ttdef"><b>Definition:</b> <a href="Vec_8cpp_source.html#l00007">Vec.cpp:7</a></div></div>
+<div class="ttc" id="classgeo_1_1Vec_html_a0ad1fab5b7fd3384bb4a5830b6239420"><div class="ttname"><a href="classgeo_1_1Vec.html#a0ad1fab5b7fd3384bb4a5830b6239420">geo::Vec::Vec</a></div><div class="ttdeci">Vec(geo::Point _A, geo::Point _B)</div><div class="ttdef"><b>Definition:</b> <a href="Vec_8cpp_source.html#l00010">Vec.cpp:10</a></div></div>
 <div class="ttc" id="structgeo_1_1Point_html_a1f7d90c1e6c1cca72b4cf7afce64b548"><div class="ttname"><a href="structgeo_1_1Point.html#a1f7d90c1e6c1cca72b4cf7afce64b548">geo::Point::z</a></div><div class="ttdeci">float z</div><div class="ttdef"><b>Definition:</b> <a href="Vec_8h_source.html#l00019">Vec.h:19</a></div></div>
-<div class="ttc" id="namespacegeo_html"><div class="ttname"><a href="namespacegeo.html">geo</a></div><div class="ttdef"><b>Definition:</b> <a href="Plane_8cpp_source.html#l00012">Plane.cpp:12</a></div></div>
+<div class="ttc" id="namespacegeo_html"><div class="ttname"><a href="namespacegeo.html">geo</a></div><div class="ttdef"><b>Definition:</b> <a href="Plane_8cpp_source.html#l00009">Plane.cpp:9</a></div></div>
 <div class="ttc" id="structgeo_1_1Point_html"><div class="ttname"><a href="structgeo_1_1Point.html">geo::Point</a></div><div class="ttdoc">Holds 3D coordenates for a point in spance. </div><div class="ttdef"><b>Definition:</b> <a href="Vec_8h_source.html#l00016">Vec.h:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

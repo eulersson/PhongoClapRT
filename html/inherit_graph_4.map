@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" href="$classgeo_1_1Shape.html" title="Semi abstract class with virtual methods that holds all the calls for getting intersections, getting normals, also for specifying the properties of the material that will be hold by the Material member of this class. " alt="" coords="5,31,93,57"/>
-<area shape="rect" id="node2" href="$classgeo_1_1Plane.html" title="Inherits from shape. Implements functionability for plane shape and its materials and the ray&#45;plane i..." alt="" coords="146,5,230,32"/>
+<area shape="rect" id="node2" href="$classgeo_1_1Plane.html" title="Inherits from shape. Implements functionability for plane shape and its materials. and the ray&#45;plane intersections algorithms. " alt="" coords="146,5,230,32"/>
 <area shape="rect" id="node3" href="$classgeo_1_1Sphere.html" title="Class that hold an implicit definition of a sphere through center and radius parameters. It also implements a method for finding intersections. " alt="" coords="142,56,234,83"/>
 </map>

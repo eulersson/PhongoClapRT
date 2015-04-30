@@ -111,14 +111,14 @@ Collaboration diagram for Camera:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a01f94c3543f56ede7af49dc778f19331"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a01f94c3543f56ede7af49dc778f19331">Camera</a> ()</td></tr>
-<tr class="memdesc:a01f94c3543f56ede7af49dc778f19331"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> ctor when user doesn't specify the parameters these will be set as default.  <a href="#a01f94c3543f56ede7af49dc778f19331">More...</a><br /></td></tr>
+<tr class="memdesc:a01f94c3543f56ede7af49dc778f19331"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> constructor.  <a href="#a01f94c3543f56ede7af49dc778f19331">More...</a><br /></td></tr>
 <tr class="separator:a01f94c3543f56ede7af49dc778f19331"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad142e91ab40bc4afdf5df64a77ca04df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ad142e91ab40bc4afdf5df64a77ca04df">Camera</a> (ngl::Vec3 _pos, ngl::Vec3 _dir, ngl::Vec3 _right, ngl::Vec3 _down)</td></tr>
-<tr class="memdesc:ad142e91ab40bc4afdf5df64a77ca04df"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> ctor that initialises the private interface with the data provided by the user.  <a href="#ad142e91ab40bc4afdf5df64a77ca04df">More...</a><br /></td></tr>
-<tr class="separator:ad142e91ab40bc4afdf5df64a77ca04df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1897942d0ccf91052386388a497349f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ad1897942d0ccf91052386388a497349f">~Camera</a> ()</td></tr>
 <tr class="memdesc:ad1897942d0ccf91052386388a497349f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blank destructor.  <a href="#ad1897942d0ccf91052386388a497349f">More...</a><br /></td></tr>
 <tr class="separator:ad1897942d0ccf91052386388a497349f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e99a79267c67d668cda4031ac8c799c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a5e99a79267c67d668cda4031ac8c799c">setParameters</a> (ngl::Vec3 _pos, ngl::Vec3 _dir, ngl::Vec3 _right, ngl::Vec3 _down)</td></tr>
+<tr class="memdesc:a5e99a79267c67d668cda4031ac8c799c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises the camera settings.  <a href="#a5e99a79267c67d668cda4031ac8c799c">More...</a><br /></td></tr>
+<tr class="separator:a5e99a79267c67d668cda4031ac8c799c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -149,9 +149,6 @@ Friends</h2></td></tr>
 <a class="anchor" id="a01f94c3543f56ede7af49dc778f19331"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Camera::Camera </td>
@@ -160,33 +157,42 @@ Friends</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> ctor when user doesn't specify the parameters these will be set as default. </p>
+<p><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> constructor. </p>
 
-<p>Definition at line <a class="el" href="Camera_8h_source.html#l00023">23</a> of file <a class="el" href="Camera_8h_source.html">Camera.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;: <a class="code" href="classCamera.html#a25cf26a591e3cb3cca2ab7c60573f0bd">m_pos</a>(ngl::Vec3(0,0,0)), <a class="code" href="classCamera.html#ae144545206bf6022fecb14b8a4ca90d3">m_dir</a>(ngl::Vec3(0,0,1)), <a class="code" href="classCamera.html#a20e75a49ce57dfc446d75bc6b5472345">m_down</a>(ngl::Vec3(0,1,0)), <a class="code" href="classCamera.html#a7f8ee7ca42335df4a8806da023185668">m_right</a>(ngl::Vec3(1,0,0)) {}</div>
-<div class="ttc" id="classCamera_html_a20e75a49ce57dfc446d75bc6b5472345"><div class="ttname"><a href="classCamera.html#a20e75a49ce57dfc446d75bc6b5472345">Camera::m_down</a></div><div class="ttdeci">ngl::Vec3 m_down</div><div class="ttdoc">Camera down vector. </div><div class="ttdef"><b>Definition:</b> <a href="Camera_8h_source.html#l00052">Camera.h:52</a></div></div>
-<div class="ttc" id="classCamera_html_a25cf26a591e3cb3cca2ab7c60573f0bd"><div class="ttname"><a href="classCamera.html#a25cf26a591e3cb3cca2ab7c60573f0bd">Camera::m_pos</a></div><div class="ttdeci">ngl::Vec3 m_pos</div><div class="ttdoc">Camera position vector. </div><div class="ttdef"><b>Definition:</b> <a href="Camera_8h_source.html#l00044">Camera.h:44</a></div></div>
-<div class="ttc" id="classCamera_html_ae144545206bf6022fecb14b8a4ca90d3"><div class="ttname"><a href="classCamera.html#ae144545206bf6022fecb14b8a4ca90d3">Camera::m_dir</a></div><div class="ttdeci">ngl::Vec3 m_dir</div><div class="ttdoc">Camera aim vector. </div><div class="ttdef"><b>Definition:</b> <a href="Camera_8h_source.html#l00048">Camera.h:48</a></div></div>
-<div class="ttc" id="classCamera_html_a7f8ee7ca42335df4a8806da023185668"><div class="ttname"><a href="classCamera.html#a7f8ee7ca42335df4a8806da023185668">Camera::m_right</a></div><div class="ttdeci">ngl::Vec3 m_right</div><div class="ttdoc">Camera right vector. </div><div class="ttdef"><b>Definition:</b> <a href="Camera_8h_source.html#l00056">Camera.h:56</a></div></div>
+<p>Definition at line <a class="el" href="Camera_8cpp_source.html#l00007">7</a> of file <a class="el" href="Camera_8cpp_source.html">Camera.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="ad142e91ab40bc4afdf5df64a77ca04df"></a>
+<a class="anchor" id="ad1897942d0ccf91052386388a497349f"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Camera::Camera </td>
+          <td class="memname">Camera::~Camera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Blank destructor. </p>
+
+<p>Definition at line <a class="el" href="Camera_8cpp_source.html#l00009">9</a> of file <a class="el" href="Camera_8cpp_source.html">Camera.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a5e99a79267c67d668cda4031ac8c799c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::setParameters </td>
           <td>(</td>
           <td class="paramtype">ngl::Vec3&#160;</td>
           <td class="paramname"><em>_pos</em>, </td>
@@ -215,59 +221,43 @@ Friends</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> ctor that initialises the private interface with the data provided by the user. </p>
+<p>Initialises the camera settings. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">m_pos</td><td><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> position </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">m_dir</td><td><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> aim vector </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">m_down</td><td>Down vector </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">m_right</td><td>Right vector </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m_pos</td><td><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> position. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m_dir</td><td><a class="el" href="classCamera.html" title="Holds camera functions which will be accessed by the Render class. ">Camera</a> aim vector. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m_down</td><td>Down vector. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m_right</td><td>Right vector. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Camera_8h_source.html#l00031">31</a> of file <a class="el" href="Camera_8h_source.html">Camera.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;: <a class="code" href="classCamera.html#a25cf26a591e3cb3cca2ab7c60573f0bd">m_pos</a>(_pos), <a class="code" href="classCamera.html#ae144545206bf6022fecb14b8a4ca90d3">m_dir</a>(_dir),  <a class="code" href="classCamera.html#a20e75a49ce57dfc446d75bc6b5472345">m_down</a>(_down), <a class="code" href="classCamera.html#a7f8ee7ca42335df4a8806da023185668">m_right</a>(_right) {}</div>
+<p>Definition at line <a class="el" href="Camera_8cpp_source.html#l00011">11</a> of file <a class="el" href="Camera_8cpp_source.html">Camera.cpp</a>.</p>
+
+<p>References <a class="el" href="Camera_8h_source.html#l00048">m_dir</a>, <a class="el" href="Camera_8h_source.html#l00052">m_down</a>, <a class="el" href="Camera_8h_source.html#l00044">m_pos</a>, and <a class="el" href="Camera_8h_source.html#l00056">m_right</a>.</p>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="classCamera.html#a25cf26a591e3cb3cca2ab7c60573f0bd">m_pos</a> = _pos;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classCamera.html#ae144545206bf6022fecb14b8a4ca90d3">m_dir</a> = _dir;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="classCamera.html#a7f8ee7ca42335df4a8806da023185668">m_right</a> = _right;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="classCamera.html#a20e75a49ce57dfc446d75bc6b5472345">m_down</a> = _down;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="ttc" id="classCamera_html_a20e75a49ce57dfc446d75bc6b5472345"><div class="ttname"><a href="classCamera.html#a20e75a49ce57dfc446d75bc6b5472345">Camera::m_down</a></div><div class="ttdeci">ngl::Vec3 m_down</div><div class="ttdoc">Camera down vector. </div><div class="ttdef"><b>Definition:</b> <a href="Camera_8h_source.html#l00052">Camera.h:52</a></div></div>
 <div class="ttc" id="classCamera_html_a25cf26a591e3cb3cca2ab7c60573f0bd"><div class="ttname"><a href="classCamera.html#a25cf26a591e3cb3cca2ab7c60573f0bd">Camera::m_pos</a></div><div class="ttdeci">ngl::Vec3 m_pos</div><div class="ttdoc">Camera position vector. </div><div class="ttdef"><b>Definition:</b> <a href="Camera_8h_source.html#l00044">Camera.h:44</a></div></div>
 <div class="ttc" id="classCamera_html_ae144545206bf6022fecb14b8a4ca90d3"><div class="ttname"><a href="classCamera.html#ae144545206bf6022fecb14b8a4ca90d3">Camera::m_dir</a></div><div class="ttdeci">ngl::Vec3 m_dir</div><div class="ttdoc">Camera aim vector. </div><div class="ttdef"><b>Definition:</b> <a href="Camera_8h_source.html#l00048">Camera.h:48</a></div></div>
 <div class="ttc" id="classCamera_html_a7f8ee7ca42335df4a8806da023185668"><div class="ttname"><a href="classCamera.html#a7f8ee7ca42335df4a8806da023185668">Camera::m_right</a></div><div class="ttdeci">ngl::Vec3 m_right</div><div class="ttdoc">Camera right vector. </div><div class="ttdef"><b>Definition:</b> <a href="Camera_8h_source.html#l00056">Camera.h:56</a></div></div>
 </div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCamera_a5e99a79267c67d668cda4031ac8c799c_icgraph.png" border="0" usemap="#classCamera_a5e99a79267c67d668cda4031ac8c799c_icgraph" alt=""/></div>
+<map name="classCamera_a5e99a79267c67d668cda4031ac8c799c_icgraph" id="classCamera_a5e99a79267c67d668cda4031ac8c799c_icgraph">
+<area shape="rect" id="node2" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="216,5,267,32"/>
+</map>
 </div>
-</div>
-<a class="anchor" id="ad1897942d0ccf91052386388a497349f"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Camera::~Camera </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+</p>
 
-<p>Blank destructor. </p>
-
-<p>Definition at line <a class="el" href="Camera_8h_source.html#l00035">35</a> of file <a class="el" href="Camera_8h_source.html">Camera.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
@@ -390,8 +380,9 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>FinalSubmission/include/<a class="el" href="Camera_8h_source.html">Camera.h</a></li>
+<li>FinalSubmission/src/<a class="el" href="Camera_8cpp_source.html">Camera.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

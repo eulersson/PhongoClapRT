@@ -1,4 +1,4 @@
 <map id="geo::Shape" name="geo::Shape">
-<area shape="rect" id="node2" href="$classgeo_1_1Plane.html" title="Inherits from shape. Implements functionability for plane shape and its materials and the ray&#45;plane i..." alt="" coords="5,294,133,474"/>
-<area shape="rect" id="node3" href="$classgeo_1_1Sphere.html" title="Class that hold an implicit definition of a sphere through center and radius parameters. It also implements a method for finding intersections. " alt="" coords="157,265,285,503"/>
+<area shape="rect" id="node2" href="$classgeo_1_1Plane.html" title="Inherits from shape. Implements functionability for plane shape and its materials. and the ray&#45;plane intersections algorithms. " alt="" coords="5,316,133,511"/>
+<area shape="rect" id="node3" href="$classgeo_1_1Sphere.html" title="Class that hold an implicit definition of a sphere through center and radius parameters. It also implements a method for finding intersections. " alt="" coords="157,294,285,533"/>
 </map>

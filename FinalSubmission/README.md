@@ -1,20 +1,18 @@
-#TO DO
-X Get recursion working well
-X Some anti-aliasing
-X Get proper Phong model behaviour
-X Light Fallof
-X Assert that user does not enter anti-alising that is less than 1
-X Fake specular highlights on reflective and refractive materials creating diameter around light
-X Simple Parser: Boost Tokenizer
-X Fix shadows --> they should accept a multiplying float instead of a boolean on/off, I can
-  work them out by analysing angle between normal and incoming light and then raise the cosine
-  to get smooth shadows.
-- Solve problem with ambient lights
-- Check for memory leaks
-- Singleton classes
-- Time stamps and "Rendering..." console output
-- Write Docs and tidy up code
+#Phongo Clap RT
 
+![](https://raw.githubusercontent.com/docwhite/LSystemsMaya/master/examples/example_preset1.png)
+
+##Brief
+
+##Usage
+
+##Scene File Syntax
+**Please read this section carefully.**
+
+##Documentation
+http://ramonblanquer.com/doc/phongo/index.html
+
+##TO DO
 - (after deadline) Ambient Occlusion
 - (after deadline) Fresnel
 - (after deadline) BRDF
@@ -25,11 +23,10 @@ X Fix shadows --> they should accept a multiplying float instead of a boolean on
 - (after deadline) Improve AA on refractions and reflections
 - (after deadline) Make it multi-threaded
 
-#Usage
 
 Yet to be written. Docs.
 
-#Bibliography
+##Bibliography
 **Pharr, M.** and **Humphreys, G**., 2010. *Physically Based Rendering.* Burlington: Morgan Kaufmann Publishers Haines E.
 **Glassner, A.**, 1989. *An Overview of Ray Tracing* In: **Glassner, A.**, ed. *An Introduction To Ray Tracing* California: Academic Press, 1-31
 **Haines, E.**, 1989. *Essential Ray Tracing Algorithms* In: **Glassner, A.**, ed. *An Introduction To Ray Tracing* California: Academic Press, 33-77
