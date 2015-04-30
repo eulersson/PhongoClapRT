@@ -1,0 +1,13 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$classScene.html#a5715863fe55bc46732c50ffc496e0f33" title="Adds a light to the scene structure. " alt="" coords="110,5,226,32"/>
+<area shape="rect" id="node3" href="$classScene.html#a1428dd1a4fb82bc581db1d7adc76bfae" title="Adds an shape obejct to the scene. " alt="" coords="105,56,231,83"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ac09dd5a43efafb80141cf3c7782cd7de" title="printOutTime" alt="" coords="119,107,217,133"/>
+<area shape="rect" id="node5" href="$classRenderer.html#af7e5f8f68742f198e315fb4683a605a4" title="Will trigger the class and start doing all the calculations. " alt="" coords="109,157,227,184"/>
+<area shape="rect" id="node6" href="$classRenderer.html#a4b517149efbe25226d5a6ea57d070aa8" title="Implements a loading bar. This algorithm is taken from another person. " alt="" coords="281,81,407,108"/>
+<area shape="rect" id="node7" href="$classRenderer.html#a0d6188244f3feaf19971e20e73d0f043" title="Probably the most important algorithm of this class. This method is recursive. It will fire a ray fro..." alt="" coords="288,132,400,159"/>
+<area shape="rect" id="node11" href="$classFilm.html#a6196c703ce8ad102c0ad6e553adca7d0" title="Will create a pixel and push it to the pixel vector. " alt="" coords="288,183,400,209"/>
+<area shape="rect" id="node12" href="$classFilm.html#a2b6cde133dad17ecc713853b39fb25e3" title="Iterates over the pixel vector and writes into a file using basic output stream methods. " alt="" coords="292,233,396,260"/>
+<area shape="rect" id="node8" href="$classRenderer.html#a4375087362999b1f1ce2b17a8ecf73cd" title="Given an intersections vector will return the closest to the camera, the one that it will read colour..." alt="" coords="659,107,837,133"/>
+<area shape="rect" id="node9" href="$classRenderer.html#a3dbb4fc501fb433c31cd1a36058fda21" title="Will fire rays from a position, then iterate over the lights, and if any object is inbetweet will ret..." alt="" coords="470,132,597,159"/>
+<area shape="rect" id="node10" href="$classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06" title="Getter method for the direction. " alt="" coords="457,183,610,209"/>
+</map>

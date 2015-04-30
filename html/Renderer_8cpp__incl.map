@@ -1,0 +1,10 @@
+<map id="FinalSubmission/src/Renderer.cpp" name="FinalSubmission/src/Renderer.cpp">
+<area shape="rect" id="node6" href="$Renderer_8h.html" title="This class is the heart of my raytracer. It is the core, where all the camera rays are calculated and..." alt="" coords="526,96,612,123"/>
+<area shape="rect" id="node16" href="$Material_8h.html" title="This will be used to return the colour when queried from the Shape derived classes. " alt="" coords="675,320,753,347"/>
+<area shape="rect" id="node17" href="$Ray_8h.html" title="This class handles the implementation of ray: an object with an origin and a direction. " alt="" coords="591,395,648,421"/>
+<area shape="rect" id="node7" href="$Film_8h.html" title="All the operations regarding to file output and file input belong to this class. It abstracts the ide..." alt="" coords="320,171,377,197"/>
+<area shape="rect" id="node11" href="$Camera_8h.html" title="Implements camera functionability, no transformations, just explicit definition. " alt="" coords="705,171,783,197"/>
+<area shape="rect" id="node13" href="$Scene_8h.html" title="This hold all the objects and lights that the parser interpred and later pushed into the scene..." alt="" coords="477,171,547,197"/>
+<area shape="rect" id="node15" href="$Shape_8h.html" title="Shape.h" alt="" coords="529,245,599,272"/>
+<area shape="rect" id="node18" href="$Light_8h.html" title="A class for the lights in the scene. " alt="" coords="387,320,448,347"/>
+</map>

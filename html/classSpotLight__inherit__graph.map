@@ -1,0 +1,3 @@
+<map id="SpotLight" name="SpotLight">
+<area shape="rect" id="node2" href="$classLight.html" title="This is a base class that will be used as template when creating concretes types of light..." alt="" coords="6,5,108,171"/>
+</map>

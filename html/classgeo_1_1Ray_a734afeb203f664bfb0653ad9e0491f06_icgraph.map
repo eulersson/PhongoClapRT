@@ -1,0 +1,7 @@
+<map id="geo::Ray::getDirection" name="geo::Ray::getDirection">
+<area shape="rect" id="node2" href="$classgeo_1_1Plane.html#aa9a088f949d861d200847789d117705f" title="Virtual method that implements the ray&#45;plane intersection. " alt="" coords="212,5,391,32"/>
+<area shape="rect" id="node3" href="$classRenderer.html#a0d6188244f3feaf19971e20e73d0f043" title="Probably the most important algorithm of this class. This method is recursive. It will fire a ray fro..." alt="" coords="245,56,357,83"/>
+<area shape="rect" id="node6" href="$classgeo_1_1Sphere.html#a642f483e32861d773f9326b0ad0280cf" title="Calculates the intersection of the passed ray with the sphere according to the parametric form of a r..." alt="" coords="208,107,395,133"/>
+<area shape="rect" id="node4" href="$classRenderer.html#af7e5f8f68742f198e315fb4683a605a4" title="Will trigger the class and start doing all the calculations. " alt="" coords="443,56,562,83"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="611,56,661,83"/>
+</map>

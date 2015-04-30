@@ -1,0 +1,5 @@
+<map id="FinalSubmission/include/Sphere.h" name="FinalSubmission/include/Sphere.h">
+<area shape="rect" id="node4" href="$Shape_8h.html" title="Shape.h" alt="" coords="71,96,141,123"/>
+<area shape="rect" id="node5" href="$Material_8h.html" title="This will be used to return the colour when queried from the Shape derived classes. " alt="" coords="143,171,221,197"/>
+<area shape="rect" id="node7" href="$Ray_8h.html" title="This class handles the implementation of ray: an object with an origin and a direction. " alt="" coords="85,245,141,272"/>
+</map>

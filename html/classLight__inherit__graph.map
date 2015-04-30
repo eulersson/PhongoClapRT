@@ -1,0 +1,4 @@
+<map id="Light" name="Light">
+<area shape="rect" id="node2" href="$classPointLight.html" title="Point light constructor. " alt="" coords="5,226,112,318"/>
+<area shape="rect" id="node3" href="$classSpotLight.html" title="Spotlight constructor. " alt="" coords="137,219,241,325"/>
+</map>

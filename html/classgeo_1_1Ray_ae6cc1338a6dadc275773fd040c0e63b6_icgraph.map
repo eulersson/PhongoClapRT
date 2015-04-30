@@ -1,0 +1,4 @@
+<map id="geo::Ray::getOrigin" name="geo::Ray::getOrigin">
+<area shape="rect" id="node2" href="$classgeo_1_1Plane.html#aa9a088f949d861d200847789d117705f" title="Virtual method that implements the ray&#45;plane intersection. " alt="" coords="193,5,372,32"/>
+<area shape="rect" id="node3" href="$classgeo_1_1Sphere.html#a642f483e32861d773f9326b0ad0280cf" title="Calculates the intersection of the passed ray with the sphere according to the parametric form of a r..." alt="" coords="189,56,376,83"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Renderer::getIndexClosest" name="Renderer::getIndexClosest">
+<area shape="rect" id="node2" href="$classRenderer.html#a3dbb4fc501fb433c31cd1a36058fda21" title="Will fire rays from a position, then iterate over the lights, and if any object is inbetweet will ret..." alt="" coords="233,5,359,32"/>
+<area shape="rect" id="node3" href="$classRenderer.html#a0d6188244f3feaf19971e20e73d0f043" title="Probably the most important algorithm of this class. This method is recursive. It will fire a ray fro..." alt="" coords="408,31,520,57"/>
+<area shape="rect" id="node4" href="$classRenderer.html#af7e5f8f68742f198e315fb4683a605a4" title="Will trigger the class and start doing all the calculations. " alt="" coords="569,31,687,57"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="736,31,787,57"/>
+</map>

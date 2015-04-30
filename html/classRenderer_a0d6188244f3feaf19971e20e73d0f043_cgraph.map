@@ -1,0 +1,5 @@
+<map id="Renderer::trace" name="Renderer::trace">
+<area shape="rect" id="node2" href="$classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06" title="Getter method for the direction. " alt="" coords="166,5,319,32"/>
+<area shape="rect" id="node3" href="$classRenderer.html#a4375087362999b1f1ce2b17a8ecf73cd" title="Given an intersections vector will return the closest to the camera, the one that it will read colour..." alt="" coords="368,81,547,108"/>
+<area shape="rect" id="node4" href="$classRenderer.html#a3dbb4fc501fb433c31cd1a36058fda21" title="Will fire rays from a position, then iterate over the lights, and if any object is inbetweet will ret..." alt="" coords="179,107,306,133"/>
+</map>

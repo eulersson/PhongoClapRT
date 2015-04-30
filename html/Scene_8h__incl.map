@@ -1,0 +1,6 @@
+<map id="FinalSubmission/include/Scene.h" name="FinalSubmission/include/Scene.h">
+<area shape="rect" id="node5" href="$Shape_8h.html" title="Shape.h" alt="" coords="346,96,416,123"/>
+<area shape="rect" id="node11" href="$Light_8h.html" title="A class for the lights in the scene. " alt="" coords="205,171,267,197"/>
+<area shape="rect" id="node8" href="$Material_8h.html" title="This will be used to return the colour when queried from the Shape derived classes. " alt="" coords="342,171,420,197"/>
+<area shape="rect" id="node10" href="$Ray_8h.html" title="This class handles the implementation of ray: an object with an origin and a direction. " alt="" coords="434,245,491,272"/>
+</map>

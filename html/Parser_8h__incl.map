@@ -1,0 +1,8 @@
+<map id="FinalSubmission/include/Parser.h" name="FinalSubmission/include/Parser.h">
+<area shape="rect" id="node10" href="$Light_8h.html" title="A class for the lights in the scene. " alt="" coords="987,245,1048,272"/>
+<area shape="rect" id="node11" href="$Shape_8h.html" title="Shape.h" alt="" coords="587,171,657,197"/>
+<area shape="rect" id="node15" href="$Plane_8h.html" title="Implements the interface for creating a plane shape and the methods for finding its intersections..." alt="" coords="619,96,685,123"/>
+<area shape="rect" id="node16" href="$Sphere_8h.html" title="A class for implicit sphere definitions. " alt="" coords="760,96,833,123"/>
+<area shape="rect" id="node12" href="$Material_8h.html" title="This will be used to return the colour when queried from the Shape derived classes. " alt="" coords="630,245,708,272"/>
+<area shape="rect" id="node14" href="$Ray_8h.html" title="This class handles the implementation of ray: an object with an origin and a direction. " alt="" coords="561,320,617,347"/>
+</map>

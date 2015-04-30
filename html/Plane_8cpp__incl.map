@@ -1,0 +1,6 @@
+<map id="FinalSubmission/src/Plane.cpp" name="FinalSubmission/src/Plane.cpp">
+<area shape="rect" id="node3" href="$Plane_8h.html" title="Implements the interface for creating a plane shape and the methods for finding its intersections..." alt="" coords="144,96,211,123"/>
+<area shape="rect" id="node6" href="$Material_8h.html" title="This will be used to return the colour when queried from the Shape derived classes. " alt="" coords="99,245,177,272"/>
+<area shape="rect" id="node8" href="$Ray_8h.html" title="This class handles the implementation of ray: an object with an origin and a direction. " alt="" coords="30,320,87,347"/>
+<area shape="rect" id="node4" href="$Shape_8h.html" title="Shape.h" alt="" coords="142,171,212,197"/>
+</map>

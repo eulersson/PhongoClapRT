@@ -1,0 +1,4 @@
+<map id="Parser::parseObjects" name="Parser::parseObjects">
+<area shape="rect" id="node2" href="$classParser.html#a389042edd10c0f4ada3ccafe6b2502b3" title="Read the text line that defines a plane and push it into the vector container. " alt="" coords="204,5,337,32"/>
+<area shape="rect" id="node3" href="$classParser.html#af35eb53931a888d4df313e6d33088042" title="Read the text line that defines a sphere and push it into the vector container. " alt="" coords="200,56,341,83"/>
+</map>

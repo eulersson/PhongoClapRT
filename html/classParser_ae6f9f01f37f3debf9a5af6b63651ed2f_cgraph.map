@@ -1,0 +1,7 @@
+<map id="Parser::Parser" name="Parser::Parser">
+<area shape="rect" id="node2" href="$classParser.html#ac7fee15c9df11e7a1dd5fa46cc6ae07a" title="Read objects snippet of text and push elements to the object vector on the go. " alt="" coords="166,5,301,32"/>
+<area shape="rect" id="node4" href="$classParser.html#a6b348fc8031cdb1e153f34df4d106019" title="Read objects snippet of text and push elements to the object vector on the go. " alt="" coords="161,56,306,83"/>
+<area shape="rect" id="node3" href="$classParser.html#a56520cd4a63e0627a8a3a07f16e182fd" title="Read the text line that defines a light and push it into the vector container. " alt="" coords="355,5,519,32"/>
+<area shape="rect" id="node5" href="$classParser.html#a389042edd10c0f4ada3ccafe6b2502b3" title="Read the text line that defines a plane and push it into the vector container. " alt="" coords="371,56,504,83"/>
+<area shape="rect" id="node6" href="$classParser.html#af35eb53931a888d4df313e6d33088042" title="Read the text line that defines a sphere and push it into the vector container. " alt="" coords="367,107,508,133"/>
+</map>

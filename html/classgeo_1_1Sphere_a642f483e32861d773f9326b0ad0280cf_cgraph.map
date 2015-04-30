@@ -1,0 +1,6 @@
+<map id="geo::Sphere::getIntersection" name="geo::Sphere::getIntersection">
+<area shape="rect" id="node2" href="$classgeo_1_1Sphere.html#a9a3e14c0260b9ad6d163c8ec915bde73" title="Returns center of a sphere. " alt="" coords="241,5,399,32"/>
+<area shape="rect" id="node3" href="$classgeo_1_1Ray.html#a734afeb203f664bfb0653ad9e0491f06" title="Getter method for the direction. " alt="" coords="243,56,397,83"/>
+<area shape="rect" id="node4" href="$classgeo_1_1Ray.html#ae6cc1338a6dadc275773fd040c0e63b6" title="Getter method for the origin. " alt="" coords="253,107,387,133"/>
+<area shape="rect" id="node5" href="$classgeo_1_1Sphere.html#abf221511f860df6f62b455974b499e36" title="Returns radius of a sphere. " alt="" coords="241,157,399,184"/>
+</map>
