@@ -201,23 +201,24 @@ http://ramonblanquer.com/doc/phongo/index.html
 - Make specular compatible with refraction/reflection
 
 ## Some Renders
-<p style="font-size:8px">... rendering with anti-aliasing value of 1</p>
+
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_00.png" width="500" height="500" align="center" />
+<p>... rendering with anti-aliasing value of 1</p>
 
-<p style="font-size:8px">... rendering with anti-aliasing value of 16</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_16.png" width="500" height="500" align="center" />
+<p>... rendering with anti-aliasing value of 16</p>
 
-<p style="font-size:8px">... this happens if I don't clamp the light contributions to [0-1]</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/interstellar.png" width="500" height="500" align="center" />
+<p>... this happens if I don't clamp the light contributions to [0-1]</p>
 
-<p style="font-size:8px">... same here. Not clamping the values produces interesting results!</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/pink.png" width="500" height="500" align="center" />
+<p>... same here. Not clamping the values produces interesting results!</p>
 
-<p style="font-size:8px">... first tests when I implemented the Phong shader and tweaked it.</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/simple_phong.png" width="500" height="500" align="center" />
+<p>... first tests when I implemented the Phong shader and tweaked it.</p>
 
-<p style="font-size:8px">... my favourite render. The scene_file I include renders this.</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/colorful.png" width="500" height="500" align="center" />
+<p>... my favourite render. The scene_file I include renders this.</p>
 
 ## Bibliography
 **Pharr, M.** and **Humphreys, G**., 2010. *Physically Based Rendering.* Burlington: Morgan Kaufmann Publishers Haines E.
