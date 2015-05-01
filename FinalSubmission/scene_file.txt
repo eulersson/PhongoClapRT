@@ -19,7 +19,7 @@ Objects
 
     $Sphere sphere1 [ 0 0 2 ] 0.8 [ 1 0 1 ] @specularHardness 5
 
-    $Sphere sphere2 [ -1 1.2 0.2 ] 0.5 [ 0.1 0.4 0.95 ] @reflective 70;
+    $Sphere sphere2 [ -1 1.2 0.2 ] 0.5 [ 0.1 0.4 0.95 ] @reflective 70
 
     $Sphere sphere4 [ 1.1 0.5 2.0 ] 0.1 [ 0 1 0 ] @refractive 1.2 100
 
@@ -31,5 +31,5 @@ Objects
 
     $Sphere sphere8 [ 0.5 0.3 0.2 ] 0.2 [ 0 0.8 1 ] @refractive 1.2 100
 
-    $Sphere sphere9 [ 0.3 1.4 3.2 ] 0.53 [ 1 0.4 0.2 ] @reflective 60;
+    $Sphere sphere9 [ 0.3 1.4 3.2 ] 0.53 [ 1 0.4 0.2 ] @reflective 60
 $}
