@@ -201,23 +201,24 @@ http://ramonblanquer.com/doc/phongo/index.html
 - Make specular compatible with refraction/reflection
 
 ## Some Renders
-*... rendering with anti-aliasing value of 1*
+
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_00.png" width="500" height="500" align="center" />
+<p style="font-size:10px">*... rendering with anti-aliasing value of 1*</p>
 
-*... rendering with anti-aliasing value of 16*
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_16.png" width="500" height="500" align="center" />
+<p style="font-size:10px">... rendering with anti-aliasing value of 16</p>
 
-*... this happens if I don't clamp the light contributions to [0-1]*
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/interstellar.png" width="500" height="500" align="center" />
+<p style="font-size:10px">... this happens if I don't clamp the light contributions to [0-1]</p>
 
-*... same here. Not clamping the values produces interesting results!*
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/pink.png" width="500" height="500" align="center" />
+<p style="font-size:10px">... same here. Not clamping the values produces interesting results!</p>
 
-*... first tests when I implemented the Phong shader and tweaked it.*
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/simple_phong.png" width="500" height="500" align="center" />
+<p style="font-size:10px">... first tests when I implemented the Phong shader and tweaked it.</p>
 
-*... my favourite render. The scene_file I include renders this.*
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/colorful.png" width="500" height="500" align="center" />
+<p style="font-size:10px">... my favourite render. The scene_file I include renders this.</p>
 
 ## Bibliography
 **Pharr, M.** and **Humphreys, G**., 2010. *Physically Based Rendering.* Burlington: Morgan Kaufmann Publishers Haines E.
