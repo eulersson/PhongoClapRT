@@ -195,6 +195,7 @@ http://ramonblanquer.com/doc/phongo/index.html
 - Make it multi-threaded
 - Implement more light decays
 - Implement Triangle-Ray intersection
+- Improve shadows
 - Implement more shapes
 - Make specular compatible with refraction/reflection
 
@@ -217,7 +218,7 @@ http://ramonblanquer.com/doc/phongo/index.html
 
 **Delphi3D** (no date) *Delphi3D [Archive]- Rapid OpenGL Development* Delphi3D [online] [checked 2015] Available from: http://www.gameprogrammer.net/delphi3dArchive/phongfordummies.htm
 
-**Phong, B. T.**r, 1975. *Illumination for computer generated pictures* [online] [checked 2015] Utah: Communications of ACM, 18.
+**Phong, B. T.**r, 1975. *Illumination for computer generated pictures* [online] [checked 2015] Utah: Communications of ACM, 18. Available from: http://www.cs.northwestern.edu/~ago820/cs395/Papers/Phong_1975.pdf
 
 **cplusplus.com** (no date) *Input/output with files - C++ Tutorials* cplusplus.com [online] [checked 2015] Available from: http://www.cplusplus.com/doc/tutorial/files/
 
