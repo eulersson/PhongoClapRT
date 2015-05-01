@@ -11,6 +11,7 @@ raytracer features:
 * Sphere-Ray Intersections
 * Plane-Ray Intersections
 * Lighting decay
+* Raytraced Shadows
 * Reflection
 * Refraction
 * Phong Shading Model
