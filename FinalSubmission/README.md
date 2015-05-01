@@ -201,30 +201,23 @@ http://ramonblanquer.com/doc/phongo/index.html
 - Make specular compatible with refraction/reflection
 
 ## Some Renders
-![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_00.png)
-
 *... rendering with anti-aliasing value of 1*
-
-![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_16.png)
+<img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_00.png" width="500" height="500" align="center" />
 
 *... rendering with anti-aliasing value of 16*
-
-![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/interstellar.png)
+<img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_16.png" width="500" height="500" align="center" />
 
 *... this happens if I don't clamp the light contributions to [0-1]*
-
-![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/pink.png)
+<img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/interstellar.png" width="500" height="500" align="center" />
 
 *... same here. Not clamping the values produces interesting results!*
-
-![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/simple_phong.png)
+<img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/pink.png" width="500" height="500" align="center" />
 
 *... first tests when I implemented the Phong shader and tweaked it.*
-
-<div style="text-align:center"><img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/colorful.png" width="500" height="500" /></div>
+<img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/simple_phong.png" width="500" height="500" align="center" />
 
 *... my favourite render. The scene_file I include renders this.*
-
+<img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/colorful.png" width="500" height="500" align="center" />
 
 ## Bibliography
 **Pharr, M.** and **Humphreys, G**., 2010. *Physically Based Rendering.* Burlington: Morgan Kaufmann Publishers Haines E.
