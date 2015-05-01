@@ -20,18 +20,16 @@ raytracer features:
 Its usage is fairly simple. You just have to run the binary followed by the path where the scene file is located. Read
 carefully how the syntax works on the next section because it is not particulary straight-forward due to my lack of
 knowledge with parsing frameworks.
-
 ```
 ./clap [path to scene text file]
 ```
-
 I recommend building your binary from source code to make sure that it will work on your system. For that you will need
 **qmake** and **git**. If you want to try Phongo Clap on your computer run these commands. However I also include a
 previously built binary just in case.
 
 ```
 git clone https://github.com/NCCA/docwhite-CA1
-cd cd docwhite-CA1/FinalSubmission
+cd docwhite-CA1/FinalSubmission
 qmake
 make
 ./clap scene_file.txt
@@ -152,8 +150,7 @@ $Plane plane_name dist [ nX nY nZ ] @checker [ col1R col1G col1B ] [ col2R col2G
 Take a look at the **@checker** token. after the checker token the parser will be expecting two tuples of colours, do
 it as above, **putting spaces even before the first element of the tuple**.
 
-#### Further options
-You can set the plane to have certain specular hardness by the keyword `@specularHardness [value]`. Find some examples
+You can set the plane to have certain **specular** hardness by the keyword `@specularHardness [value]`. Find some examples
 above.
 
 ### Spheres
@@ -168,7 +165,6 @@ Where
 * `rad` is the radius of the sphere.
 * `colR`, `colG`, `colB` are the colour values of the sphere.
 
-#### Further options
 ##### Reflection
 You can set reflection options using the keyword `@reflective percentage` where the percentage will determine
 how reflective the sphere is.
