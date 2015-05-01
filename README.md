@@ -202,22 +202,22 @@ http://ramonblanquer.com/doc/phongo/index.html
 
 ## Some Renders
 ![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_00.png)
-*    Rendering with anti-aliasing value of 1*
+*... rendering with anti-aliasing value of 1*
 
 ![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_16.png)
-*    Rendering with anti-aliasing value of 16*
+*... rendering with anti-aliasing value of 16*
 
 ![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/interstellar.png)
-*    This happens if I don't clamp the light contributions to [0-1]*
+*... this happens if I don't clamp the light contributions to [0-1]*
 
 ![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/pink.png)
-*    Same here. Not clamping the values produces interesting results!*
+*... same here. Not clamping the values produces interesting results!*
 
 ![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/simple_phong.png)
-*    First tests when I implemented the Phong shader and tweaked it.*
+*... first tests when I implemented the Phong shader and tweaked it.*
 
 ![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/colorful.png)
-*    My favourite render. The scene_file I include renders this.*
+*... my favourite render. The scene_file I include renders this.*
 
 
 ## Bibliography
