@@ -1,6 +1,7 @@
 # Phongo Clap RT
 
 ![](https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/colorful.png)
+*... see documentation: http://ramonblanquer.com/doc/phongo/index.html*
 
 ## Brief
 My project consists on a raytracing offline renderer. This is what I handed in but I will be extending it to features
