@@ -201,22 +201,22 @@ http://ramonblanquer.com/doc/phongo/index.html
 - Make specular compatible with refraction/reflection
 
 ## Some Renders
-*... rendering with anti-aliasing value of 1*
+<p style="font-size:8px">... rendering with anti-aliasing value of 1</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_00.png" width="500" height="500" align="center" />
 
-*... rendering with anti-aliasing value of 16*
+<p style="font-size:8px">... rendering with anti-aliasing value of 16</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/aa_16.png" width="500" height="500" align="center" />
 
-*... this happens if I don't clamp the light contributions to [0-1]*
+<p style="font-size:8px">... this happens if I don't clamp the light contributions to [0-1]</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/interstellar.png" width="500" height="500" align="center" />
 
-*... same here. Not clamping the values produces interesting results!*
+<p style="font-size:8px">... same here. Not clamping the values produces interesting results!</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/pink.png" width="500" height="500" align="center" />
 
-*... first tests when I implemented the Phong shader and tweaked it.*
+<p style="font-size:8px">... first tests when I implemented the Phong shader and tweaked it.</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/simple_phong.png" width="500" height="500" align="center" />
 
-*... my favourite render. The scene_file I include renders this.*
+<p style="font-size:8px">... my favourite render. The scene_file I include renders this.</p>
 <img src ="https://github.com/docwhite/docwhite-CA1/raw/master/FinalSubmission/sample_images/colorful.png" width="500" height="500" align="center" />
 
 ## Bibliography
