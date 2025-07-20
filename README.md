@@ -1,33 +1,48 @@
 # Phongo Clap RT
 
-![](https://github.com/eulersson/PhongoClapRT/raw/master/FinalSubmission/sample_images/colorful.png)
-*... see documentation: https://eulersson.github.io/PhongoClapRT/*
+![](https://github.com/eulersson/PhongoClapRT/raw/main/FinalSubmission/sample_images/colorful.png)
+
+[Documentation](https://eulersson.github.io/PhongoClapRT/)
 
 ## Brief
-My project consists on a raytracing offline renderer. This is what I handed in but I will be extending it to features
-like path tracing. A full list about the further things I would like to do are listed after the usage section. My
-raytracer features:
 
-* Sphere-Ray Intersections
-* Plane-Ray Intersections
-* Lighting decay
-* Raytraced Shadows
-* Reflection
-* Refraction
-* Phong Shading Model
-* Antialiasing
-* File parsing
+Phongo Clap RT is an offline raytracing renderer developed from scratch in C++.
+It supports fundamental rendering techniques and lighting models, aiming to
+simulate realistic 3D scenes through physically inspired algorithms. This
+version was submitted as part of an academic project, but I’m actively extending
+it with more advanced features like path tracing and global illumination.
+
+### Core Features
+
+- ✅ Ray-sphere intersection  
+- ✅ Ray-plane intersection  
+- ✅ Lighting attenuation  
+- ✅ Hard shadows via raytraced shadow rays  
+- ✅ Mirror-like reflections  
+- ✅ Basic refraction  
+- ✅ Phong illumination model  
+- ✅ Supersampling-based antialiasing  
+- ✅ Custom scene file parsing
 
 ## Usage
-Its usage is fairly simple. You just have to run the binary followed by the path where the scene file is located. Read
-carefully how the syntax works on the next section because it is not particulary straight-forward due to my lack of
-knowledge with parsing frameworks.
+
+Using the renderer is straightforward: run the compiled binary and provide the
+path to a valid scene file as an argument.  Please refer to the next section for
+details on the scene file syntax. The parser was implemented manually without
+the aid of parsing libraries, so the format is functional but not overly
+forgiving.
+
+Run the compiled binary with the path to your `.phg` scene file to begin rendering:
+
+
 ```
 ./clap [path to scene text file]
 ```
-I recommend building your binary from source code to make sure that it will work on your system. For that you will need
-**qmake** and **git**. If you want to try Phongo Clap on your computer run these commands. However I also include a
-previously built binary just in case.
+
+I recommend building the binary from source to ensure compatibility with your system.  
+To do this, you will need **qmake** and **git** installed.  
+
+If you'd like to try **Phongo Clap RT** on your machine, run the following commands:  
 
 ```
 git clone https://github.com/eulersson/PhongoClapRT
@@ -37,9 +52,18 @@ make
 ./clap scene_file.txt
 ```
 
+For convenience, a precompiled binary is also provided in the repository.
+
 ## Scene File Syntax
-**Please read this section carefully.** I would first suggest you to take a look at a sample image file that I included
-with the project. Scene files consist on three parts: a **header**, the **lights interface** and the **objects interface**.
+
+**Please read this section carefully.**  
+
+Before diving in, I recommend reviewing the sample scene file included in the project.  
+
+Scene files are structured into three main parts:  
+- A **header**  
+- The **lights interface**  
+- The **objects interface**  
 
 ### Scene File Sample [scene_file.txt]
 
@@ -78,14 +102,21 @@ Objects
 
     $Sphere sphere9 [ 0.3 1.4 3.2 ] 0.53 [ 1 0.4 0.2 ] @reflective 60
 $}
-
-
 ```
 
 ### Header
-The header part contains the information about what the name of the project is, the dimensions, camera, depth and
-antialiasing. Each property consists of `VARIABLE "VALUE"` or `VARIABLE ["VALUE" "VALUE"]`. And they need to be
-declared as follows. Please copy and paste this to your text file to avoid problems and simply change the values.
+
+The **header** section defines key scene parameters such as the project name,
+image dimensions, camera settings, depth, and antialiasing options.  
+
+Each property follows one of these formats:  
+
+- `VARIABLE "VALUE"`  
+- `VARIABLE ["VALUE" "VALUE"]`  
+
+To avoid parsing errors, please use the exact syntax as shown below. You can
+copy and paste this template into your scene file and modify the values as
+needed.
 
 ```
 NAME "fileName" DIMENSIONS ["width" "height"]
@@ -94,26 +125,31 @@ DEPTH "recursive_depth" ANTI-ALIASING "aa"
 ```
 * *replace the lowercase words with values, leaving the quotes " "*
 
-For the lights interface each light declaration and definition should be started by `+`, and everything should be wrapped
-as `Lights { [all the lights] +}` (*do't forget the `+` before the closing brace*). The definition follows this pattern:
+For the lights interface each light declaration and definition should be started
+by `+`, and everything should be wrapped as `Lights { [all the lights] +}`
+*(don't forget the `+` before the closing brace)*. The definition follows this
+pattern:
+
 
 ```
 +light_name [ posX posY posZ ] [ diffR diffG diffB ] [ specR specG specB ] diffInt specInt falloff
 ```
 
-**PLEASE note that the first and last values of each tuple are seppared using a SPACE, if you do it like
-[posX posY posZ] it will break, same if you do it like [ posX posY posZ].**
+**Please note:** When specifying tuples, the first and last values **must be separated by commas**, not just spaces.  
 
-Where
-* `light_name` is self-explanatory
-* `posX`, `posY`, and `posZ` refer to the light's position.
-* `diffR`, `diffG`, `diffB` *[0-1] value* refer to the diffuse colour.
-* `specR`, `specG`, `specB` *[0-1] value* refer to the specular colour.
-* `diffInt` the amount of diffuse contribution emmited by the light.
-* `specInt` amount of specular the light emits.
-* `falloff` decay amount.
+For example, writing `[posX posY posZ]` or `[ posX posY posZ]` will cause parsing errors.  
 
-Here there is an example:
+Use commas to separate the values, like `[posX, posY, posZ]`.
+
+- `light_name` is self-explanatory
+- `posX`, `posY`, and `posZ` refer to the light's position.
+- `diffR`, `diffG`, `diffB` *[0-1] value* refer to the diffuse colour.
+- `specR`, `specG`, `specB` *[0-1] value* refer to the specular colour.
+- `diffInt` the amount of diffuse contribution emmited by the light.
+- `specInt` amount of specular the light emits.
+- `falloff` decay amount.
+
+A sample:
 
 ```
 Lights
@@ -124,24 +160,29 @@ Lights
 +}
 ```
 
-The object interface is similar. Everything is between `Objects { [...] $}` **(do not forget dollar sign before closing
-brace)**. We can declare either planes or spheres.
+The object interface is similar. Everything is between `Objects { [...] $}`
+*(do not forget dollar sign before closing brace)*. You can declare either
+planes or spheres.
 
 ### Planes
-A plane can be of two types, a **checkerboard plane** or a regular plane. To define a **regular plane** do it as follows:
+
+A plane can be of two types, a **checkerboard plane** or a regular plane. To
+define a **regular plane** do it as follows:
 
 ```
 $Plane plane_name dist [ nX nY nZ ] [ cR cG cB ]
 ```
 
-**PLEASE note that the first and last values of each tuple are seppared using a SPACE, if you do it like
-[nX nY nZ] it will break, same if you do it like [ nX nY nZ].**
+**Please note:** The values in each tuple must be separated by a single space without extra spaces at the start or end.  
 
-Where
-* `plane_name` is self explanatory.
-* `dist` is the distance from the origin.
-* `nX, nY, nZ` *(no need to normalize, it's done for you)* are the normal components of the plane.
-* `cR`, `cG`, `cB` *[0-1] values* are the colour components of the plane.
+For example, writing `[nX nY nZ]` or `[ nX nY nZ]` will cause parsing errors.  
+
+Make sure there are no leading or trailing spaces inside the brackets.
+
+- `plane_name` is self explanatory.
+- `dist` is the distance from the origin.
+- `nX, nY, nZ` *(no need to normalize, it's done for you)* are the normal components of the plane.
+- `cR`, `cG`, `cB` *[0-1] values* are the colour components of the plane.
 
 For a **checkerboard** plane the definition is a bit different:
 
@@ -149,40 +190,46 @@ For a **checkerboard** plane the definition is a bit different:
 $Plane plane_name dist [ nX nY nZ ] @checker [ col1R col1G col1B ] [ col2R col2G col2B ]
 ```
 
-Take a look at the **@checker** token. after the checker token the parser will be expecting two tuples of colours, do
-it as above, **putting spaces even before the first element of the tuple**.
+Take a look at the **@checker** token. after the checker token the parser will
+be expecting two tuples of colours, do it as above, **putting spaces even before
+the first element of the tuple**.
 
-You can set the plane to have certain **specular** hardness by the keyword `@specularHardness [value]`. Find some examples
-above.
+You can set the plane to have certain **specular** hardness by the keyword
+`@specularHardness [value]`. Find some examples above.
 
 ### Spheres
+
 Spheres are pretty simple.
 
 ```
 $Sphere sphere_name [ cX cY cZ ] rad [ colR colG colB ]
 ```
 
-Where
-* `cX`, `cY`, `cZ` are the world space coordinates of the sphere centres.
-* `rad` is the radius of the sphere.
-* `colR`, `colG`, `colB` are the colour values of the sphere.
+- `cX`, `cY`, `cZ` are the world space coordinates of the sphere centres.
+- `rad` is the radius of the sphere.
+- `colR`, `colG`, `colB` are the colour values of the sphere.
 
 ##### Reflection
-You can set reflection options using the keyword `@reflective percentage` where the percentage will determine
-how reflective the sphere is.
+
+You can set reflection options using the keyword `@reflective percentage` where
+the percentage will determine how reflective the sphere is.
+
 ##### Refraction
-Refraction settings are set `@refraction index_of_refraction transparency` where transparency is in %.
+
+Refraction settings are set `@refraction index_of_refraction transparency` where
+transparency is in %.
+
 ##### Sphecular hardness
-Also you can set specular hardness for the objects that are not reflective or refractive. I did it that way
-because I did a trick to make the transparent/reflective objects look glossy. So if you use specular
-hardness **you cannot use reflection or refraction**.
+
+Also you can set specular hardness for the objects that are not reflective or
+refractive. I did it that way because I did a trick to make the
+transparent/reflective objects look glossy. So if you use specular hardness
+**you cannot use reflection or refraction**.
 
 You have to stick to this structure.
 
-## Documentation
-http://ramonblanquer.com/doc/phongo/index.html
-
 ## TO DO
+
 - BRDF
 - Implement SpotLight
 - Ambient Occlusion
@@ -202,25 +249,26 @@ http://ramonblanquer.com/doc/phongo/index.html
 
 ## Some Renders
 
-<img src ="https://github.com/eulersson/PhongoClapRT/raw/master/FinalSubmission/sample_images/aa_00.png" width="500" height="500" align="center" />
+<img src ="https://github.com/eulersson/PhongoClapRT/raw/main/FinalSubmission/sample_images/aa_00.png" width="500" height="500" align="center" />
 <p>... rendering with anti-aliasing value of 1</p>
 
-<img src ="https://github.com/eulersson/PhongoClapRT/raw/master/FinalSubmission/sample_images/aa_16.png" width="500" height="500" align="center" />
+<img src ="https://github.com/eulersson/PhongoClapRT/raw/main/FinalSubmission/sample_images/aa_16.png" width="500" height="500" align="center" />
 <p>... rendering with anti-aliasing value of 16</p>
 
-<img src ="https://github.com/eulersson/PhongoClapRT/raw/master/FinalSubmission/sample_images/interstellar.png" width="500" height="500" align="center" />
+<img src ="https://github.com/eulersson/PhongoClapRT/raw/main/FinalSubmission/sample_images/interstellar.png" width="500" height="500" align="center" />
 <p>... this happens if I don't clamp the light contributions to [0-1]</p>
 
-<img src ="https://github.com/eulersson/PhongoClapRT/raw/master/FinalSubmission/sample_images/pink.png" width="500" height="500" align="center" />
+<img src ="https://github.com/eulersson/PhongoClapRT/raw/main/FinalSubmission/sample_images/pink.png" width="500" height="500" align="center" />
 <p>... same here. Not clamping the values produces interesting results!</p>
 
-<img src ="https://github.com/eulersson/PhongoClapRT/raw/master/FinalSubmission/sample_images/simple_phong.png" width="500" height="500" align="center" />
+<img src ="https://github.com/eulersson/PhongoClapRT/raw/main/FinalSubmission/sample_images/simple_phong.png" width="500" height="500" align="center" />
 <p>... first tests when I implemented the Phong shader and tweaked it.</p>
 
-<img src ="https://github.com/eulersson/PhongoClapRT/raw/master/FinalSubmission/sample_images/colorful.png" width="500" height="500" align="center" />
+<img src ="https://github.com/eulersson/PhongoClapRT/raw/main/FinalSubmission/sample_images/colorful.png" width="500" height="500" align="center" />
 <p>... my favourite render. The scene_file I include renders this.</p>
 
 ## Bibliography
+
 **Pharr, M.** and **Humphreys, G**., 2010. *Physically Based Rendering.* Burlington: Morgan Kaufmann Publishers Haines E.
 
 **Glassner, A.**, 1989. *An Overview of Ray Tracing* In: **Glassner, A.**, ed. *An Introduction To Ray Tracing* California: Academic Press, 1-31
